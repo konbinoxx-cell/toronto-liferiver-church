@@ -364,7 +364,9 @@ header {
 .footer-portal img {
     width: 20px;
     filter: sepia(1) saturate(5);
-}/* Bulletin Board Cards */
+}
+
+/* Bulletin Board Cards */
 .bulletin-card {
     background: white;
     padding: 25px;
@@ -423,6 +425,14 @@ header {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* Speed feedback - ensure it's never blurred */
+#speed-feedback {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-filter: none !important;
+}
+
 /* Shake animation for failed speed test */
 @keyframes shake {
 
