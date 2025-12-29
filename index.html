@@ -168,8 +168,9 @@
             const now = new Date().getTime();
             const timespan = now - lastClick;
 
-            // Standard double-click speed is usually < 400ms
-            if (timespan < 400 && timespan > 0) {
+            // Strict double-click speed requirement (350ms instead of 400ms)
+            // This makes it harder for slower users to access
+            if (timespan < 350 && timespan > 0) {
                 // Success: entry animation
                 portal.style.transform = 'scale(1.1) rotateX(20deg)';
                 portal.style.boxShadow = '0 0 50px var(--accent)';
