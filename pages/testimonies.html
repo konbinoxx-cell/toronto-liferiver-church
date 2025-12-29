@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>信仰见证 - 多伦多生命河灵粮堂</title>
+    <title>信仰見證 - 多倫多生命河靈糧堂</title>
     <style>
         :root {
             --primary: #1a5276;
@@ -13,42 +14,42 @@
             --dark: #2c3e50;
             --text: #34495e;
             --text-light: #7f8c8d;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
             --toronto-blue: #1e88e5;
             --toronto-red: #d32f2f;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
             transition: var(--transition);
         }
-        
+
         ul {
             list-style: none;
         }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         /* 头部样式 */
         header {
             background-color: white;
@@ -58,41 +59,41 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .logo-image {
             height: 100px;
             width: auto;
         }
-        
+
         .logo-text {
             font-size: 1.3rem;
             font-weight: 700;
         }
-        
+
         .logo-subtitle {
             font-size: 0.7rem;
             color: var(--toronto-blue);
             margin-top: -5px;
         }
-        
+
         .nav-menu {
             display: flex;
             gap: 20px;
         }
-        
+
         .nav-link {
             font-weight: 500;
             padding: 5px 0;
@@ -100,11 +101,11 @@
             font-size: 0.9rem;
             white-space: nowrap;
         }
-        
+
         .nav-link:hover {
             color: var(--secondary);
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -115,30 +116,30 @@
             background-color: var(--secondary);
             transition: var(--transition);
         }
-        
+
         .nav-link:hover::after {
             width: 100%;
         }
-        
+
         .nav-link.active {
             color: var(--secondary);
         }
-        
+
         .nav-link.active::after {
             width: 100%;
         }
-        
+
         .mobile-toggle {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         /* 下拉菜单样式 */
         .dropdown {
             position: relative;
         }
-        
+
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -154,21 +155,21 @@
             z-index: 1000;
             padding: 10px 0;
         }
-        
+
         .dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-        
+
         .dropdown-menu li {
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
+
         .dropdown-menu li:last-child {
             border-bottom: none;
         }
-        
+
         .dropdown-menu a {
             display: block;
             padding: 10px 20px;
@@ -176,13 +177,13 @@
             font-size: 0.9rem;
             transition: all 0.2s ease;
         }
-        
+
         .dropdown-menu a:hover {
             background: var(--light);
             color: var(--secondary);
             padding-left: 25px;
         }
-        
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .nav-menu {
@@ -195,17 +196,17 @@
                 text-align: center;
                 padding: 20px 0;
                 transition: var(--transition);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
             }
-            
+
             .nav-menu.active {
                 left: 0;
             }
-            
+
             .mobile-toggle {
                 display: block;
             }
-            
+
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -218,17 +219,17 @@
                 margin-top: 10px;
                 margin-left: 20px;
             }
-            
+
             .dropdown.active .dropdown-menu {
                 display: block;
             }
-            
-            .dropdown > a::after {
+
+            .dropdown>a::after {
                 content: ' ▼';
                 font-size: 0.8em;
             }
         }
-        
+
         /* 页面特定内容样式 */
         .page-hero {
             background: linear-gradient(135deg, var(--primary), var(--dark));
@@ -236,24 +237,24 @@
             padding: 80px 0;
             text-align: center;
         }
-        
+
         .page-content {
             padding: 60px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
         }
-        
+
         .section-title h2 {
             font-size: 2.2rem;
             color: var(--primary);
             display: inline-block;
             padding-bottom: 10px;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -264,7 +265,7 @@
             height: 3px;
             background: linear-gradient(to right, var(--toronto-blue), var(--secondary));
         }
-        
+
         /* 见证页面特定样式 */
         .testimonies-grid {
             display: grid;
@@ -272,7 +273,7 @@
             gap: 30px;
             margin-bottom: 50px;
         }
-        
+
         .testimony-card {
             background: white;
             border-radius: 15px;
@@ -280,74 +281,74 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-        
+
         .testimony-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .testimony-header {
             padding: 25px;
             background: linear-gradient(135deg, var(--accent), #2ecc71);
             color: white;
             position: relative;
         }
-        
+
         .testimony-category {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.8rem;
         }
-        
+
         .testimony-title {
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
-        
+
         .testimony-author {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .author-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
         }
-        
+
         .author-info {
             flex: 1;
         }
-        
+
         .author-name {
             font-weight: 600;
         }
-        
+
         .author-details {
             font-size: 0.8rem;
             opacity: 0.9;
         }
-        
+
         .testimony-content {
             padding: 25px;
         }
-        
+
         .testimony-excerpt {
             color: var(--text-light);
             line-height: 1.8;
             margin-bottom: 20px;
         }
-        
+
         .testimony-stats {
             display: flex;
             justify-content: space-between;
@@ -356,7 +357,7 @@
             color: var(--text-light);
             font-size: 0.9rem;
         }
-        
+
         .btn {
             display: inline-block;
             padding: 10px 25px;
@@ -370,13 +371,13 @@
             box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
             font-size: 0.9rem;
         }
-        
+
         .btn:hover {
             background-color: #d35400;
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5);
         }
-        
+
         .share-testimony {
             background: var(--light);
             padding: 40px;
@@ -386,239 +387,243 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 头部导航 -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="../trolcc_logo1.png" alt="多伦多生命河灵粮堂" class="logo-image">
+                <img src="../trolcc_logo1.png" alt="多倫多生命河靈糧堂" class="logo-image">
                 <div>
-                    <div class="logo-text">多伦多生命河灵粮堂</div>
+                    <div class="logo-text">多倫多生命河靈糧堂</div>
                     <div class="logo-subtitle">Toronto River of Life Christian Church</div>
                 </div>
             </div>
-            
+
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">首页</a></li>
-                    <li><a href="meetings.html" class="nav-link">聚会时间</a></li>
-                    <li><a href="groups.html" class="nav-link">小组生活</a></li>
-                    <li><a href="testimonies.html" class="nav-link active">信仰见证</a></li>
-                    <li><a href="resources.html" class="nav-link">资源中心</a></li>
-                    <li><a href="../prayer-ai.html" class="nav-link">🙏 祷告AI & 生成器</a></li>
-                    
-                    <!-- 母堂资源下拉菜单 -->
+                    <li><a href="../index.html" class="nav-link">首頁</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚會時間</a></li>
+                    <li><a href="groups.html" class="nav-link">小組生活</a></li>
+                    <li><a href="testimonies.html" class="nav-link active">信仰見證</a></li>
+                    <li><a href="resources.html" class="nav-link">資源中心</a></li>
+                    <li><a href="../prayer-ai.html" class="nav-link">🙏 禱告AI & 生成器</a></li>
+
+                    <!-- 母堂資源下拉菜單 -->
                     <li class="dropdown">
-                        <a href="#" class="nav-link">母堂资源 ▼</a>
+                        <a href="#" class="nav-link">母堂資源 ▼</a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://rolcc.net/rolcc2/" target="_blank">母堂主页</a></li>
-                            <li><a href="https://rolcc.net/bulletin/" target="_blank">电子周报</a></li>
+                            <li><a href="https://rolcc.net/rolcc2/" target="_blank">母堂主頁</a></li>
+                            <li><a href="https://rolcc.net/bulletin/" target="_blank">電子週報</a></li>
                             <li><a href="https://rolcc.net/rolcc2/sunday-media/" target="_blank">主日影音</a></li>
-                            <li><a href="https://myrolcc.net/onlinezone/" target="_blank">网络牧区</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/church/#" target="_blank">母堂教会事工</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/equip/" target="_blank">信徒装备</a></li>
+                            <li><a href="https://myrolcc.net/onlinezone/" target="_blank">網路牧區</a></li>
+                            <li><a href="https://rolcc.net/rolcc2/church/#" target="_blank">母堂教會事工</a></li>
+                            <li><a href="https://rolcc.net/rolcc2/equip/" target="_blank">信徒裝備</a></li>
                             <li><a href="https://rolcc.net/rolcc2/rolcc-apps/" target="_blank">ROLCC APP</a></li>
                         </ul>
                     </li>
-                    
-                    <li><a href="about.html" class="nav-link">关于我们</a></li>
-                    <li><a href="contact.html" class="nav-link">联系我们</a></li>
+
+                    <li><a href="about.html" class="nav-link">關於我們</a></li>
+                    <li><a href="contact.html" class="nav-link">聯繫我們</a></li>
                 </ul>
             </nav>
-            
+
             <div class="mobile-toggle">☰</div>
         </div>
     </header>
 
-    <!-- 页面内容 -->
+    <!-- 頁面內容 -->
     <section class="page-hero">
         <div class="container">
-            <h1>信仰见证</h1>
-            <p>见证神的恩典与大能，分享生命改变的奇迹</p>
+            <h1>信仰見證</h1>
+            <p>見證神的恩典與大能，分享生命改變的奇蹟</p>
         </div>
     </section>
 
     <section class="page-content">
         <div class="container">
             <div class="section-title">
-                <h2>生命见证</h2>
-                <p>真实的故事，见证神的信实与慈爱</p>
+                <h2>生命見證</h2>
+                <p>真實的故事，見證神的信實與慈愛</p>
             </div>
-            
+
             <div class="testimonies-grid">
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">医治见证</div>
-                        <h3 class="testimony-title">从重病到完全康复</h3>
+                        <div class="testimony-category">醫治見證</div>
+                        <h3 class="testimony-title">從重病到完全康復</h3>
                         <div class="testimony-author">
-                            <div class="author-avatar">张</div>
+                            <div class="author-avatar">張</div>
                             <div class="author-info">
-                                <div class="author-name">张弟兄</div>
-                                <div class="author-details">45岁 · 工程师</div>
+                                <div class="author-name">張弟兄</div>
+                                <div class="author-details">45歲 · 工程師</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "去年我被诊断出患有严重的疾病，医生说我需要立即手术且预后不佳。在教会弟兄姐妹的祷告支持下，我经历了神的奇妙医治。三个月后的复查显示，我的病情完全好转，医生都感到惊讶..."
+                            「去年我被診斷出患有嚴重的疾病，醫生說我需要立即手術且預後不佳。在教會弟兄姊妹的禱告支持下，我經歷了神的奇妙醫治。三個月後的複查顯示，我的病情完全好轉，醫生都感到驚訝...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 24人感动</span>
+                            <span>👍 24人感動</span>
                             <span>📅 2023年10月</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">家庭见证</div>
-                        <h3 class="testimony-title">破碎家庭的复原</h3>
+                        <div class="testimony-category">家庭見證</div>
+                        <h3 class="testimony-title">破碎家庭的復原</h3>
                         <div class="testimony-author">
                             <div class="author-avatar">李</div>
                             <div class="author-info">
-                                <div class="author-name">李姐妹</div>
-                                <div class="author-details">38岁 · 教师</div>
+                                <div class="author-name">李姊妹</div>
+                                <div class="author-details">38歲 · 教師</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "我们的婚姻曾经濒临破裂，争吵和冷漠充斥着家庭。通过参加教会的小组和婚姻辅导，我们学会了在基督里彼此饶恕。现在我们的关系比婚前还要甜蜜，孩子们也在健康的家庭环境中成长..."
+                            「我們的婚姻曾經瀕臨破裂，爭吵與冷漠充斥著家庭。通過參加教會的小組與婚姻輔導，我們學會了在基督裏彼此饒恕。現在我們的關係比婚前還要甜蜜，孩子們也在健康的家庭環境中成長...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 31人感动</span>
+                            <span>👍 31人感動</span>
                             <span>📅 2023年8月</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">职场见证</div>
-                        <h3 class="testimony-title">失业后的恩典之路</h3>
+                        <div class="testimony-category">職場見證</div>
+                        <h3 class="testimony-title">失業後的恩典之路</h3>
                         <div class="testimony-author">
                             <div class="author-avatar">王</div>
                             <div class="author-info">
                                 <div class="author-name">王弟兄</div>
-                                <div class="author-details">32岁 · 项目经理</div>
+                                <div class="author-details">32歲 · 項目經理</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "疫情期间我失去了工作，投了上百份简历都石沉大海。在最绝望的时候，教会弟兄姐妹为我祷告，神为我开路。不仅找到了更好的工作，薪水还比之前高出30%。我深深体会到神的供应从不迟到..."
+                            「疫情期間我失去了工作，投了上百份簡歷都石沉大海。在最絕望的時候，教會弟兄姊妹為我禱告，神為我開路。不僅找到了更好的工作，薪水還比之前高出30%。我深深體會到神的供應從不遲到...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 19人感动</span>
+                            <span>👍 19人感動</span>
                             <span>📅 2023年6月</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">信仰历程</div>
-                        <h3 class="testimony-title">从无神论到虔诚信徒</h3>
+                        <div class="testimony-category">信仰歷程</div>
+                        <h3 class="testimony-title">從無神論到虔誠信徒</h3>
                         <div class="testimony-author">
-                            <div class="author-avatar">陈</div>
+                            <div class="author-avatar">陳</div>
                             <div class="author-info">
-                                <div class="author-name">陈博士</div>
-                                <div class="author-details">50岁 · 大学教授</div>
+                                <div class="author-name">陳博士</div>
+                                <div class="author-details">50歲 · 大學教授</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "作为一名科研工作者，我曾经坚信科学可以解释一切。直到一次重病让我重新思考生命的意义。通过系统地研究圣经和与基督徒朋友的交流，我发现了超越科学的真理。现在我在大学里也带领查经小组..."
+                            「身為一名科研工作者，我曾經堅信科學可以解釋一切。直到一次重病讓我重新思考生命的意義。通過系統地研究聖經與與基督徒朋友的交流，我發現了超越科學的真理。現在我在大學裏也帶領查經小組...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 42人感动</span>
+                            <span>👍 42人感動</span>
                             <span>📅 2023年4月</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">青年见证</div>
-                        <h3 class="testimony-title">迷途知返的年轻人</h3>
+                        <div class="testimony-category">青年見證</div>
+                        <h3 class="testimony-title">迷途知返的年輕人</h3>
                         <div class="testimony-author">
-                            <div class="author-avatar">刘</div>
+                            <div class="author-avatar">劉</div>
                             <div class="author-info">
-                                <div class="author-name">刘弟兄</div>
-                                <div class="author-details">25岁 · 留学生</div>
+                                <div class="author-name">劉弟兄</div>
+                                <div class="author-details">25歲 · 留學生</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "刚来加拿大时，我被自由的生活冲昏了头脑，沉迷游戏，学业一落千丈。在教会青年小组的关爱下，我重新找到了人生的方向。现在不仅顺利毕业，还成为了小组的同工，帮助其他留学生..."
+                            「剛來加拿大時，我被自由的生活沖昏了頭腦，沉迷遊戲，學業一落千丈。在教會青年小組的關愛下，我重新找到了人生的方向。現在不僅順利畢業，還成為了小組的同工，幫助其他留學生...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 28人感动</span>
+                            <span>👍 28人感動</span>
                             <span>📅 2023年2月</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimony-card">
                     <div class="testimony-header">
-                        <div class="testimony-category">事奉见证</div>
-                        <h3 class="testimony-title">在服事中经历成长</h3>
+                        <div class="testimony-category">事奉見證</div>
+                        <h3 class="testimony-title">在服事中經歷成長</h3>
                         <div class="testimony-author">
-                            <div class="author-avatar">黄</div>
+                            <div class="author-avatar">黃</div>
                             <div class="author-info">
-                                <div class="author-name">黄姐妹</div>
-                                <div class="author-details">29岁 · 音乐老师</div>
+                                <div class="author-name">黃姊妹</div>
+                                <div class="author-details">29歲 · 音樂老師</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimony-content">
                         <p class="testimony-excerpt">
-                            "刚开始在教会司琴时，我总是紧张害怕出错。通过祷告和操练，神不仅提升了我的音乐技巧，更让我明白事奉的真谛。现在带领敬拜团队，看到会众在敬拜中遇见神，是我最大的喜乐..."
+                            「剛開始在教會司琴時，我總是緊張害怕出錯。通過禱告與操練，神不僅提升了我的音樂技巧，更讓我明白事奉的真諦。現在帶領敬拜團隊，看到會眾在敬拜中遇見神，是我最大的喜樂...」
                         </p>
-                        <button class="btn">阅读完整见证</button>
+                        <button class="btn">閱讀完整見證</button>
                         <div class="testimony-stats">
-                            <span>👍 35人感动</span>
+                            <span>👍 35人感動</span>
                             <span>📅 2023年1月</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="share-testimony">
-                <h3>分享你的见证</h3>
-                <p>神在你生命中的作为值得被传扬！分享你的见证可以鼓励更多的人。</p>
-                <button class="btn" style="background-color: var(--accent); box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);">
-                    我要分享见证
+                <h3>分享你的見證</h3>
+                <p>神在你生命中的作為值得被傳揚！分享你的見證可以鼓勵更多的人。</p>
+                <button class="btn"
+                    style="background-color: var(--accent); box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);">
+                    我要分享見證
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer style="background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 60px 0 20px;">
+    <!-- 頁腳 -->
+    <footer
+        style="background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 60px 0 20px;">
         <div class="container">
-            <div class="copyright" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. 🍁 为基督爱多伦多 🍁</p>
+            <div class="copyright"
+                style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2024 多倫多生命河靈糧堂教會. 保留所有權利. 🍁 為基督愛多倫多 🍁</p>
             </div>
         </div>
     </footer>
 
     <script>
         // 移动端菜单切换
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+        document.querySelector('.mobile-toggle').addEventListener('click', function () {
             document.querySelector('.nav-menu').classList.toggle('active');
         });
 
         // 移动端下拉菜单切换
         document.querySelectorAll('.dropdown > a').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     // 关闭其他打开的下拉菜单
@@ -633,7 +638,7 @@
         });
 
         // 点击页面其他区域关闭下拉菜单
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!e.target.closest('.dropdown') && window.innerWidth <= 768) {
                 document.querySelectorAll('.dropdown.active').forEach(menu => {
                     menu.classList.remove('active');
@@ -642,4 +647,5 @@
         });
     </script>
 </body>
+
 </html>
