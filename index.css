@@ -423,3 +423,29 @@ header {
         grid-template-columns: 1fr !important;
     }
 }
+/* Shake animation for failed speed test */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Portal title hover effect */
+#portal-title {
+    transition: all 0.3s ease;
+}
+
+#portal-title:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 30px rgba(60, 150, 255, 1) !important;
+}

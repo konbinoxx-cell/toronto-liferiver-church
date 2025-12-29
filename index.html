@@ -63,10 +63,14 @@
                     <p>將福音傳遍地極，完成大使命。</p>
                 </div>
                 <!-- Interactive 5th Card -->
-                <div class="vision-card vision-portal" id="portal-card" ondblclick="window.location.href='future.html'">
+                <div class="vision-card vision-portal" id="portal-card">
                     <div class="portal-mist"></div>
                     <div class="card-content" style="position: relative; z-index: 4;">
-                        <h3>未來聖所</h3>
+                        <h3 id="portal-title" style="cursor: pointer; position: relative;">
+                            未來聖所
+                            <span id="speed-feedback"
+                                style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;"></span>
+                        </h3>
                         <p>探索數位時代的屬靈疆界。</p>
                     </div>
                 </div>
@@ -161,23 +165,53 @@
     </footer>
 
     <script>
-        // Portal Double Click Detection
-        const portal = document.getElementById('future-portal');
+        // Portal Speed Test - Only works on title clicks
+        const portalTitle = document.getElementById('portal-title');
+        const speedFeedback = document.getElementById('speed-feedback');
         let lastClick = 0;
-        portal.addEventListener('click', (e) => {
+        const SPEED_THRESHOLD = 250; // Stricter: 250ms instead of 350ms
+
+        portalTitle.addEventListener('click', (e) => {
             const now = new Date().getTime();
             const timespan = now - lastClick;
 
-            // Strict double-click speed requirement (350ms instead of 400ms)
-            // This makes it harder for slower users to access
-            if (timespan < 350 && timespan > 0) {
-                // Success: entry animation
-                portal.style.transform = 'scale(1.1) rotateX(20deg)';
-                portal.style.boxShadow = '0 0 50px var(--accent)';
+            if (timespan > 0 && timespan < 2000) { // Only show feedback if clicks are within 2 seconds
+                // Display the speed
+                speedFeedback.textContent = `${timespan}ms`;
+                speedFeedback.style.opacity = '1';
+
+                // Check if fast enough
+                if (timespan < SPEED_THRESHOLD) {
+                    // SUCCESS: Green text and enter portal
+                    speedFeedback.style.color = '#00ff88';
+                    speedFeedback.style.textShadow = '0 0 10px rgba(0, 255, 136, 0.8)';
+
+                    // Entry animation
+                    portalTitle.style.transform = 'scale(1.1)';
+                    portalTitle.style.textShadow = '0 0 30px rgba(0, 255, 136, 1)';
+
+                    setTimeout(() => {
+                        window.location.href = 'future.html';
+                    }, 500);
+                } else {
+                    // FAIL: Red text
+                    speedFeedback.style.color = '#ff4444';
+                    speedFeedback.style.textShadow = '0 0 10px rgba(255, 68, 68, 0.8)';
+
+                    // Shake animation for failure
+                    portalTitle.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        portalTitle.style.animation = '';
+                    }, 500);
+                }
+
+                // Hide feedback after 2 seconds
                 setTimeout(() => {
-                    window.location.href = 'future.html';
-                }, 400);
+                    speedFeedback.style.opacity = '0';
+                    portalTitle.style.transform = '';
+                }, 2000);
             }
+
             lastClick = now;
         });
 
