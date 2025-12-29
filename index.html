@@ -46,21 +46,26 @@
                 <p>承接母堂传统，深耕多伦多社区</p>
             </div>
             <div class="grid">
-                <div class="card">
+                <div class="card card-worship">
                     <h3>敬拜赞美</h3>
                     <p>以心灵和诚实敬拜，带入神的同在。</p>
                 </div>
-                <div class="card">
+                <div class="card card-equipping">
                     <h3>装备圣徒</h3>
                     <p>系统化查经与培训，建立扎实的信仰根基。</p>
                 </div>
-                <div class="card">
+                <div class="card card-fellowship">
                     <h3>小组生活</h3>
                     <p>在小团契中彼此关怀，活出基督的爱。</p>
                 </div>
-                <div class="card">
+                <div class="card card-mission">
                     <h3>普世宣教</h3>
                     <p>将福音传遍地极，完成大使命。</p>
+                </div>
+                <!-- Interactive 5th Card -->
+                <div class="card vision-portal" id="future-portal">
+                    <h3>未来愿景</h3>
+                    <p>探索数字时代的属灵疆界。<br><small>(双击正常手速进入)</small></p>
                 </div>
             </div>
         </div>
@@ -84,6 +89,25 @@
     </footer>
 
     <script>
+        // Portal Double Click Detection
+        const portal = document.getElementById('future-portal');
+        let lastClick = 0;
+        portal.addEventListener('click', (e) => {
+            const now = new Date().getTime();
+            const timespan = now - lastClick;
+
+            // Standard double-click speed is usually < 400ms
+            if (timespan < 400 && timespan > 0) {
+                // Success: entry animation
+                portal.style.transform = 'scale(1.1) rotateX(20deg)';
+                portal.style.boxShadow = '0 0 50px var(--accent)';
+                setTimeout(() => {
+                    window.location.href = 'future.html';
+                }, 400);
+            }
+            lastClick = now;
+        });
+
         // Subtle interaction: Long press on the logo enters the future sanctuary
         let logoTimer;
         const logo = document.querySelector('.logo');
