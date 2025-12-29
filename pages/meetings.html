@@ -1,530 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聚会时间 - 多伦多生命河灵粮堂</title>
-    <style>
-        :root {
-            --primary: #1a5276;
-            --secondary: #e67e22;
-            --accent: #27ae60;
-            --light: #f9f7f2;
-            --dark: #2c3e50;
-            --text: #34495e;
-            --text-light: #7f8c8d;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-            --toronto-blue: #1e88e5;
-            --toronto-red: #d32f2f;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f9f9f9;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        ul {
-            list-style: none;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* 头部样式 */
-        header {
-            background-color: white;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo-image {
-            height: 100px;
-            width: auto;
-        }
-        
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-        
-        .logo-subtitle {
-            font-size: 0.7rem;
-            color: var(--toronto-blue);
-            margin-top: -5px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            padding: 5px 0;
-            position: relative;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-        
-        .nav-link:hover {
-            color: var(--secondary);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .nav-link.active {
-            color: var(--secondary);
-        }
-        
-        .nav-link.active::after {
-            width: 100%;
-        }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* 下拉菜单样式 */
-        .dropdown {
-            position: relative;
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 220px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            padding: 10px 0;
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-menu li {
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-menu a {
-            display: block;
-            padding: 10px 20px;
-            color: var(--text);
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-        
-        .dropdown-menu a:hover {
-            background: var(--light);
-            color: var(--secondary);
-            padding-left: 25px;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                padding: 20px 0;
-                transition: var(--transition);
-                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: transparent;
-                display: none;
-                padding: 0;
-                margin-top: 10px;
-                margin-left: 20px;
-            }
-            
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-            
-            .dropdown > a::after {
-                content: ' ▼';
-                font-size: 0.8em;
-            }
-        }
-        
-        /* 页面特定内容样式 */
-        .page-hero {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .page-content {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, var(--toronto-blue), var(--secondary));
-        }
-        
-        /* 聚会时间特定样式 */
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .schedule-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--secondary);
-            transition: var(--transition);
-        }
-        
-        .schedule-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .schedule-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .schedule-icon {
-            font-size: 2.5rem;
-            margin-right: 15px;
-        }
-        
-        .schedule-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .schedule-time {
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .schedule-details {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-        
-        .location-info {
-            background: var(--light);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
-            margin-top: 20px;
-        }
-        
-        .btn:hover {
-            background-color: #d35400;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
-        }
-    </style>
+    <title>聚会时间 - 未来圣殿</title>
+    <link rel="stylesheet" href="../index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 </head>
-<body>
-    <!-- 头部导航 -->
+
+<body class="sub-page">
+    <div id="canvas-container"></div>
+
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="../trolcc_logo1.png" alt="多伦多生命河灵粮堂" class="logo-image">
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">
+                <img src="../trolcc_logo1.png" alt="Logo" class="logo-image">
                 <div>
-                    <div class="logo-text">多伦多生命河灵粮堂</div>
-                    <div class="logo-subtitle">Toronto River of Life Christian Church</div>
+                    <div class="logo-text glow-text">Life River</div>
+                    <div style="font-size: 0.6rem; color: var(--text-dim);">Digital Sanctuary</div>
                 </div>
-            </div>
-            
+            </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link">首页</a></li>
-                    <li><a href="meetings.html" class="nav-link active">聚会时间</a></li>
-                    <li><a href="groups.html" class="nav-link">小组生活</a></li>
-                    <li><a href="testimonies.html" class="nav-link">信仰见证</a></li>
+                    <li><a href="../index.html#home" class="nav-link">首页</a></li>
+                    <li><a href="../index.html#quantum" class="nav-link">量子祷告</a></li>
+                    <li><a href="../index.html#ecosystem" class="nav-link">小组生态</a></li>
                     <li><a href="resources.html" class="nav-link">资源中心</a></li>
-                    <li><a href="../prayer-ai.html" class="nav-link">🙏 祷告AI & 生成器</a></li>
-                    
-                    <!-- 母堂资源下拉菜单 -->
-                    <li class="dropdown">
-                        <a href="#" class="nav-link">母堂资源 ▼</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://rolcc.net/rolcc2/" target="_blank">母堂主页</a></li>
-                            <li><a href="https://rolcc.net/bulletin/" target="_blank">电子周报</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/sunday-media/" target="_blank">主日影音</a></li>
-                            <li><a href="https://myrolcc.net/onlinezone/" target="_blank">网络牧区</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/church/#" target="_blank">母堂教会事工</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/equip/" target="_blank">信徒装备</a></li>
-                            <li><a href="https://rolcc.net/rolcc2/rolcc-apps/" target="_blank">ROLCC APP</a></li>
-                        </ul>
-                    </li>
-                    
                     <li><a href="about.html" class="nav-link">关于我们</a></li>
-                    <li><a href="contact.html" class="nav-link">联系我们</a></li>
                 </ul>
             </nav>
-            
-            <div class="mobile-toggle">☰</div>
+            <a href="contact.html" class="btn-primary">加入网络</a>
         </div>
     </header>
 
-    <!-- 页面内容 -->
-    <section class="page-hero">
-        <div class="container">
-            <h1>教会聚会时间</h1>
-            <p>欢迎参加我们的各类聚会，在基督的爱中一同成长</p>
-        </div>
-    </section>
+    <main class="container" style="padding-top: 150px;">
+        <h1 class="glow-text" style="text-align: center; margin-bottom: 3rem;">圣殿共振时间</h1>
 
-    <section class="page-content">
-        <div class="container">
-            <div class="section-title">
-                <h2>主要聚会安排</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="glass-card">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">主日崇拜</h3>
+                <p style="color: var(--text-dim);">每周日 10:00 AM</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">在线与线下同步量子纠缠，共同呼吸生命的源头。</p>
             </div>
-            
-            <div class="schedule-grid">
-                <div class="schedule-card">
-                    <div class="schedule-header">
-                        <div class="schedule-icon">⛪</div>
-                        <div>
-                            <h3 class="schedule-title">主日崇拜</h3>
-                            <div class="schedule-time">每周日 上午10:00</div>
-                        </div>
-                    </div>
-                    <div class="schedule-details">
-                        <p>我们的主日崇拜融合传统与现代元素，包含诗歌敬拜、祷告、证道和圣餐。欢迎各个年龄层的朋友参加。</p>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>• 中文普通话崇拜</li>
-                            <li>• 儿童主日学同步进行</li>
-                            <li>• 会后有茶点交流时间</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="schedule-card">
-                    <div class="schedule-header">
-                        <div class="schedule-icon">🙏</div>
-                        <div>
-                            <h3 class="schedule-title">周三祷告会</h3>
-                            <div class="schedule-time">每周三 晚上7:30</div>
-                        </div>
-                    </div>
-                    <div class="schedule-details">
-                        <p>一同为个人、教会和世界的需要向神祈求。我们相信祷告的力量，并见证神如何回应我们的祈求。</p>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>• 为病人和需要者代祷</li>
-                            <li>• 为教会事工祷告</li>
-                            <li>• 为国家和社会守望</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="schedule-card">
-                    <div class="schedule-header">
-                        <div class="schedule-icon">👨‍👩‍👧‍👦</div>
-                        <div>
-                            <h3 class="schedule-title">小组团契</h3>
-                            <div class="schedule-time">每周五 晚上7:00</div>
-                        </div>
-                    </div>
-                    <div class="schedule-details">
-                        <p>在亲密的小组环境中彼此扶持，共同成长。我们有不同的小组满足各种需要。</p>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>• 青年小组 (18-35岁)</li>
-                            <li>• 家庭小组</li>
-                            <li>• 长者团契</li>
-                            <li>• 英语小组</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="schedule-card">
-                    <div class="schedule-header">
-                        <div class="schedule-icon">📖</div>
-                        <div>
-                            <h3 class="schedule-title">查经班</h3>
-                            <div class="schedule-time">每周二 上午10:00</div>
-                        </div>
-                    </div>
-                    <div class="schedule-details">
-                        <p>深入研读圣经，明白神的旨意。适合初信者和想要更深认识神话语的弟兄姐妹。</p>
-                        <ul style="margin-top: 15px; padding-left: 20px;">
-                            <li>• 逐卷查经</li>
-                            <li>• 主题式查经</li>
-                            <li>• 问题解答与讨论</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="glass-card">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">小组共鸣</h3>
+                <p style="color: var(--text-dim);">根据各小组网络协议</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">分布式的生命连接，随时随地的灵性团契。</p>
             </div>
-            
-            <div class="location-info">
-                <h3>聚会地点</h3>
-                <p>📍 123 Church Street, Mississauga, ON L5B 2C9</p>
-                <p>🚗 免费停车 | 🚌 公交便利 | ♿ 无障碍设施</p>
-                <a href="contact.html" class="btn">查看地图和路线</a>
+            <div class="glass-card">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">量子祷告会</h3>
+                <p style="color: var(--text-dim);">每周三 7:30 PM</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">连接全球节点，发起大范围的灵性振动。</p>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- 页脚 -->
-    <footer style="background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 60px 0 20px;">
-        <div class="container">
-            <div class="copyright" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p>&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. 🍁 为基督爱多伦多 🍁</p>
-            </div>
-        </div>
+    <footer style="padding: 4rem 0; background: rgba(2, 12, 27, 0.9); text-align: center; margin-top: 4rem;">
+        <p style="font-size: 0.8rem; color: var(--text-dim);">&copy; 2025 多伦多生命河灵粮堂 | 唯独基督</p>
     </footer>
 
     <script>
-        // 移动端菜单切换
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-
-        // 移动端下拉菜单切换
-        document.querySelectorAll('.dropdown > a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    // 关闭其他打开的下拉菜单
-                    document.querySelectorAll('.dropdown.active').forEach(menu => {
-                        if (menu !== this.parentElement) {
-                            menu.classList.remove('active');
-                        }
-                    });
-                    this.parentElement.classList.toggle('active');
-                }
-            });
-        });
-
-        // 点击页面其他区域关闭下拉菜单
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown') && window.innerWidth <= 768) {
-                document.querySelectorAll('.dropdown.active').forEach(menu => {
-                    menu.classList.remove('active');
-                });
+        let scene, camera, renderer, stars;
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+            camera.position.z = 5;
+            const starGeometry = new THREE.BufferGeometry();
+            const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05, transparent: true, opacity: 0.3 });
+            const starVertices = [];
+            for (let i = 0; i < 3000; i++) {
+                const x = (Math.random() - 0.5) * 100;
+                const y = (Math.random() - 0.5) * 100;
+                const z = (Math.random() - 0.5) * 100;
+                starVertices.push(x, y, z);
             }
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+            stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+            animate();
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            stars.rotation.y -= 0.0001;
+            renderer.render(scene, camera);
+        }
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
+        window.onload = init;
     </script>
 </body>
+
 </html>
