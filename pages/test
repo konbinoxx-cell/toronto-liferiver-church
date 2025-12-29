@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>完整测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #1a5276;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>完整样式测试页面</h1>
+        <p>如果这个能正常显示，说明基础CSS工作正常。</p>
+    </div>
+</body>
+</html>

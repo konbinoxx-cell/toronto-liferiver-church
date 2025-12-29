@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祷告AI & 祷告会生成器 - 多伦多生命河灵粮堂</title>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #e67e22;
+            --accent: #27ae60;
+            --light: #f9f7f2;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 头部样式 - 与首页保持一致 */
+        header {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-image {
+            height: 100px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: #1e88e5;
+            margin-top: -5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(135deg, 
+                        rgba(26, 82, 118, 0.4) 0%, 
+                        rgba(44, 62, 80, 0.3) 100%), 
+                        url('../mathew-schwartz-nwtJyl-2iMI-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            background-color: #1a5276;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 主按钮 */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
+        }
+        
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.5);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #154360;
+        }
+        
+        /* 功能区样式 */
+        .prayer-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #1e88e5, var(--secondary));
+        }
+        
+        /* 选项卡样式 */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .tab.active {
+            color: var(--secondary);
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 生成器样式 */
+        .generator-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+        }
+        
+        .input-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .input-row .input-group {
+            flex: 1;
+        }
+        
+        .output-container {
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary);
+            display: none;
+        }
+        
+        .prayer-section-plan {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .prayer-section-plan:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .prayer-section-plan strong {
+            color: var(--primary);
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                transition: var(--transition);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .generator-container {
+                padding: 25px 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../trolcc_logo1.png" alt="多伦多生命河灵粮堂" class="logo-image">
+                <div>
+                    <div class="logo-text">多伦多生命河灵粮堂</div>
+                    <div class="logo-subtitle">Toronto River of Life Christian Church</div>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">首页</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚会时间</a></li>
+                    <li><a href="groups.html" class="nav-link">小组生活</a></li>
+                    <li><a href="testimonies.html" class="nav-link">信仰见证</a></li>
+                    <li><a href="resources.html" class="nav-link">资源中心</a></li>
+                    <li><a href="prayer-ai.html" class="nav-link active">🙏 祷告AI & 生成器</a></li>
+                    <li><a href="about.html" class="nav-link">关于我们</a></li>
+                    <li><a href="contact.html" class="nav-link">联系我们</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-toggle">☰</div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>祷告AI & 祷告会生成器</h1>
+            <p>智能生成个性化祷告会和祷告指南，帮助您更有效地与神交通</p>
+        </div>
+    </section>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 祷告AI功能区 -->
+        <section class="prayer-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>祷告助手</h2>
+                    <p>选择您需要的功能</p>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="prayer-ai">🙏 个人祷告AI</div>
+                    <div class="tab" data-tab="meeting-generator">📝 祷告会生成器</div>
+                </div>
+                
+                <!-- 个人祷告AI -->
+                <div class="tab-content active" id="prayer-ai">
+                    <div class="generator-container">
+                        <h3>个人祷告助手</h3>
+                        <p>请描述您的祷告需求，AI将为您生成合适的祷告文</p>
+                        
+                        <div class="input-group">
+                            <label>祷告主题：</label>
+                            <input type="text" id="prayerTopic" placeholder="例如：疾病得医治、工作压力、家庭关系...">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>具体需求描述：</label>
+                            <textarea id="prayerDetails" rows="4" placeholder="请详细描述您的情况和祷告需求..."></textarea>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>祷告风格：</label>
+                                <select id="prayerStyle">
+                                    <option value="traditional">传统式</option>
+                                    <option value="modern">现代式</option>
+                                    <option value="scriptural">经文式</option>
+                                    <option value="simple">简洁式</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>祷告长度：</label>
+                                <select id="prayerLength">
+                                    <option value="short">简短 (1-2分钟)</option>
+                                    <option value="medium">中等 (3-5分钟)</option>
+                                    <option value="long">较长 (5-10分钟)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button onclick="generatePersonalPrayer()" class="btn">生成祷告文</button>
+                        
+                        <div id="personalPrayerOutput" class="output-container">
+                            <h3>为您生成的祷告文</h3>
+                            <div id="personalPrayerContent"></div>
+                            <div class="action-buttons">
+                                <button onclick="copyPersonalPrayer()" class="btn">复制祷告文</button>
+                                <button onclick="savePersonalPrayer()" class="btn btn-secondary">保存祷告文</button>
+                                <button onclick="resetPersonalPrayer()" class="btn">重新生成</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 祷告会生成器 -->
+                <div class="tab-content" id="meeting-generator">
+                    <div class="generator-container">
+                        <h3>祷告会流程生成器</h3>
+                        <p>输入祷告会基本信息，自动生成完整的祷告会流程</p>
+                        
+                        <div class="input-group">
+                            <label>祷告会主题：</label>
+                            <input type="text" id="meetingTheme" placeholder="例如：感恩、医治、平安、国家、教会复兴...">
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>预计时长：</label>
+                                <select id="meetingDuration">
+                                    <option value="30">30分钟</option>
+                                    <option value="45">45分钟</option>
+                                    <option value="60" selected>60分钟</option>
+                                    <option value="90">90分钟</option>
+                                    <option value="120">120分钟</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label>参与人数：</label>
+                                <input type="number" id="meetingParticipants" placeholder="大约人数" min="1" value="10">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>特别需求或重点：</label>
+                            <textarea id="meetingSpecial" rows="3" placeholder="例如：为病人代祷、为国家领袖祷告、感恩见证分享..."></textarea>
+                        </div>
+                        
+                        <button onclick="generatePrayerMeeting()" class="btn">生成祷告会流程</button>
+                        
+                        <div id="meetingOutput" class="output-container">
+                            <h3>祷告会流程建议</h3>
+                            <div id="meetingContent"></div>
+                            <div class="action-buttons">
+                                <button onclick="copyMeetingContent()" class="btn">复制流程</button>
+                                <button onclick="saveMeetingPlan()" class="btn btn-secondary">保存计划</button>
+                                <button onclick="printMeetingPlan()" class="btn">打印计划</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer style="background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 60px 0 20px;">
+        <div class="container">
+            <div class="copyright" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. 🍁 为基督爱多伦多 🍁</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // 选项卡切换
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // 移除所有active类
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // 添加active类到当前选项卡
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // 个人祷告AI功能
+        function generatePersonalPrayer() {
+            const topic = document.getElementById('prayerTopic').value;
+            const details = document.getElementById('prayerDetails').value;
+            const style = document.getElementById('prayerStyle').value;
+            const length = document.getElementById('prayerLength').value;
+            
+            if (!topic) {
+                alert('请输入祷告主题');
+                return;
+            }
+            
+            // 生成祷告文
+            const prayerText = createPersonalPrayer(topic, details, style, length);
+            
+            document.getElementById('personalPrayerContent').innerHTML = prayerText;
+            document.getElementById('personalPrayerOutput').style.display = 'block';
+            
+            // 滚动到结果区域
+            document.getElementById('personalPrayerOutput').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function createPersonalPrayer(topic, details, style, length) {
+            // 根据风格和长度生成不同的祷告文
+            let prayer = '';
+            
+            // 开头部分
+            if (style === 'traditional') {
+                prayer += `<p>亲爱的主，我们的天父，</p>`;
+            } else if (style === 'modern') {
+                prayer += `<p>亲爱的天父上帝，</p>`;
+            } else if (style === 'scriptural') {
+                prayer += `<p>我们在天上的父，愿人都尊你的名为圣，</p>`;
+            } else {
+                prayer += `<p>亲爱的天父，</p>`;
+            }
+            
+            // 主体部分
+            prayer += `<p>我今天来到你面前，为着<b>${topic}</b>向你祈求。`;
+            
+            if (details) {
+                prayer += ` ${details}`;
+            }
+            
+            // 根据长度添加内容
+            if (length === 'medium' || length === 'long') {
+                prayer += ` 主啊，你知道我心中的需要，也了解我此刻的光景。`;
+            }
+            
+            if (length === 'long') {
+                prayer += ` 求你赐给我智慧和力量，让我能够按照你的旨意行。也求你保守我的心怀意念，使我不偏离你的道路。`;
+            }
+            
+            // 结尾部分
+            if (style === 'traditional') {
+                prayer += ` 我这样祷告是奉主耶稣基督的圣名，阿们。</p>`;
+            } else if (style === 'scriptural') {
+                prayer += ` 因为国度、权柄、荣耀，全是你的，直到永远。阿们。</p>`;
+            } else {
+                prayer += ` 奉耶稣的名祷告，阿们。</p>`;
+            }
+            
+            // 添加经文参考
+            if (style === 'scriptural' || length === 'long') {
+                prayer += `<div style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 8px;">
+                    <strong>相关经文参考：</strong>
+                    <p>"应当一无挂虑，只要凡事借着祷告、祈求，和感谢，将你们所要的告诉神。" (腓立比书 4:6)</p>
+                </div>`;
+            }
+            
+            return prayer;
+        }
+        
+        function copyPersonalPrayer() {
+            const content = document.getElementById('personalPrayerContent').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('祷告文已复制到剪贴板！');
+            });
+        }
+        
+        function savePersonalPrayer() {
+            const content = document.getElementById('personalPrayerContent').innerText;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '我的祷告文.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function resetPersonalPrayer() {
+            document.getElementById('prayerTopic').value = '';
+            document.getElementById('prayerDetails').value = '';
+            document.getElementById('personalPrayerOutput').style.display = 'none';
+        }
+        
+        // 祷告会生成器功能
+        function generatePrayerMeeting() {
+            const theme = document.getElementById('meetingTheme').value;
+            const duration = document.getElementById('meetingDuration').value;
+            const participants = document.getElementById('meetingParticipants').value;
+            const special = document.getElementById('meetingSpecial').value;
+            
+            if (!theme) {
+                alert('请输入祷告会主题');
+                return;
+            }
+            
+            // 生成祷告会内容
+            const meetingContent = createPrayerMeetingContent(theme, duration, participants, special);
+            
+            document.getElementById('meetingContent').innerHTML = meetingContent;
+            document.getElementById('meetingOutput').style.display = 'block';
+            
+            // 滚动到结果区域
+            document.getElementById('meetingOutput').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function createPrayerMeetingContent(theme, duration, participants, special) {
+            const totalTime = parseInt(duration);
+            let content = '';
+            
+            content += `<div class="prayer-section-plan">
+                <strong>📖 ${theme} 祷告会流程 (总时长: ${totalTime}分钟)</strong>
+                <p>参与人数: ${participants}人 | 主题重点: ${special || '无特别说明'}</p>
+            </div>`;
+            
+            // 1. 开始敬拜
+            const worshipTime = Math.min(15, Math.floor(totalTime * 0.2));
+            content += `<div class="prayer-section-plan">
+                <strong>1. 开始敬拜 (${worshipTime}分钟)</strong>
+                <p>• 开场祷告: 为聚会求神同在 (2分钟)</p>
+                <p>• 诗歌敬拜: ${worshipTime-2}分钟，2-3首与"${theme}"相关的诗歌</p>
+                <p>• 建议诗歌: 《主的恩典乃是一生之久》、《你坐着为王》等</p>
+            </div>`;
+            
+            // 2. 经文分享
+            const scriptureTime = Math.min(15, Math.floor(totalTime * 0.15));
+            content += `<div class="prayer-section-plan">
+                <strong>2. 经文分享 (${scriptureTime}分钟)</strong>
+                <p>• 相关经文阅读与简短分享</p>
+                <p>• 建议经文: 腓立比书4:6-7, 彼得前书5:7, 诗篇34:4-7</p>
+                <p>• 主持人简短分享经文与${theme}的关联</p>
+            </div>`;
+            
+            // 3. 祷告时间
+            const prayerTime = totalTime - worshipTime - scriptureTime - 10;
+            const groupSize = Math.min(6, Math.ceil(participants / 3));
+            
+            content += `<div class="prayer-section-plan">
+                <strong>3. 祷告时间 (${prayerTime}分钟)</strong>
+                <p>• 分组祷告: 每组${groupSize}-${groupSize+1}人，共${Math.ceil(participants/groupSize)}组</p>
+                <p>• 祷告方向: </p>
+                <p>  - 为个人${theme.toLowerCase()}的需要祷告 (${Math.floor(prayerTime*0.4)}分钟)</p>
+                <p>  - 为教会和社区${theme.toLowerCase()}的需要祷告 (${Math.floor(prayerTime*0.3)}分钟)</p>
+                <p>  - ${special ? `为${special}祷告` : '为国家和世界相关需要祷告'} (${Math.floor(prayerTime*0.3)}分钟)</p>
+            </div>`;
+            
+            // 4. 结束祝福
+            content += `<div class="prayer-section-plan">
+                <strong>4. 结束祝福 (10分钟)</strong>
+                <p>• 各组简短分享祷告见证 (5分钟)</p>
+                <p>• 主祷文一起诵读 (2分钟)</p>
+                <p>• 祝福祷告和彼此代祷 (3分钟)</p>
+            </div>`;
+            
+            // 额外建议
+            content += `<div class="prayer-section-plan">
+                <strong>💡 实用建议</strong>
+                <p>• 准备相关诗歌播放列表</p>
+                <p>• 提前打印经文卡片</p>
+                <p>• 安排足够的主持人和小组长</p>
+                <p>• 准备简单的点心供会後交流</p>
+            </div>`;
+            
+            return content;
+        }
+        
+        function copyMeetingContent() {
+            const content = document.getElementById('meetingContent').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('祷告会流程已复制到剪贴板！');
+            });
+        }
+        
+        function saveMeetingPlan() {
+            const content = document.getElementById('meetingContent').innerText;
+            const theme = document.getElementById('meetingTheme').value || '祷告会';
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${theme}流程计划.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function printMeetingPlan() {
+            const content = document.getElementById('meetingContent').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>祷告会流程计划</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+                            .prayer-section-plan { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ccc; }
+                            strong { color: #1a5276; }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>祷告会流程计划</h2>
+                        ${content}
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
