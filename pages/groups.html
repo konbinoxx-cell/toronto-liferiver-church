@@ -4,54 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小组生活 - 未来圣殿</title>
+    <title>小组生活 - 多伦多生命河灵粮堂</title>
     <link rel="stylesheet" href="../index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <style>
+        .page-header {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .group-card {
+            height: 100%;
+        }
+    </style>
 </head>
 
-<body class="sub-page">
-    <div id="canvas-container"></div>
+<body>
     <header>
-        <div class="nav-container">
-            <a href="../index.html" class="logo-link">
-                <img src="../trolcc_logo1.png" alt="Logo" class="logo-image">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../trolcc_logo1.png" alt="Logo">
                 <div>
-                    <div class="logo-text glow-text">Life River</div>
-                    <div style="font-size: 0.6rem; color: var(--text-dim);">Digital Sanctuary</div>
+                    <strong style="display: block; font-size: 1.2rem;">多伦多生命河灵粮堂</strong>
+                    <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
                 </div>
             </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html#home" class="nav-link">首页</a></li>
-                    <li><a href="../index.html#quantum" class="nav-link">量子祷告</a></li>
-                    <li><a href="../index.html#ecosystem" class="nav-link">小组生态</a></li>
-                    <li><a href="resources.html" class="nav-link">资源中心</a></li>
+                    <li><a href="../index.html" class="nav-link">首页</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚会时间</a></li>
+                    <li><a href="groups.html" class="nav-link">小组生活</a></li>
                     <li><a href="about.html" class="nav-link">关于我们</a></li>
+                    <li><a href="contact.html" class="nav-link">联系我们</a></li>
                 </ul>
             </nav>
-            <a href="contact.html" class="btn-primary">加入网络</a>
         </div>
     </header>
-    <main class="container" style="padding-top: 150px;">
-        <h1 class="glow-text" style="text-align: center; margin-bottom: 3rem;">生命小组节点</h1>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div class="glass-card">
-                <h3 style="color: var(--accent);">职场共振</h3>
-                <p style="font-size: 0.9rem; margin-top: 10px;">在世俗网络中保持基督的频率。每周五晚同步。</p>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>小组生活</h1>
+            <p>在社区中彼此关怀，活出基督的爱</p>
+        </div>
+    </section>
+
+    <main class="container content-section">
+        <div class="grid">
+            <div class="card group-card">
+                <h3>家庭小组</h3>
+                <p>适合居住在同一区域的家庭，共同查经、祷告并分享生活。</p>
             </div>
-            <div class="glass-card">
-                <h3 style="color: var(--accent);">青年量子</h3>
-                <p style="font-size: 0.9rem; margin-top: 10px;">面向未来的灵性探索，打破陈规，直击真理。</p>
+            <div class="card group-card">
+                <h3>职场团契</h3>
+                <p>为身处职场的弟兄姐妹提供支持，探讨如何将信仰带入工作中。</p>
             </div>
-            <div class="glass-card">
-                <h3 style="color: var(--accent);">家庭祭坛</h3>
-                <p style="font-size: 0.9rem; margin-top: 10px;">最小的教会单元，让基督的光在每一个家点燃。</p>
+            <div class="card group-card">
+                <h3>学生/青成小组</h3>
+                <p>专为学生和年轻人设计，充满活力与创意的信仰探索之旅。</p>
             </div>
         </div>
     </main>
-    <script>
-        let scene, camera, renderer, stars; function init() { scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setSize(window.innerWidth, window.innerHeight); document.getElementById('canvas-container').appendChild(renderer.domElement); camera.position.z = 5; const starGeometry = new THREE.BufferGeometry(); const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05, transparent: true, opacity: 0.3 }); const starVertices = []; for (let i = 0; i < 3000; i++) { const x = (Math.random() - 0.5) * 100; const y = (Math.random() - 0.5) * 100; const z = (Math.random() - 0.5) * 100; starVertices.push(x, y, z); } starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3)); stars = new THREE.Points(starGeometry, starMaterial); scene.add(stars); animate(); } function animate() { requestAnimationFrame(animate); stars.rotation.y -= 0.0001; renderer.render(scene, camera); } window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }); window.onload = init;
-    </script>
+
+    <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 多伦多生命河灵粮堂. 保留所有权利.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

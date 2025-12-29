@@ -4,50 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>资源中心 - 未来圣殿</title>
+    <title>资源中心 - 多伦多生命河灵粮堂</title>
     <link rel="stylesheet" href="../index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <style>
+        .page-header {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .res-link {
+            display: block;
+            padding: 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .res-link:hover {
+            background: var(--light);
+            border-color: var(--secondary);
+        }
+    </style>
 </head>
 
-<body class="sub-page">
-    <div id="canvas-container"></div>
+<body>
     <header>
-        <div class="nav-container">
-            <a href="../index.html" class="logo-link">
-                <img src="../trolcc_logo1.png" alt="Logo" class="logo-image">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../trolcc_logo1.png" alt="Logo">
                 <div>
-                    <div class="logo-text glow-text">Life River</div>
-                    <div style="font-size: 0.6rem; color: var(--text-dim);">Digital Sanctuary</div>
+                    <strong style="display: block; font-size: 1.2rem;">多伦多生命河灵粮堂</strong>
+                    <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
                 </div>
             </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html#home" class="nav-link">首页</a></li>
-                    <li><a href="../index.html#quantum" class="nav-link">量子祷告</a></li>
-                    <li><a href="../index.html#ecosystem" class="nav-link">小组生态</a></li>
-                    <li><a href="resources.html" class="nav-link active">资源中心</a></li>
+                    <li><a href="../index.html" class="nav-link">首页</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚会时间</a></li>
+                    <li><a href="groups.html" class="nav-link">小组生活</a></li>
                     <li><a href="about.html" class="nav-link">关于我们</a></li>
+                    <li><a href="contact.html" class="nav-link">联系我们</a></li>
                 </ul>
             </nav>
-            <a href="contact.html" class="btn-primary">加入网络</a>
         </div>
     </header>
-    <main class="container" style="padding-top: 150px;">
-        <h1 class="glow-text" style="text-align: center; margin-bottom: 3rem;">圣言资源库</h1>
-        <div class="glass-card">
-            <p style="margin-bottom: 2rem;">不再是被动接收，而是主动连接。这里有母堂的沉淀，也有小组的共振。</p>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
-                <li><a href="https://rolcc.net/rolcc2/sunday-media/" target="_blank"
-                        style="color: var(--accent); text-decoration: none;">💎 主日影音 - 直接连接母堂资源</a></li>
-                <li><a href="https://rolcc.net/bulletin/" target="_blank"
-                        style="color: var(--accent); text-decoration: none;">📖 电子周报 - 全球异象同步</a></li>
-                <li><a href="#" style="color: var(--text-dim); text-decoration: none;">🛠️ 门徒工具包 (即将上线)</a></li>
-            </ul>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>资源中心</h1>
+            <p>丰富的属灵资源，助您在真理中扎根</p>
+        </div>
+    </section>
+
+    <main class="container content-section">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <a href="https://rolcc.net/bulletin/" target="_blank" class="res-link">电子周报</a>
+            <a href="https://rolcc.net/rolcc2/sunday-media/" target="_blank" class="res-link">主日崇拜影音</a>
+            <a href="https://rolcc.net/rolcc2/equip/" target="_blank" class="res-link">信徒装备课程</a>
+            <a href="https://myrolcc.net/onlinezone/" target="_blank" class="res-link">网络牧区资源</a>
         </div>
     </main>
-    <script>
-        let scene, camera, renderer, stars; function init() { scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setSize(window.innerWidth, window.innerHeight); document.getElementById('canvas-container').appendChild(renderer.domElement); camera.position.z = 5; const starGeometry = new THREE.BufferGeometry(); const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.05, transparent: true, opacity: 0.3 }); const starVertices = []; for (let i = 0; i < 3000; i++) { const x = (Math.random() - 0.5) * 100; const y = (Math.random() - 0.5) * 100; const z = (Math.random() - 0.5) * 100; starVertices.push(x, y, z); } starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3)); stars = new THREE.Points(starGeometry, starMaterial); scene.add(stars); animate(); } function animate() { requestAnimationFrame(animate); stars.rotation.y -= 0.0001; renderer.render(scene, camera); } window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }); window.onload = init;
-    </script>
+
+    <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 多伦多生命河灵粮堂. 保留所有权利.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -4,109 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>未来圣殿 - 多伦多生命河灵粮堂 (Cell Ecosystem)</title>
+    <title>多伦多生命河灵粮堂 - 首页</title>
     <link rel="stylesheet" href="index.css">
-    <!-- Three.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
-    <div id="canvas-container"></div>
-
     <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo-link">
-                <img src="trolcc_logo1.png" alt="Logo" class="logo-image">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="trolcc_logo1.png" alt="Logo">
                 <div>
-                    <div class="logo-text glow-text">Life River</div>
-                    <div style="font-size: 0.6rem; color: var(--text-dim);">Digital Sanctuary</div>
+                    <strong style="display: block; font-size: 1.2rem;">多伦多生命河灵粮堂</strong>
+                    <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
                 </div>
             </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">首页</a></li>
-                    <li><a href="#quantum" class="nav-link">量子祷告</a></li>
-                    <li><a href="#ecosystem" class="nav-link">小组生态</a></li>
-                    <li><a href="pages/resources.html" class="nav-link">资源中心</a></li>
+                    <li><a href="index.html" class="nav-link">首页</a></li>
+                    <li><a href="pages/meetings.html" class="nav-link">聚会时间</a></li>
+                    <li><a href="pages/groups.html" class="nav-link">小组生活</a></li>
                     <li><a href="pages/about.html" class="nav-link">关于我们</a></li>
+                    <li><a href="pages/contact.html" class="nav-link">联系我们</a></li>
                 </ul>
             </nav>
-            <a href="pages/contact.html" class="btn-primary">加入网络</a>
         </div>
     </header>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home">
-            <div class="container" style="text-align: center;">
-                <h1 class="glow-text" style="font-size: 3.5rem; margin-bottom: 1rem;">唯独基督</h1>
-                <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem;">
-                    超越传统体制，连接生命源头。一个以基督为中心、去人为集权的小组教会生态。
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center;">
-                    <a href="#quantum" class="btn-primary">进入祷告空间</a>
-                    <a href="#ecosystem" class="btn-primary"
-                        style="border-color: var(--text-dim); color: var(--text-dim);">探索生态网络</a>
+    <section class="hero">
+        <div class="container">
+            <h1>欢迎来到我们的属灵家园</h1>
+            <p style="font-size: 1.4rem;">以基督为中心，在爱中彼此建立</p>
+            <a href="pages/meetings.html"
+                style="display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">参加主日崇拜</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的四大异象</h2>
+                <p>承接母堂传统，深耕多伦多社区</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>敬拜赞美</h3>
+                    <p>以心灵和诚实敬拜，带入神的同在。</p>
+                </div>
+                <div class="card">
+                    <h3>装备圣徒</h3>
+                    <p>系统化查经与培训，建立扎实的信仰根基。</p>
+                </div>
+                <div class="card">
+                    <h3>小组生活</h3>
+                    <p>在小团契中彼此关怀，活出基督的爱。</p>
+                </div>
+                <div class="card">
+                    <h3>普世宣教</h3>
+                    <p>将福音传遍地极，完成大使命。</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Quantum Prayer Section -->
-        <section id="quantum">
-            <div class="container">
-                <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
-                    <h2 class="glow-text" style="margin-bottom: 1.5rem;">⚛️ 量子祷告网络</h2>
-                    <p style="margin-bottom: 2rem;">不再需要中介，直接在“道”中相遇。每一份祷告都是一次生命纠缠与共振。</p>
-                    <div id="prayer-viz"
-                        style="height: 300px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                        <!-- JS will inject particles here -->
-                        <div
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                            <div class="floating" style="font-size: 3rem; opacity: 0.5;">🙏</div>
-                            <div style="font-size: 0.8rem; color: var(--accent); margin-top: 10px;">实时在线连接: 1,247</div>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" placeholder="输入您的呼求..."
-                            style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px;">
-                        <button class="btn-primary">发射共振</button>
-                    </div>
+    <footer style="background: #f8f9fa; padding: 60px 0; border-top: 1px solid #eee;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2024 多伦多生命河灵粮堂. 保留所有权利.</p>
+            <div style="margin-top: 20px; color: #95a5a6; font-size: 0.9rem;">
+                地址: 123 Church Street, Toronto, ON | 电话: (416) 123-4567
+            </div>
+
+            <!-- Hidden Portal Entrance -->
+            <div class="footer-portal" onclick="window.location.href='future.html'">
+                <p style="font-size: 0.6rem; letter-spacing: 2px;">QUANTUM PROTOCOLS ACTIVE</p>
+                <div
+                    style="width: 10px; height: 10px; background: rgba(0, 255, 136, 0.2); border-radius: 50%; margin: 5px auto;">
                 </div>
             </div>
-        </section>
-
-        <!-- Ecosystem Section -->
-        <section id="ecosystem">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 4rem;">
-                    <h2 class="glow-text">生命小组网络</h2>
-                    <p>去中心化的服务矩阵，人人皆祭司。</p>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                    <div class="glass-card">
-                        <h3 style="color: var(--accent);">恩赐互助</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">基于生命恩赐的动态协作，而非职位的层级控制。</p>
-                    </div>
-                    <div class="glass-card">
-                        <h3 style="color: var(--accent);">去中心化学习</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">小组内彼此教导，共同在圣谟中成长。</p>
-                    </div>
-                    <div class="glass-card">
-                        <h3 style="color: var(--accent);">透明治理</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">基于真理的共识，拒绝人为权力的傲慢。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer
-        style="padding: 4rem 0; background: rgba(2, 12, 27, 0.9); text-align: center; border-top: 1px solid var(--glass-border);">
-        <p style="font-size: 0.8rem; color: var(--text-dim);">&copy; 2025 多伦多生命河灵粮堂 | 唯独基督 | 只有节点，没有权位</p>
+        </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script>
+        // Subtle interaction: Long press on the logo enters the future sanctuary
+        let logoTimer;
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('mousedown', () => {
+            logoTimer = setTimeout(() => {
+                window.location.href = 'future.html';
+            }, 3000); // 3 seconds long press
+        });
+        logo.addEventListener('mouseup', () => clearTimeout(logoTimer));
+        logo.addEventListener('mouseleave', () => clearTimeout(logoTimer));
+    </script>
 </body>
 
 </html>
