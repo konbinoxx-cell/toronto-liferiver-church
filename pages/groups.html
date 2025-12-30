@@ -7,19 +7,61 @@
     <title>小組生活 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../index.css">
     <style>
-        .page-header {
-            background: var(--primary);
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/vision-fellowship.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
             color: white;
-            padding: 60px 0;
             text-align: center;
         }
 
         .content-section {
-            padding: 60px 0;
+            padding: 80px 0;
+        }
+
+        .group-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
         .group-card {
-            height: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .group-card:hover {
+            transform: scale(1.02);
+        }
+
+        .group-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .group-info {
+            padding: 30px;
+        }
+
+        .group-info h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -28,10 +70,10 @@
     <header>
         <div class="container header-inner">
             <a href="../index.html" class="logo">
-                <img src="../trolcc_logo1.png" alt="多倫多生命河靈糧堂 Logo">
+                <img src="../trolcc_logo1.png" alt="Logo">
                 <div>
-                    <strong style="display: block; font-size: 1.2rem;">多倫多生命河靈糧堂</strong>
-                    <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
+                    <strong>多倫多生命河靈糧堂</strong>
+                    <span>Toronto River of Life Christian Church</span>
                 </div>
             </a>
             <nav>
@@ -46,26 +88,52 @@
         </div>
     </header>
 
-    <section class="page-header">
+    <section class="page-hero">
         <div class="container">
-            <h1>小組生活</h1>
-            <p>在社區中彼此關懷，活出基督的愛</p>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">小組教會 (Cell Church)</h1>
+            <p style="font-size: 1.2rem;">在大聚會中敬拜，在小組中彼此相愛</p>
         </div>
     </section>
 
-    <main class="container content-section">
-        <div class="grid">
-            <div class="card group-card">
-                <h3>家庭小組</h3>
-                <p>適合居住在同一區域的家庭，共同查經、禱告並分享生活。</p>
+    <main class="content-section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>找到屬於您的屬靈家園</h2>
+                <p style="font-size: 1.1rem; line-height: 2; margin-top: 20px;">
+                    小組是生命河教會的核心。在這裡，我們不再只是座位上的陌生人，而是生命與共的家人。透過每週一次的聚會，我們一起讀經、彼此代禱、分享生活的酸甜苦辣。
+                </p>
             </div>
-            <div class="card group-card">
-                <h3>職場團契</h3>
-                <p>為身處職場的弟兄姊妹提供支持，探討如何將信仰融入工作中。</p>
+
+            <div class="group-types">
+                <div class="group-card">
+                    <div class="group-info">
+                        <span class="tag">活力・成長</span>
+                        <h3>學生及青成小組</h3>
+                        <p>專為大學生、研究生及職場新人設計。探討如何在快節奏的都市生活中保持基督徒的價值觀。</p>
+                    </div>
+                </div>
+                <div class="group-card">
+                    <div class="group-info">
+                        <span class="tag">溫馨・傳承</span>
+                        <h3>家庭與恩慈小組</h3>
+                        <p>為家有幼兒或青少年的家庭提供支持環境。學習如何建立基督化家庭，讓孩子在主愛中成長。</p>
+                    </div>
+                </div>
+                <div class="group-card">
+                    <div class="group-info">
+                        <span class="tag">連結・智慧</span>
+                        <h3>職場及中堅團契</h3>
+                        <p>專注於信仰與工作的結合。分享職場見證，在事業挑戰中彼此守望。</p>
+                    </div>
+                </div>
             </div>
-            <div class="card group-card">
-                <h3>學生/青成小組</h3>
-                <p>專為學生與年輕人設計，充滿活力與創意的信仰探索之旅。</p>
+
+            <div
+                style="margin-top: 80px; text-align: center; border: 2px dashed #ddd; padding: 60px; border-radius: 20px;">
+                <h3>不知道該加入哪個小組？</h3>
+                <p style="margin-top: 15px; color: #666;">告訴我們您的背景與居住區域，我們將為您推薦最合適的小組。</p>
+                <a href="contact.html"
+                    style="display: inline-block; margin-top: 25px; padding: 15px 45px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">聯繫小組長</a>
             </div>
         </div>
     </main>

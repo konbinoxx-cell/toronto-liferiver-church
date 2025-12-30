@@ -1,30 +1,174 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>普世宣教 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../index.css">
-</head>
-<body>
-    <header>...</header> <!-- 同上 -->
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.7), rgba(26, 82, 118, 0.7)), url('../images/vision-mission.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
 
-    <section class="section">
+        .stat-banner {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .content-section {
+            padding: 100px 0;
+        }
+
+        .mission-map {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-top: 50px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .bullet-list li {
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .bullet-list li::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../trolcc_logo1.png" alt="Logo">
+                <div>
+                    <strong>多倫多生命河靈糧堂</strong>
+                    <span>Toronto River of Life Christian Church</span>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">首頁</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚會時間</a></li>
+                    <li><a href="groups.html" class="nav-link">小組生活</a></li>
+                    <li><a href="about.html" class="nav-link">關於我們</a></li>
+                    <li><a href="contact.html" class="nav-link">聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
         <div class="container">
-            <h1>普世宣教</h1>
-            <p style="font-size: 1.2rem; line-height: 1.8;">
-                將福音傳遍地極，完成大使命。<br>
-                我們支持本地及海外宣教士，並鼓勵每位弟兄姊妹參與宣教。
-            </p>
-            <div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 15px; text-align: center;">
-                <h3>宣教事工</h3>
-                <p>• 北美校園宣教<br>• 海外差派計劃<br>• 本地社區佈道</p>
-                <a href="mailto:trolcc@outlook.com"
-                   style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;">
-                    支持宣教
-                </a>
-            </div>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">普世宣教</h1>
+            <p style="font-size: 1.2rem;">將福音傳到地極，轉化城市與大地</p>
         </div>
     </section>
+
+    <div class="container">
+        <div class="stat-banner">
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <h2>30+</h2>
+                    <p>全球差派國家</p>
+                </div>
+                <div class="stat-item">
+                    <h2>290+</h2>
+                    <p>母堂全球植堂數</p>
+                </div>
+                <div class="stat-item">
+                    <h2>∞</h2>
+                    <p>福音的能量</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="content-section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div>
+                    <h2>去，使萬民作我的門徒</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 25px;">
+                        宣教不是一個選項，而是神託付給教會的大使命。在多倫多生命河靈糧堂，我們繼承了母堂對宣教的熱切火熱，不僅支持本地的社區佈道，也積極投身於跨文化、跨國界的宣教行動。
+                    </p>
+                    <ul class="bullet-list">
+                        <li>非洲孤兒院支持項目</li>
+                        <li>中亞少數民族宣教</li>
+                        <li>北美校園福音預工</li>
+                        <li>多倫多當地慈善救助</li>
+                    </ul>
+                </div>
+                <div class="mission-map">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">宣教展望</h3>
+                    <p>我們致力於將多倫多作為一個門戶，利用這座城市的多元族裔，將福音種子播撒回不同文化背景的家鄉。我們相信，每一個基督徒都可以成為一位「差遣者」或「被差遣者」。</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 100px; text-align: center;">
+                <h2>如何參與？</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px;">
+                    <div style="padding: 30px; background: white; border-radius: 15px; box-shadow: var(--shadow);">
+                        <h4>🙏 代禱支持</h4>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">每週三禱告會中，我們特別為前線宣教士與福音工場代禱。</p>
+                    </div>
+                    <div style="padding: 30px; background: white; border-radius: 15px; box-shadow: var(--shadow);">
+                        <h4>💰 金錢奉獻</h4>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">您的奉獻直接用於全球植堂與宣教士的生活所需。</p>
+                    </div>
+                    <div style="padding: 30px; background: white; border-radius: 15px; box-shadow: var(--shadow);">
+                        <h4>✈️ 短宣行動</h4>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">親身踏上工場，體驗跨文化事奉的震撼與熱情。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
+        </div>
+    </footer>
 </body>
+
 </html>

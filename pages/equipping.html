@@ -1,30 +1,140 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>裝備聖徒 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../index.css">
-</head>
-<body>
-    <header>...</header> <!-- 同上 -->
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/vision-equipping.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
 
-    <section class="section">
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .course-card {
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .course-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .step-indicator {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <img src="../trolcc_logo1.png" alt="Logo">
+                <div>
+                    <strong>多倫多生命河靈糧堂</strong>
+                    <span>Toronto River of Life Christian Church</span>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">首頁</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚會時間</a></li>
+                    <li><a href="groups.html" class="nav-link">小組生活</a></li>
+                    <li><a href="about.html" class="nav-link">關於我們</a></li>
+                    <li><a href="contact.html" class="nav-link">聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
         <div class="container">
-            <h1>裝備聖徒</h1>
-            <p style="font-size: 1.2rem; line-height: 1.8;">
-                系統化查經與培訓，建立扎實的信仰根基。<br>
-                我們提供啟程課程、查經班、領袖培訓等，幫助你更深認識神。
-            </p>
-            <div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 15px; text-align: center;">
-                <h3>近期課程</h3>
-                <p>• 啟程福音課程（每週日）<br>• 查經班（每週三）<br>• 領袖培訓（每月一次）</p>
-                <a href="https://rolpli.net" target="_blank"
-                   style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;">
-                    報名課程
-                </a>
-            </div>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">裝備聖徒</h1>
+            <p style="font-size: 1.2rem;">紮根聖經真理，活出豐盛生命</p>
         </div>
     </section>
+
+    <main class="content-section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>全方位的生命裝備</h2>
+                <p style="font-size: 1.1rem; line-height: 2; margin-top: 20px;">
+                    我們相信每位基督徒都是被招聚的事奉者。通過系統化的查經、生命更新課程及領袖培訓，我們幫助您從初信的嬰孩成長為剛強的屬靈精兵。
+                </p>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card">
+                    <span class="step-indicator">第一階段：生命根基</span>
+                    <h3>啟程福音課程</h3>
+                    <p>專為慕道友與初信者設計。探索信仰核心，解決生命疑惑，領受重生的喜樂。</p>
+                </div>
+                <div class="course-card">
+                    <span class="step-indicator">第二階段：真理紮根</span>
+                    <h3>系統查經班</h3>
+                    <p>按卷查考聖經，學習如何將神的話語應用在現代生活的每一個決定中。</p>
+                </div>
+                <div class="course-card">
+                    <span class="step-indicator">第三階段：生命更新</span>
+                    <h3>經歷神營會</h3>
+                    <p>在聖靈的帶領下，深度的內在醫治與釋放，讓生命脫離掙扎，進入應許的自由。</p>
+                </div>
+                <div class="course-card">
+                    <span class="step-indicator">第四階段：領袖事奉</span>
+                    <h3>教牧領袖學院</h3>
+                    <p>培育神國領袖，提升服事技巧與靈命深度，學會如何帶領小組與事工。</p>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 80px; padding: 50px; background: #f8f9fa; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color: var(--primary);">ROLPLI 生命河教牧領袖學院</h3>
+                    <p style="margin-top: 15px;">承襲母堂深厚的教義傳承，我們提供遠程與實體結合的學程，為有心服事的弟兄姊妹提供最專業的資源。</p>
+                </div>
+                <a href="https://rolpli.net" target="_blank"
+                    style="padding: 15px 40px; background: var(--primary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">查看學院官網</a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
+        </div>
+    </footer>
 </body>
+
 </html>

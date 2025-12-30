@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #1a5276;
     --secondary: #e67e22;
@@ -17,6 +21,7 @@ body {
     color: var(--text);
     background-color: white;
     line-height: 1.7;
+    margin: 0;
 }
 
 header {
@@ -56,6 +61,8 @@ header {
     display: flex;
     list-style: none;
     gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
@@ -97,15 +104,35 @@ header {
     margin-bottom: 50px;
 }
 
+/* ===== 卡片网格布局 ===== */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(5, minmax(240px, 1fr));
     gap: 25px;
+}
+
+.card-link {
+    text-decoration: none !important;
+    display: block;
+}
+
+/* 如果屏幕不够宽，浏览器会自动换行，但我们用媒體查詢限制門戶卡片跨度 */
+@media (max-width: 1400px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
+
+/* 未来圣所卡片永远单独一行并与网格对齐 */
+#portal-card {
+    grid-column: 1 / -1;
+    margin-top: 30px;
 }
 
 .card {
     position: relative;
     height: 350px;
+    min-height: 320px;
     padding: 40px;
     background-size: cover;
     background-position: center;
@@ -152,6 +179,10 @@ header {
 }
 
 /* Specific Card Backgrounds */
+.card-vision {
+    background-image: url('images/vision-vision.png');
+}
+
 .card-worship {
     background-image: url('images/vision-worship.png');
 }
@@ -174,6 +205,7 @@ header {
     height: 180px;
     background: #050a15;
     border: 1px solid rgba(60, 150, 255, 0.6);
+    border-radius: 15px;
     box-shadow: 0 0 40px rgba(60, 150, 255, 0.3);
     cursor: pointer;
     flex-direction: row;

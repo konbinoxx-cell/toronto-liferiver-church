@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>敬拜讚美 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../index.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/vision-worship.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .worship-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary);
+        }
+
+        .quote-box {
+            background: #f4f7f6;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            font-style: italic;
+            margin: 60px 0;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="container header-inner">
@@ -28,22 +70,55 @@
         </div>
     </header>
 
-    <section class="section">
+    <section class="page-hero">
         <div class="container">
-            <h1>敬拜讚美</h1>
-            <p style="font-size: 1.2rem; line-height: 1.8;">
-                以心靈和誠實敬拜，帶入神的同在。<br>
-                我們每週日早上10:30舉行主日崇拜，歡迎你來參與！
-            </p>
-            <div style="margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 15px; text-align: center;">
-                <h3>本周敬拜詩歌</h3>
-                <p>《主啊，我愛祢》、《祢的信實廣大》、《賜福與你》</p>
-                <a href="https://www.youtube.com/watch?v=..." target="_blank"
-                   style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;">
-                    觀看上周回放
-                </a>
-            </div>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;">敬拜讚美</h1>
+            <p style="font-size: 1.2rem;">以心靈和誠實敬拜，帶入神的同在</p>
         </div>
     </section>
+
+    <main class="content-section">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2>進入屬靈的慶典</h2>
+                <p style="font-size: 1.1rem; line-height: 2; margin-top: 20px;">
+                    敬拜不只是週日早上的儀式，而是我們與神建立親密關係的開端。在多倫多生命河靈糧堂，我們致力於建立一個充滿聖靈恩膏的敬拜環境，讓每個人都能在音樂與祈禱中親自遇見神。
+                </p>
+            </div>
+
+            <div class="quote-box">
+                「時候將到，如今就是了，那真正拜父的，要用心靈和誠實拜祂，因為父要這樣的人拜祂。」<br>
+                <small>— 約三 4:23</small>
+            </div>
+
+            <div class="worship-features">
+                <div class="feature-card">
+                    <h3>現代敬拜風格</h3>
+                    <p>採用充滿活力的現代敬拜音樂，配合專業的影音團隊，營造沉浸式的屬靈氛圍。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>聖靈的運行</h3>
+                    <p>我們鼓勵會眾隨聖靈帶領自由敬拜，在唱詩、舉手與俯伏中經歷神的觸摸與醫治。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>事奉團隊</h3>
+                    <p>我們的敬拜團由委身的弟兄姊妹組成，在每週的操練與禱告中，預備成為神恩典的出口。</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px; padding: 40px; background: var(--primary); color: white; border-radius: 15px; text-align: center;">
+                <h3>🎵 加入敬拜團隊</h3>
+                <p style="margin-top: 15px;">若您有音樂恩賜（樂器、演唱）或影音技術背景，歡迎加入我們的行列！</p>
+                <a href="contact.html" style="display: inline-block; margin-top: 20px; padding: 12px 35px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">申請面試</a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
+        </div>
+    </footer>
 </body>
+
 </html>
