@@ -71,7 +71,7 @@ header {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/church-building.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/church-building.jpg');
     background-size: cover;
     background-position: center;
     height: 600px;
@@ -200,22 +200,22 @@ header {
 
 /* Specific Card Backgrounds */
 .card-vision {
-    background-image: url('images/vision-vision.png');
+    background-image: url('../images/vision-vision.png');
 }
 .card-worship {
-    background-image: url('images/vision-worship.png');
+    background-image: url('../images/vision-worship.png');
 }
 
 .card-equipping {
-    background-image: url('images/vision-equipping.png');
+    background-image: url('../images/vision-equipping.png');
 }
 
 .card-fellowship {
-    background-image: url('images/vision-fellowship.png');
+    background-image: url('../images/vision-fellowship.png');
 }
 
 .card-mission {
-    background-image: url('images/vision-mission.png');
+    background-image: url('../images/vision-mission.png');
 }
 
 /* Future Portal Card - The 5th Card (Flattened Full-Width) */
