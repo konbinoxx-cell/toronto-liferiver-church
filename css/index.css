@@ -535,9 +535,9 @@ header {
 }
 
 .language-trigger {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
@@ -606,4 +606,21 @@ header {
     right: 0;
     width: 100%;
   }
+}
+
+/* Ensure selector is visible on light/white headers */
+header .language-trigger {
+    border-color: rgba(0,0,0,0.08);
+    color: var(--primary);
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+header .language-trigger:hover {
+    background: rgba(245, 249, 250, 1);
+}
+
+/* Keep dropdown above other header elements */
+header .language-dropdown {
+    z-index: 1100;
 }
