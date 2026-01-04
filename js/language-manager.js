@@ -116,29 +116,50 @@ class LanguageManager {
       const batch = elements.slice(i, i + batchSize);
       const texts = batch.map(b => b.text);
       try {
-        const res = await fetch(CONFIG.API_URL, {
+        // First try sending an array of texts (some instances accept arrays)
+        let res = await fetch(CONFIG.API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ q: texts, source: 'auto', target: targetLang, format: 'text', api_key: CONFIG.API_KEY })
         });
-        const data = await res.json();
-        // LibreTranslate may return an array of translations or a single string
+        let data = await res.json();
+
+        // If response doesn't look like translations, try fallback: send joined text and split
+        const looksLikeTranslations = (d) => Array.isArray(d) || (d && (Array.isArray(d.translations) || d.translatedText));
+        if (!looksLikeTranslations(data)) {
+          // Fallback: send joined text and split by a sentinel
+          const sep = '\n\n---SPLIT---\n\n';
+          res = await fetch(CONFIG.API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ q: texts.join(sep), source: 'auto', target: targetLang, format: 'text', api_key: CONFIG.API_KEY })
+          });
+          data = await res.json();
+          if (data && data.translatedText) {
+            const parts = data.translatedText.split(sep);
+            parts.forEach((p, idx) => { if (batch[idx]) batch[idx].el.textContent = p; });
+            continue;
+          }
+        }
+
+        // Handle various response shapes
         if (Array.isArray(data)) {
           data.forEach((t, idx) => {
             batch[idx].el.textContent = t.translatedText || t;
           });
         } else if (Array.isArray(data.translations)) {
           data.translations.forEach((t, idx) => batch[idx].el.textContent = t.translatedText || t);
-        } else if (typeof data === 'string') {
-          // fallback: split by newline
-          const parts = data.split('\n');
+        } else if (data.translatedText && typeof data.translatedText === 'string') {
+          // If the API returned a single translatedText for joined input, try to split by newline as best-effort
+          const parts = data.translatedText.split('\n');
           parts.forEach((p, idx) => { if (batch[idx]) batch[idx].el.textContent = p; });
-        } else if (data.translatedText) {
-          // single translation for joined text
-          batch.forEach(b => b.el.textContent = data.translatedText);
+        } else {
+          console.warn('Unexpected LibreTranslate response:', data);
         }
       } catch (err) {
         console.error('LibreTranslate error', err);
+        // show brief error state on trigger
+        if (langTrigger) langTrigger.querySelector('span').textContent = 'ERR';
       }
     }
 
