@@ -7,69 +7,20 @@
     <title>聚會時間 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../index.css">
     <style>
-        .page-hero {
-            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('../mathew-schwartz-nwtJyl-2iMI-unsplash.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
+        .page-header {
+            background: var(--primary);
             color: white;
+            padding: 60px 0;
             text-align: center;
         }
 
-        .meetings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
+        .content-section {
+            padding: 60px 0;
         }
 
-        .meeting-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-top: 6px solid var(--secondary);
-            transition: var(--transition);
-        }
-
-        .meeting-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .meeting-card h3 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
-
-        .time-badge {
-            display: inline-block;
-            background: #fff3e0;
-            color: #e65100;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        .time-card {
+            border-left: 5px solid var(--secondary);
             margin-bottom: 20px;
-        }
-
-        .zoom-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 30px;
-            background: #2D8CFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .zoom-btn:hover {
-            background: #1a73e8;
-            box-shadow: 0 5px 15px rgba(45, 140, 255, 0.4);
         }
     </style>
 </head>
@@ -96,50 +47,31 @@
         </div>
     </header>
 
-    <section class="page-hero">
+    <section class="page-header">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 20px;">聚會時間</h1>
-            <p style="font-size: 1.2rem;">歡迎隨時加入我們的屬靈大家庭</p>
+            <h1>聚會時間</h1>
+            <p>歡迎隨時加入我們的聚會，與我們一同敬拜</p>
         </div>
     </section>
 
-    <main class="container" style="padding: 0 20px 80px;">
-        <div class="meetings-grid">
-            <div class="meeting-card">
+    <main class="container content-section">
+        <div class="grid">
+            <div class="card time-card">
                 <h3>主日崇拜</h3>
-                <div class="time-badge">每周六 10:00 AM</div>
-                <p style="line-height: 1.6; color: #666;">以心靈和誠實敬拜，領受天上的信息。<br>現場與直播同步進行，歡迎點擊下方連結進入虛擬聖所。</p>
-                <a href="https://us06web.zoom.us/j/84951253453?pwd=dBrnMT3NA5ha6b5DUhRTPbTCvPxMBW.1" target="_blank"
-                    class="zoom-btn">
-                    進入 Zoom 直播間
-                </a>
+                <p>每周六 10:00 AM</p>
+                <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 10px;">現場與直播同步進行</p>
             </div>
-
-            <div class="meeting-card">
+            <div class="card time-card">
                 <h3>週三禱告會</h3>
-                <div class="time-badge">每周三 7:30 PM</div>
-                <p style="line-height: 1.6; color: #666;">同心合意，火熱代禱。<br>為個人、家庭、教會及多倫多這座城市守望。</p>
+                <p>每周三 7:30 PM</p>
+                <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 10px;">同心合意為國度與教會禱告</p>
             </div>
-
-            <div class="meeting-card">
-                <h3>各小組聚會</h3>
-                <div class="time-badge">按小組安排</div>
-                <p style="line-height: 1.6; color: #666;">在小團體中精緻生活，建立深厚主內情誼。<br>請聯繫您的組長獲取具體時間與地點。</p>
-                <a href="groups.html"
-                    style="display: inline-block; margin-top: 15px; color: var(--secondary); text-decoration: none; font-weight: bold;">查看小組列表
-                    →</a>
+            <div class="card time-card">
+                <h3>各小組團契</h3>
+                <p>時間由各小組自行安排</p>
+                <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 10px;">在社區中建立深厚情誼</p>
             </div>
         </div>
-
-        <section style="margin-top: 100px; text-align: center;">
-            <h2 style="color: var(--primary);">地址信息</h2>
-            <p style="margin: 20px 0;">2460 The Collegeway, Mississauga, ON L5L 1V3</p>
-            <div style="width: 100%; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.1234567890!2d-79.7234567!3d43.5890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2460%20The%20Collegeway%2C%20Mississauga%2C%20ON%20L5L%201V3!5e0!3m2!1sen!2sca!4v1234567890"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </section>
     </main>
 
     <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
