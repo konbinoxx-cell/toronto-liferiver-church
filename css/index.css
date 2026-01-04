@@ -526,3 +526,84 @@ header {
     margin-top: 40px !important;
     width: 100% !important;
 }
+/* 添加到 index.css */
+
+/* 语言选择器样式 */
+.language-selector {
+  position: relative;
+  margin-left: auto;
+}
+
+.language-trigger {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.language-trigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  display: none;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.language-dropdown.show {
+  display: block;
+}
+
+.lang-option {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lang-option:last-child {
+  border-bottom: none;
+}
+
+.lang-option:hover {
+  background: #f8f8f8;
+  color: #2c6ecb;
+}
+
+.lang-option.active {
+  background: #f0f7ff;
+  color: #2c6ecb;
+  font-weight: 500;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .language-selector {
+    position: static;
+    margin: 10px 0;
+  }
+  
+  .language-dropdown {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}
