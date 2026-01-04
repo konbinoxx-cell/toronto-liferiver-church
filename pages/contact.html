@@ -48,6 +48,18 @@
                     <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
                 </div>
             </a>
+            <!-- Language selector -->
+            <div class="language-selector" style="margin-left: auto;">
+                <button id="langTrigger" class="language-trigger" aria-haspopup="true" aria-expanded="false">
+                    <span>繁體</span>
+                </button>
+                <div id="langDropdown" class="language-dropdown" aria-label="Language selector">
+                    <a href="#" class="lang-option" data-lang="zh-Hant">繁體</a>
+                    <a href="#" class="lang-option" data-lang="zh-Hans">简体</a>
+                    <a href="#" class="lang-option" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="fr">Français</a>
+                </div>
+            </div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="../index.html" class="nav-link">首頁</a></li>
@@ -81,6 +93,10 @@
             <p>&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
         </div>
     </footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/convert.js"></script>
+    <script src="../js/languages.js"></script>
+    <script src="../js/language-manager.js"></script>
 </body>
 
 </html>

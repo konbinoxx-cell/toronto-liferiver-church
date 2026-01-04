@@ -659,15 +659,17 @@
                 </a>
             </div>
 
-            <!-- 語言切換器 -->
-            <div class="language-switcher">
-                <label class="lang-toggle">
-                    <input type="checkbox" id="lang-switch">
-                    <span class="lang-slider">
-                        <span class="zh">繁</span>
-                        <span class="en">EN</span>
-                    </span>
-                </label>
+            <!-- Language selector -->
+            <div class="language-selector" style="margin-left: auto;">
+                <button id="langTrigger" class="language-trigger" aria-haspopup="true" aria-expanded="false">
+                    <span>繁體</span>
+                </button>
+                <div id="langDropdown" class="language-dropdown" aria-label="Language selector">
+                    <a href="#" class="lang-option" data-lang="zh-Hant">繁體</a>
+                    <a href="#" class="lang-option" data-lang="zh-Hans">简体</a>
+                    <a href="#" class="lang-option" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="fr">Français</a>
+                </div>
             </div>
 
             <nav>
@@ -1125,6 +1127,10 @@
             initializeLanguageSwitcher();
         });
     </script>
+    <script src="../js/config.js"></script>
+    <script src="../js/convert.js"></script>
+    <script src="../js/languages.js"></script>
+    <script src="../js/language-manager.js"></script>
 </body>
 
 </html>

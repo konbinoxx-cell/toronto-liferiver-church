@@ -399,6 +399,19 @@
                     <div class="logo-subtitle">Toronto River of Life Christian Church</div>
                 </div>
             </div>
+            
+            <!-- Language selector -->
+            <div class="language-selector" style="margin-left: auto;">
+                <button id="langTrigger" class="language-trigger" aria-haspopup="true" aria-expanded="false">
+                    <span>繁體</span>
+                </button>
+                <div id="langDropdown" class="language-dropdown" aria-label="Language selector">
+                    <a href="#" class="lang-option" data-lang="zh-Hant">繁體</a>
+                    <a href="#" class="lang-option" data-lang="zh-Hans">简体</a>
+                    <a href="#" class="lang-option" data-lang="en">English</a>
+                    <a href="#" class="lang-option" data-lang="fr">Français</a>
+                </div>
+            </div>
 
             <nav>
                 <ul class="nav-menu">
@@ -646,6 +659,10 @@
             }
         });
     </script>
+    <script src="../js/config.js"></script>
+    <script src="../js/convert.js"></script>
+    <script src="../js/languages.js"></script>
+    <script src="../js/language-manager.js"></script>
 </body>
 
 </html>
