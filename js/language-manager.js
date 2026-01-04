@@ -63,7 +63,14 @@ class LanguageManager {
     if (this.currentLang !== lang) {
       this.currentLang = lang;
       localStorage.setItem('preferredLang', lang);
-      this.applyLanguage();
+      // For en/fr use remote translation; for zh-Hans/zh-Hant use local conversions
+      if (lang === 'en' || lang === 'fr') {
+        // Apply known translations first (data-i18n)
+        this.applyLanguage();
+        this.translatePageRemote(lang).catch(err => console.error('Translate error', err));
+      } else {
+        this.applyLanguage();
+      }
       
       // 触发自定义事件，让其他组件知道语言已更改
       document.dispatchEvent(new CustomEvent('languageChanged', {
@@ -86,6 +93,58 @@ class LanguageManager {
       this.convertTraditionalToSimple();
     } else if (this.currentLang === 'zh-Hant') {
       this.convertSimpleToTraditional();
+    }
+  }
+
+  // Translate visible text nodes via LibreTranslate for en/fr
+  async translatePageRemote(targetLang) {
+    if (!window.CONFIG || !CONFIG.API_URL) return;
+    const langTrigger = document.getElementById('langTrigger');
+    if (langTrigger) langTrigger.querySelector('span').textContent = '...';
+
+    // Gather text nodes that are not handled by data-i18n and are user-visible
+    const elements = Array.from(document.querySelectorAll('body *'))
+      .filter(el => el.childNodes.length === 1 && el.childNodes[0].nodeType === 3)
+      .filter(el => !el.closest('script') && !el.closest('style'))
+      .filter(el => !el.hasAttribute('data-i18n'))
+      .map(el => ({ el, text: el.textContent.trim() }))
+      .filter(o => o.text && o.text.length > 1);
+
+    // Batch translate in groups to limit payload
+    const batchSize = 12;
+    for (let i = 0; i < elements.length; i += batchSize) {
+      const batch = elements.slice(i, i + batchSize);
+      const texts = batch.map(b => b.text);
+      try {
+        const res = await fetch(CONFIG.API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ q: texts, source: 'auto', target: targetLang, format: 'text', api_key: CONFIG.API_KEY })
+        });
+        const data = await res.json();
+        // LibreTranslate may return an array of translations or a single string
+        if (Array.isArray(data)) {
+          data.forEach((t, idx) => {
+            batch[idx].el.textContent = t.translatedText || t;
+          });
+        } else if (Array.isArray(data.translations)) {
+          data.translations.forEach((t, idx) => batch[idx].el.textContent = t.translatedText || t);
+        } else if (typeof data === 'string') {
+          // fallback: split by newline
+          const parts = data.split('\n');
+          parts.forEach((p, idx) => { if (batch[idx]) batch[idx].el.textContent = p; });
+        } else if (data.translatedText) {
+          // single translation for joined text
+          batch.forEach(b => b.el.textContent = data.translatedText);
+        }
+      } catch (err) {
+        console.error('LibreTranslate error', err);
+      }
+    }
+
+    if (langTrigger) {
+      const label = targetLang === 'en' ? 'EN' : (targetLang === 'fr' ? 'FR' : targetLang);
+      langTrigger.querySelector('span').textContent = label;
     }
   }
   
