@@ -6,6 +6,7 @@
     --dark: #2c3e50;
     --text: #34495e;
     --border: #e0e0e0;
+    --divider: #666666;
     --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
 }
@@ -576,7 +577,7 @@ header {
   color: #333;
   text-decoration: none;
   transition: all 0.2s ease;
-  border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--divider);
 }
 
 .lang-option:last-child {
@@ -592,6 +593,12 @@ header {
   background: #f0f7ff;
   color: #2c6ecb;
   font-weight: 500;
+}
+
+/* 通用分割线（暗灰色） */
+.divider {
+    border-bottom: 1px solid var(--divider);
+    margin: 16px 0;
 }
 
 /* 移动端适配 */

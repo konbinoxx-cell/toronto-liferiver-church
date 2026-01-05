@@ -674,12 +674,12 @@
 
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link" id="nav-home-link">首頁</a></li>
+                    <li><a href="../index.html" class="nav-link" id="nav-home-link" data-i18n="nav.home">首頁</a></li>
                     <li><a href="meetings.html" class="nav-link" id="nav-meetings-link">聚會時間</a></li>
-                    <li><a href="groups.html" class="nav-link" id="nav-groups-link">小組生活</a></li>
+                    <li><a href="groups.html" class="nav-link" id="nav-groups-link" data-i18n="nav.groups">小組生活</a></li>
                     <li><a href="testimonies.html" class="nav-link" id="nav-testimonies-link">信仰見證</a></li>
                     <li><a href="resources.html" class="nav-link" id="nav-resources-link">資源中心</a></li>
-                    <li><a href="giving.html" class="nav-link" id="nav-giving-link">奉獻支持</a></li>
+                    <li><a href="giving.html" class="nav-link" id="nav-giving-link" data-i18n="nav.contact">奉獻支持</a></li>
 
                     <!-- 母堂資源下拉菜單 -->
                     <li class="dropdown">
@@ -712,8 +712,8 @@
     <!-- 页面内容 -->
     <section class="page-hero">
         <div class="container">
-            <h1 id="page-title">奉獻支持</h1>
-            <p id="page-subtitle">參與神國事工，回應神的恩典</p>
+            <h1 id="page-title" data-i18n="giving.title">奉獻支持</h1>
+            <p id="page-subtitle" data-i18n="giving.description">參與神國事工，回應神的恩典</p>
         </div>
     </section>
 
@@ -722,94 +722,94 @@
             <div class="giving-content">
                 <!-- 圣经教导部分 -->
                 <div class="scripture-section">
-                    <p class="scripture-text" id="scripture-text">"各人要隨本心所酌定的，不要作難，不要勉強，因為捐得樂意的人是神所喜愛的。"</p>
-                    <p class="scripture-ref" id="scripture-ref">哥林多後書 9:7</p>
+                    <p class="scripture-text" id="scripture-text" data-i18n="scripture.text">"各人要隨本心所酌定的，不要作難，不要勉強，因為捐得樂意的人是神所喜愛的。"</p>
+                    <p class="scripture-ref" id="scripture-ref" data-i18n="scripture.ref">哥林多後書 9:7</p>
                 </div>
 
                 <!-- 奉献方式部分 -->
                 <div class="section-title">
-                    <h2 id="giving-methods-title">奉獻方式</h2>
-                    <p id="giving-methods-desc">選擇適合您的奉獻方式，支持教會事工</p>
+                    <h2 id="giving-methods-title" data-i18n="giving.methods.title">奉獻方式</h2>
+                    <p id="giving-methods-desc" data-i18n="giving.description">選擇適合您的奉獻方式，支持教會事工</p>
                 </div>
 
                 <div class="giving-methods">
                     <!-- 支票奉献 -->
                     <div class="method-card">
                         <div class="method-icon">📝</div>
-                        <h3 class="method-title" id="method-check-title">支票奉獻</h3>
-                        <div class="method-details" id="method-check-desc">
+                        <h3 class="method-title" id="method-check-title" data-i18n="method.check.title">支票奉獻</h3>
+                        <div class="method-details" id="method-check-desc" data-i18n="method.check.desc">
                             請將支票郵寄至教會地址，抬頭請寫：
                         </div>
-                        <div class="method-highlight" id="method-check-payee">
+                        <div class="method-highlight" id="method-check-payee" data-i18n="method.check.payee">
                             <strong>Toronto River of Life Christian Church</strong>
                         </div>
-                        <button class="btn btn-outline" id="btn-get-address">獲取郵寄地址</button>
+                        <button class="btn btn-outline" id="btn-get-address" data-i18n="btn.get_address">獲取郵寄地址</button>
                     </div>
 
                     <!-- 电子转账 -->
                     <div class="method-card">
                         <div class="method-icon">💳</div>
-                        <h3 class="method-title" id="method-etransfer-title">電子轉賬</h3>
-                        <div class="method-details" id="method-etransfer-desc">
+                        <h3 class="method-title" id="method-etransfer-title" data-i18n="method.etransfer.title">電子轉賬</h3>
+                        <div class="method-details" id="method-etransfer-desc" data-i18n="method.etransfer.desc">
                             通過 Interac e-Transfer 進行奉獻，方便快捷
                         </div>
-                        <div class="method-highlight" id="method-etransfer-email">
+                        <div class="method-highlight" id="method-etransfer-email" data-i18n="method.etransfer.email">
                             <strong>收款郵箱: giving@trolcc.ca</strong>
                         </div>
-                        <button class="btn btn-outline" id="btn-etransfer-help">使用幫助</button>
+                        <button class="btn btn-outline" id="btn-etransfer-help" data-i18n="btn.etransfer.help">使用幫助</button>
                     </div>
 
                     <!-- 在線奉獻 -->
                     <div class="method-card">
                         <div class="method-icon">🌐</div>
-                        <h3 class="method-title" id="method-online-title">在線奉獻</h3>
-                        <div class="method-details" id="method-online-desc">
+                        <h3 class="method-title" id="method-online-title" data-i18n="method.online.title">在線奉獻</h3>
+                        <div class="method-details" id="method-online-desc" data-i18n="method.online.desc">
                             通過安全的在線平台使用信用卡奉獻
                         </div>
-                        <button class="btn" id="btn-online-giving">前往奉獻平台</button>
+                        <button class="btn" id="btn-online-giving" data-i18n="btn.online.giving">前往奉獻平台</button>
                     </div>
                 </div>
 
                 <!-- 奉献用途部分 -->
                 <div class="giving-purpose">
                     <div class="section-title">
-                        <h2 id="purpose-title">奉獻用途</h2>
-                        <p id="purpose-desc">您的奉獻支持以下事工的发展</p>
+                        <h2 id="purpose-title" data-i18n="purpose.title">奉獻用途</h2>
+                        <p id="purpose-desc" data-i18n="purpose.desc">您的奉獻支持以下事工的发展</p>
                     </div>
 
                     <div class="purpose-grid">
                         <div class="purpose-item">
                             <div class="purpose-icon">📖</div>
-                            <h4 id="purpose-1-title">福音傳播</h4>
-                            <p id="purpose-1-desc">支持本地與海外宣教事工</p>
+                            <h4 id="purpose-1-title" data-i18n="purpose.1.title">福音傳播</h4>
+                            <p id="purpose-1-desc" data-i18n="purpose.1.desc">支持本地與海外宣教事工</p>
                         </div>
                         <div class="purpose-item">
                             <div class="purpose-icon">👥</div>
-                            <h4 id="purpose-2-title">社區服務</h4>
-                            <p id="purpose-2-desc">開展社區外展與慈善活動</p>
+                            <h4 id="purpose-2-title" data-i18n="purpose.2.title">社區服務</h4>
+                            <p id="purpose-2-desc" data-i18n="purpose.2.desc">開展社區外展與慈善活動</p>
                         </div>
                         <div class="purpose-item">
                             <div class="purpose-icon">🏛️</div>
-                            <h4 id="purpose-3-title">教會運營</h4>
-                            <p id="purpose-3-desc">維持教會日常運作與設施</p>
+                            <h4 id="purpose-3-title" data-i18n="purpose.3.title">教會運營</h4>
+                            <p id="purpose-3-desc" data-i18n="purpose.3.desc">維持教會日常運作與設施</p>
                         </div>
                         <div class="purpose-item">
                             <div class="purpose-icon">🎓</div>
-                            <h4 id="purpose-4-title">門徒訓練</h4>
-                            <p id="purpose-4-desc">支持神學教育與信徒培訓</p>
+                            <h4 id="purpose-4-title" data-i18n="purpose.4.title">門徒訓練</h4>
+                            <p id="purpose-4-desc" data-i18n="purpose.4.desc">支持神學教育與信徒培訓</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 财务透明部分 -->
                 <div class="section-title" style="margin-top: 60px;">
-                    <h2 id="transparency-title">財務透明</h2>
-                    <p id="transparency-desc">我們承諾對奉獻款項進行透明管理</p>
+                    <h2 id="transparency-title" data-i18n="transparency.title">財務透明</h2>
+                    <p id="transparency-desc" data-i18n="transparency.desc">我們承諾對奉獻款項進行透明管理</p>
                 </div>
 
                 <div style="text-align: center; margin-top: 30px;">
-                    <button class="btn btn-outline" id="btn-financial-report">查看年度財務報告</button>
-                    <button class="btn btn-outline" id="btn-tax-receipt">奉獻收據信息</button>
+                    <button class="btn btn-outline" id="btn-financial-report" data-i18n="btn.financial_report">查看年度財務報告</button>
+                    <button class="btn btn-outline" id="btn-tax-receipt" data-i18n="btn.tax_receipt">奉獻收據信息</button>
                 </div>
             </div>
         </div>
@@ -820,8 +820,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 id="footer-about">多伦多生命河灵粮堂教会</h3>
-                    <p id="footer-about-text">我们是一个充满爱心和信仰的社区，致力于传播福音、服务人群，并在基督的爱中共同成长。</p>
+                    <h3 id="footer-about" data-i18n="footer.about">多伦多生命河灵粮堂教会</h3>
+                    <p id="footer-about-text" data-i18n="footer.about.text">我们是一个充满爱心和信仰的社区，致力于传播福音、服务人群，并在基督的爱中共同成长。</p>
                     <div class="social-links">
                         <a href="#" class="social-icon">📘</a>
                         <a href="#" class="social-icon">📷</a>
@@ -830,29 +830,29 @@
                 </div>
 
                 <div class="footer-column">
-                    <h3 id="footer-links-title">快速链接</h3>
+                    <h3 id="footer-links-title" data-i18n="footer.links.title">快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="../index.html" id="footer-link1">首页</a></li>
-                        <li><a href="meetings.html" id="footer-link2">聚会时间</a></li>
-                        <li><a href="groups.html" id="footer-link3">小组生活</a></li>
-                        <li><a href="testimonies.html" id="footer-link4">信仰见证</a></li>
-                        <li><a href="giving.html" id="footer-link5">奉献支持</a></li>
+                        <li><a href="../index.html" id="footer-link1" data-i18n="nav.home">首页</a></li>
+                        <li><a href="meetings.html" id="footer-link2" data-i18n="nav.worship">聚会时间</a></li>
+                        <li><a href="groups.html" id="footer-link3" data-i18n="nav.groups">小组生活</a></li>
+                        <li><a href="testimonies.html" id="footer-link4" data-i18n="nav.resources">信仰见证</a></li>
+                        <li><a href="giving.html" id="footer-link5" data-i18n="giving.title">奉献支持</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
-                    <h3 id="footer-contact-title">联系我们</h3>
+                    <h3 id="footer-contact-title" data-i18n="footer.contact.title">联系我们</h3>
                     <ul class="contact-info">
-                        <li id="footer-address">📍 2460 The Collegeway, Mississauga, ON L5L 1V3</li>
-                        <li id="footer-phone">📞 (416) 123-4567</li>
-                        <li id="footer-email">✉️ info@trolcc.ca</li>
-                        <li id="footer-hours">🕒 周一至周五: 9:00 AM - 5:00 PM</li>
+                        <li id="footer-address" data-i18n="footer.address">📍 2460 The Collegeway, Mississauga, ON L5L 1V3</li>
+                        <li id="footer-phone" data-i18n="footer.phone">📞 (416) 123-4567</li>
+                        <li id="footer-email" data-i18n="footer.email">✉️ info@trolcc.ca</li>
+                        <li id="footer-hours" data-i18n="footer.hours">🕒 周一至周五: 9:00 AM - 5:00 PM</li>
                     </ul>
                 </div>
             </div>
 
             <div class="copyright">
-                <p id="copyright-text">&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. <span class="maple-leaf">🍁</span> 为基督爱多伦多 <span
+                <p id="copyright-text" data-i18n="footer.copyright">&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. <span class="maple-leaf">🍁</span> 为基督爱多伦多 <span
                         class="maple-leaf">🍁</span></p>
             </div>
         </div>
@@ -910,219 +910,26 @@
             alert('奉献收据信息：\n\n所有奉献均可获得用于报税的正式收据。\n收据将在每年2月底前寄出。\n如需补发收据，请联系财务同工。');
         });
 
-        // 初始化语言切换功能
+        // 初始化语言切换：委派给全局 languageManager，避免页面内重复实现
         function initializeLanguageSwitcher() {
             const langSwitch = document.getElementById('lang-switch');
-            if (!langSwitch) {
-                console.log('未找到语言切换开关');
-                return;
-            }
+            if (!langSwitch) return;
 
-            console.log('语言切换功能加载成功');
-
-            // 完整双语内容库
-            const content = {
-                zh: {
-                    // 导航
-                    'nav-home-link': '首页',
-                    'nav-meetings-link': '聚会时间',
-                    'nav-groups-link': '小组生活',
-                    'nav-testimonies-link': '信仰见证',
-                    'nav-giving-link': '奉献支持',
-                    'nav-resources-link': '资源中心',
-                    'nav-mother-church-link': '母堂资源 ▼',
-                    'nav-about-link': '关于我们',
-                    'nav-contact-link': '联系我们',
-
-                    // 母堂资源下拉菜单
-                    'mother-home': '母堂主页',
-                    'mother-bulletin': '电子周报',
-                    'mother-sunday': '主日影音',
-                    'mother-online': '网络牧区',
-                    'mother-ministries': '母堂教会事工',
-                    'mother-equip': '信徒装备',
-                    'mother-app': 'ROLCC APP',
-
-                    // 页面标题区域
-                    'page-title': '奉献支持',
-                    'page-subtitle': '参与神国事工，回应神的恩典',
-
-                    // 圣经经文
-                    'scripture-text': '"各人要随本心所酌定的，不要作难，不要勉强，因为捐得乐意的人是神所喜爱的。"',
-                    'scripture-ref': '哥林多后书 9:7',
-
-                    // 奉献方式
-                    'giving-methods-title': '奉献方式',
-                    'giving-methods-desc': '选择适合您的奉献方式，支持教会事工',
-
-                    'method-check-title': '支票奉献',
-                    'method-check-desc': '请将支票邮寄至教会地址，抬头请写：',
-                    'method-check-payee': 'Toronto River of Life Christian Church',
-                    'btn-get-address': '获取邮寄地址',
-
-                    'method-etransfer-title': '电子转账',
-                    'method-etransfer-desc': '通过Interac e-Transfer进行奉献，方便快捷',
-                    'method-etransfer-email': '收款邮箱: giving@trolcc.ca',
-                    'btn-etransfer-help': '使用帮助',
-
-                    'method-online-title': '在线奉献',
-                    'method-online-desc': '通过安全的在线平台使用信用卡奉献',
-                    'btn-online-giving': '前往奉献平台',
-
-                    // 奉献用途
-                    'purpose-title': '奉献用途',
-                    'purpose-desc': '您的奉献支持以下事工的发展',
-
-                    'purpose-1-title': '福音传播',
-                    'purpose-1-desc': '支持本地和海外宣教事工',
-                    'purpose-2-title': '社区服务',
-                    'purpose-2-desc': '开展社区外展和慈善活动',
-                    'purpose-3-title': '教会运营',
-                    'purpose-3-desc': '维持教会日常运作和设施',
-                    'purpose-4-title': '门徒训练',
-                    'purpose-4-desc': '支持神学教育和信徒培训',
-
-                    // 财务透明
-                    'transparency-title': '财务透明',
-                    'transparency-desc': '我们承诺对奉献款项进行透明管理',
-                    'btn-financial-report': '查看年度财务报告',
-                    'btn-tax-receipt': '奉献收据信息',
-
-                    // 页脚
-                    'footer-about': '多伦多生命河灵粮堂教会',
-                    'footer-about-text': '我们是一个充满爱心和信仰的社区，致力于传播福音、服务人群，并在基督的爱中共同成长。',
-                    'footer-links-title': '快速链接',
-                    'footer-link1': '首页',
-                    'footer-link2': '聚会时间',
-                    'footer-link3': '小组生活',
-                    'footer-link4': '信仰见证',
-                    'footer-link5': '奉献支持',
-                    'footer-contact-title': '联系我们',
-                    'footer-address': '📍 2460 The Collegeway, Mississauga, ON L5L 1V3',
-                    'footer-phone': '📞 (416) 123-4567',
-                    'footer-email': '✉️ info@trolcc.ca',
-                    'footer-hours': '🕒 周一至周五: 9:00 AM - 5:00 PM',
-                    'copyright-text': '© 2023 多伦多生命河灵粮堂教会. 保留所有权利. 🍁 为基督爱多伦多 🍁'
-                },
-                en: {
-                    // Navigation
-                    'nav-home-link': 'Home',
-                    'nav-meetings-link': 'Service Times',
-                    'nav-groups-link': 'Small Groups',
-                    'nav-testimonies-link': 'Testimonies',
-                    'nav-giving-link': 'giving',
-                    'nav-resources-link': 'Resources',
-                    'nav-mother-church-link': 'Mother Church ▼',
-                    'nav-about-link': 'About Us',
-                    'nav-contact-link': 'Contact',
-
-                    // Mother Church Dropdown
-                    'mother-home': 'Mother Church Home',
-                    'mother-bulletin': 'E-Bulletin',
-                    'mother-sunday': 'Sunday Media',
-                    'mother-online': 'Online Zone',
-                    'mother-ministries': 'Church Ministries',
-                    'mother-equip': 'Believer Training',
-                    'mother-app': 'ROLCC APP',
-
-                    // Page Title Area
-                    'page-title': 'Give & Support',
-                    'page-subtitle': 'Partner with us in God\'s Kingdom work',
-
-                    // Scripture
-                    'scripture-text': '"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."',
-                    'scripture-ref': '2 Corinthians 9:7',
-
-                    // Giving Methods
-                    'giving-methods-title': 'Ways to Give',
-                    'giving-methods-desc': 'Choose the giving method that works best for you',
-
-                    'method-check-title': 'Check',
-                    'method-check-desc': 'Please mail your check to church address, payable to:',
-                    'method-check-payee': 'Toronto River of Life Christian Church',
-                    'btn-get-address': 'Get Mailing Address',
-
-                    'method-etransfer-title': 'E-Transfer',
-                    'method-etransfer-desc': 'Give conveniently through Interac e-Transfer',
-                    'method-etransfer-email': 'Email: giving@trolcc.ca',
-                    'btn-etransfer-help': 'How to Use',
-
-                    'method-online-title': 'Online Giving',
-                    'method-online-desc': 'Give securely through our online platform',
-                    'btn-online-giving': 'Go to Giving Platform',
-
-                    // Giving Purpose
-                    'purpose-title': 'Your Giving Supports',
-                    'purpose-desc': 'Your generosity helps these ministries thrive',
-
-                    'purpose-1-title': 'Gospel Outreach',
-                    'purpose-1-desc': 'Local and international mission work',
-                    'purpose-2-title': 'Community Service',
-                    'purpose-2-desc': 'Community outreach and charity programs',
-                    'purpose-3-title': 'Church Operations',
-                    'purpose-3-desc': 'Daily operations and facility maintenance',
-                    'purpose-4-title': 'Discipleship',
-                    'purpose-4-desc': 'Theological education and believer training',
-
-                    // Financial Transparency
-                    'transparency-title': 'Financial Transparency',
-                    'transparency-desc': 'We are committed to transparent stewardship',
-                    'btn-financial-report': 'View Annual Report',
-                    'btn-tax-receipt': 'Tax Receipt Info',
-
-                    // Footer
-                    'footer-about': 'Toronto River of Life',
-                    'footer-about-text': 'We are a loving and faithful community dedicated to spreading the gospel, serving people, and growing together in Christ\'s love.',
-                    'footer-links-title': 'Quick Links',
-                    'footer-link1': 'Home',
-                    'footer-link2': 'Service Times',
-                    'footer-link3': 'Small Groups',
-                    'footer-link4': 'Testimonies',
-                    'footer-link5': 'Give & Support',
-                    'footer-contact-title': 'Contact Us',
-                    'footer-address': '📍 2460 The Collegeway, Mississauga, ON L5L 1V3',
-                    'footer-phone': '📞 (416) 123-4567',
-                    'footer-email': '✉️ info@trolcc.ca',
-                    'footer-hours': '🕒 Mon-Fri: 9:00 AM - 5:00 PM',
-                    'copyright-text': '© 2023 Toronto River of Life Christian Church. All rights reserved. 🍁 Loving Toronto for Christ 🍁'
+            // 当复选框状态改变时，委派给 languageManager
+            langSwitch.addEventListener('change', () => {
+                const target = langSwitch.checked ? 'en' : 'zh-Hant';
+                if (window.languageManager && typeof window.languageManager.setLanguage === 'function') {
+                    window.languageManager.setLanguage(target);
                 }
-            };
+            });
 
-            // 切换语言函数
-            function toggleLanguage() {
-                const isEnglish = langSwitch.checked;
-                const targetLang = isEnglish ? 'en' : 'zh';
-
-                console.log('切换到语言:', targetLang);
-
-                // 保存语言偏好
-                localStorage.setItem('preferred-language', targetLang);
-
-                // 更新文本内容
-                for (const [elementId, text] of Object.entries(content[targetLang])) {
-                    const element = document.getElementById(elementId);
-                    if (element) {
-                        element.textContent = text;
-                    } else {
-                        console.log('未找到元素:', elementId);
-                    }
-                }
+            // 读取已保存的语言偏好并同步复选框
+            const saved = localStorage.getItem('preferredLang') || localStorage.getItem('preferred-language');
+            if (saved) {
+                langSwitch.checked = (saved === 'en');
             }
-
-            // 添加事件监听
-            langSwitch.addEventListener('change', toggleLanguage);
-
-            // 初始化：检查是否有保存的语言偏好
-            const savedLang = localStorage.getItem('preferred-language');
-            if (savedLang === 'en') {
-                langSwitch.checked = true;
-                toggleLanguage(); // 立即应用英文
-            }
-
-            console.log('语言切换功能初始化完成');
         }
 
-        // 页面加载时初始化语言切换
         document.addEventListener('DOMContentLoaded', function () {
             initializeLanguageSwitcher();
         });

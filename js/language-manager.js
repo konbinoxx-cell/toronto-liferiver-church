@@ -1,7 +1,7 @@
 // 新建文件：language-manager.js
 class LanguageManager {
   constructor() {
-    this.currentLang = 'zh-Hant'; // 默认繁体
+    this.currentLang = (window.CONFIG && CONFIG.DEFAULT_LANG) ? CONFIG.DEFAULT_LANG : 'zh-Hant';
     this.init();
   }
   
@@ -11,8 +11,24 @@ class LanguageManager {
     if (savedLang) {
       this.currentLang = savedLang;
     }
-    
     this.bindEvents();
+
+    // Update trigger label and active option based on currentLang
+    const langTrigger = document.getElementById('langTrigger');
+    const langTextMap = {
+      'zh-Hans': '简体',
+      'zh-Hant': '繁體',
+      'en': 'EN',
+      'fr': 'FR'
+    };
+    if (langTrigger) {
+      const span = langTrigger.querySelector('span');
+      if (span) span.textContent = langTextMap[this.currentLang] || this.currentLang;
+    }
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.dataset.lang === this.currentLang);
+    });
+
     this.applyLanguage();
   }
   
@@ -31,16 +47,14 @@ class LanguageManager {
       document.querySelectorAll('.lang-option').forEach(option => {
         option.addEventListener('click', (e) => {
           e.preventDefault();
-          const lang = e.target.dataset.lang;
+          const lang = option.dataset.lang;
           this.setLanguage(lang);
           langDropdown.classList.remove('show');
-          
+
           // 更新选中状态
-          document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.classList.remove('active');
-          });
-          e.target.classList.add('active');
-          
+          document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+
           // 更新按钮文字
           const langText = {
             'zh-Hans': '简体',
@@ -48,7 +62,8 @@ class LanguageManager {
             'en': 'EN',
             'fr': 'FR'
           }[lang];
-          langTrigger.querySelector('span').textContent = langText;
+          const span = langTrigger.querySelector('span');
+          if (span) span.textContent = langText || lang;
         });
       });
       
@@ -80,11 +95,11 @@ class LanguageManager {
   }
   
   applyLanguage() {
-    // 应用已定义的翻译
-    Object.keys(translations || {}).forEach(key => {
-      const element = document.querySelector(`[data-i18n="${key}"]`);
-      if (element && translations[key][this.currentLang]) {
-        element.textContent = translations[key][this.currentLang];
+    // Apply translations for any element with `data-i18n`
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations && translations[key] && translations[key][this.currentLang]) {
+        el.textContent = translations[key][this.currentLang];
       }
     });
     
