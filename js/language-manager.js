@@ -18,8 +18,7 @@ class LanguageManager {
     const langTextMap = {
       'zh-Hans': '简体',
       'zh-Hant': '繁體',
-      'en': 'EN',
-      'fr': 'FR'
+      'en': 'EN'
     };
     if (langTrigger) {
       const span = langTrigger.querySelector('span');
@@ -48,6 +47,14 @@ class LanguageManager {
         option.addEventListener('click', (e) => {
           e.preventDefault();
           const lang = option.dataset.lang;
+          // If user chooses English, open external translator for this page
+          if (lang === 'en') {
+            const translateUrl = `https://translate.google.com/translate?sl=auto&tl=en&u=${encodeURIComponent(location.href)}`;
+            window.open(translateUrl, '_blank');
+            langDropdown.classList.remove('show');
+            return;
+          }
+
           this.setLanguage(lang);
           langDropdown.classList.remove('show');
 
@@ -59,8 +66,7 @@ class LanguageManager {
           const langText = {
             'zh-Hans': '简体',
             'zh-Hant': '繁體',
-            'en': 'EN',
-            'fr': 'FR'
+            'en': 'EN'
           }[lang];
           const span = langTrigger.querySelector('span');
           if (span) span.textContent = langText || lang;
@@ -78,14 +84,8 @@ class LanguageManager {
     if (this.currentLang !== lang) {
       this.currentLang = lang;
       localStorage.setItem('preferredLang', lang);
-      // For en/fr use remote translation; for zh-Hans/zh-Hant use local conversions
-      if (lang === 'en' || lang === 'fr') {
-        // Apply known translations first (data-i18n)
-        this.applyLanguage();
-        this.translatePageRemote(lang).catch(err => console.error('Translate error', err));
-      } else {
-        this.applyLanguage();
-      }
+      // Only support zh-Hant / zh-Hans internally; English opens external translator in the selector
+      this.applyLanguage();
       
       // 触发自定义事件，让其他组件知道语言已更改
       document.dispatchEvent(new CustomEvent('languageChanged', {
