@@ -96,7 +96,7 @@ class LanguageManager {
     modal.style.zIndex = '9999';
 
     const box = document.createElement('div');
-    box.style.width = '420px';
+    box.style.width = '360px';
     box.style.background = '#fff';
     box.style.borderRadius = '8px';
     box.style.padding = '20px';
@@ -104,20 +104,20 @@ class LanguageManager {
     box.style.fontFamily = 'sans-serif';
 
     box.innerHTML = `
-      <h3 style="margin-top:0">外部翻译提示 / External Translation Notice</h3>
-      <p style="color:#333;line-height:1.4">您即将使用外部机器翻译工具将本站页面翻译成英文。由于自动翻译可能出现歧义或错误，本网站对译文不承担责任。<strong>继续即表示您已知晓并同意。</strong></p>
-      <p style="color:#666;font-size:0.95rem;margin-top:8px">You are about to use an external machine translation service. Translations may be inaccurate; the site is not responsible for interpretation errors.</p>
-      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-        <label style="flex:1">选择翻译器 / Choose translator:</label>
-        <select id="translator-choice" style="flex:1;padding:6px">
+      <h4 style="margin:0 0 6px 0;font-size:1rem">外部翻译提示 / External Translation Notice</h4>
+      <p style="color:#333;line-height:1.3;font-size:0.9rem;margin:0 0 8px 0">您即将使用外部机器翻译工具将本站页面翻译成英文。由于自动翻译可能出现歧义或错误，本网站对译文不承担责任。<strong>继续即表示您已知晓并同意。</strong></p>
+      <p style="color:#666;font-size:0.82rem;margin:0 0 10px 0">You are about to use an external machine translation service. Translations may be inaccurate; the site is not responsible for interpretation errors.</p>
+      <div style="margin-top:6px;display:flex;gap:8px;align-items:center">
+        <label style="flex:1;font-size:0.9rem">选择翻译器 / Choose:</label>
+        <select id="translator-choice" style="flex:1;padding:5px;font-size:0.9rem">
           <option value="google">Google Translate (recommended)</option>
           <option value="bing">Bing Translator</option>
           <option value="deepl">DeepL</option>
         </select>
       </div>
-      <div style="margin-top:18px;text-align:right">
-        <button id="translator-cancel" style="margin-right:8px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;background:#fff">取消 / Cancel</button>
-        <button id="translator-go" style="padding:8px 12px;border-radius:6px;border:0;background:#007bff;color:#fff">继续 / Continue</button>
+      <div style="margin-top:12px;text-align:right">
+        <button id="translator-cancel" style="margin-right:8px;padding:6px 10px;border-radius:6px;border:1px solid #ccc;background:#fff;font-size:0.9rem">取消 / Cancel</button>
+        <button id="translator-go" style="padding:6px 10px;border-radius:6px;border:0;background:#007bff;color:#fff;font-size:0.9rem">继续 / Continue</button>
       </div>
     `;
 
