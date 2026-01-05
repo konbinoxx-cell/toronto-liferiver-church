@@ -47,11 +47,9 @@ class LanguageManager {
         option.addEventListener('click', (e) => {
           e.preventDefault();
           const lang = option.dataset.lang;
-          // If user chooses English, open external translator for this page
+          // If user chooses English, show disclaimer + translator choice modal
           if (lang === 'en') {
-            const translateUrl = `https://translate.google.com/translate?sl=auto&tl=en&u=${encodeURIComponent(location.href)}`;
-            window.open(translateUrl, '_blank');
-            langDropdown.classList.remove('show');
+            this.showTranslatorModal();
             return;
           }
 
@@ -78,6 +76,75 @@ class LanguageManager {
         langDropdown.classList.remove('show');
       });
     }
+  }
+
+  showTranslatorModal() {
+    // Avoid duplicate modal
+    if (document.getElementById('translator-disclaimer-modal')) return;
+
+    const modal = document.createElement('div');
+    modal.id = 'translator-disclaimer-modal';
+    modal.style.position = 'fixed';
+    modal.style.left = '0';
+    modal.style.top = '0';
+    modal.style.width = '100%';
+    modal.style.height = '100%';
+    modal.style.background = 'rgba(0,0,0,0.4)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.style.zIndex = '9999';
+
+    const box = document.createElement('div');
+    box.style.width = '420px';
+    box.style.background = '#fff';
+    box.style.borderRadius = '8px';
+    box.style.padding = '20px';
+    box.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+    box.style.fontFamily = 'sans-serif';
+
+    box.innerHTML = `
+      <h3 style="margin-top:0">外部翻译提示 / External Translation Notice</h3>
+      <p style="color:#333;line-height:1.4">您即将使用外部机器翻译工具将本站页面翻译成英文。由于自动翻译可能出现歧义或错误，本网站对译文不承担责任。<strong>继续即表示您已知晓并同意。</strong></p>
+      <p style="color:#666;font-size:0.95rem;margin-top:8px">You are about to use an external machine translation service. Translations may be inaccurate; the site is not responsible for interpretation errors.</p>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <label style="flex:1">选择翻译器 / Choose translator:</label>
+        <select id="translator-choice" style="flex:1;padding:6px">
+          <option value="google">Google Translate (recommended)</option>
+          <option value="bing">Bing Translator</option>
+          <option value="deepl">DeepL</option>
+        </select>
+      </div>
+      <div style="margin-top:18px;text-align:right">
+        <button id="translator-cancel" style="margin-right:8px;padding:8px 12px;border-radius:6px;border:1px solid #ccc;background:#fff">取消 / Cancel</button>
+        <button id="translator-go" style="padding:8px 12px;border-radius:6px;border:0;background:#007bff;color:#fff">继续 / Continue</button>
+      </div>
+    `;
+
+    modal.appendChild(box);
+    document.body.appendChild(modal);
+
+    // Event handlers
+    modal.querySelector('#translator-cancel').addEventListener('click', () => modal.remove());
+    modal.querySelector('#translator-go').addEventListener('click', async () => {
+      const choice = modal.querySelector('#translator-choice').value;
+      const pageUrl = location.href;
+      // For Google we can open with the URL parameter
+      if (choice === 'google') {
+        const translateUrl = `https://translate.google.com/translate?sl=auto&tl=en&u=${encodeURIComponent(pageUrl)}`;
+        window.open(translateUrl, '_blank');
+      } else if (choice === 'bing') {
+        // Bing does not accept page URL directly reliably; open Bing Translator and copy URL to clipboard
+        try { await navigator.clipboard.writeText(pageUrl); } catch (e) { /* ignore */ }
+        window.open('https://www.bing.com/translator', '_blank');
+        alert('页面链接已复制到剪贴板，请在 Bing 翻译粘贴链接后翻译。');
+      } else if (choice === 'deepl') {
+        try { await navigator.clipboard.writeText(pageUrl); } catch (e) { /* ignore */ }
+        window.open('https://www.deepl.com/translator', '_blank');
+        alert('页面链接已复制到剪贴板，请在 DeepL 翻译粘贴链接或将文本粘贴后翻译。');
+      }
+      modal.remove();
+    });
   }
   
   setLanguage(lang) {
@@ -185,26 +252,37 @@ class LanguageManager {
   }
   
   convertTraditionalToSimple() {
-    // 转换繁体到简体
+    // 转换繁体到简体 (异步尝试使用 opencc-js)
     document.querySelectorAll('body *').forEach(element => {
       if (element.childNodes.length === 1 && element.childNodes[0].nodeType === 3) {
         const text = element.textContent;
-        const converted = OpenCC.convert(text, 't2s');
-        if (text !== converted) {
-          element.textContent = converted;
+        // use async converter when available, fallback to sync
+        if (OpenCC && typeof OpenCC.convertAsync === 'function') {
+          OpenCC.convertAsync(text, 't2s').then(converted => {
+            if (converted && converted !== text) element.textContent = converted;
+          }).catch(() => {
+            try { const converted = OpenCC.convert(text, 't2s'); if (converted !== text) element.textContent = converted; } catch (e) {}
+          });
+        } else {
+          try { const converted = OpenCC.convert(text, 't2s'); if (converted !== text) element.textContent = converted; } catch (e) {}
         }
       }
     });
   }
   
   convertSimpleToTraditional() {
-    // 转换简体到繁体
+    // 转换简体到繁体 (异步尝试使用 opencc-js)
     document.querySelectorAll('body *').forEach(element => {
       if (element.childNodes.length === 1 && element.childNodes[0].nodeType === 3) {
         const text = element.textContent;
-        const converted = OpenCC.convert(text, 's2t');
-        if (text !== converted) {
-          element.textContent = converted;
+        if (OpenCC && typeof OpenCC.convertAsync === 'function') {
+          OpenCC.convertAsync(text, 's2t').then(converted => {
+            if (converted && converted !== text) element.textContent = converted;
+          }).catch(() => {
+            try { const converted = OpenCC.convert(text, 's2t'); if (converted !== text) element.textContent = converted; } catch (e) {}
+          });
+        } else {
+          try { const converted = OpenCC.convert(text, 's2t'); if (converted !== text) element.textContent = converted; } catch (e) {}
         }
       }
     });
