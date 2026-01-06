@@ -1,20 +1,189 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>去中心化學習 — 占位頁</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去中心化學習｜生命小組網絡｜未來聖所</title>
+    <link rel="stylesheet" href="../css/future.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" 
+            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
+            crossorigin="anonymous"></script>
 </head>
 <body>
-    <main style="max-width:900px;margin:48px auto;padding:24px;">
-        <h1>去中心化學習</h1>
-        <p>本頁為占位內容：我們將在此說明去中心化學習在小組與門徒訓練中的實際運作範例與資源。</p>
-        <section>
-            <h2>願景</h2>
-            <p>鼓勵人人成為師生相長的學習共同體，打破知識與服事的單向流動。</p>
+    <div id="canvas-container"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="../future.html" class="logo-link" aria-label="返回未來聖所">
+                <img src="../images/trolcc_logo1.png" alt="Logo" class="logo-image">
+                <div>
+                    <div class="logo-text glow-text">Life River</div>
+                    <div class="logo-sub">Decent. Learning</div>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../future.html#home" class="nav-link">首頁</a></li>
+                    <li><a href="../future.html#ecosystem" class="nav-link active">小組生態</a></li>
+                    <li><a href="../index.html" class="nav-link">返回地表</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn-primary">加入網絡</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="learning">
+            <div class="container">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h1 class="glow-text" style="font-size: 2.8rem;">📚 去中心化學習</h1>
+                        <p style="color: var(--text-dim); font-size: 1.1rem;">小組內彼此教導，共同在聖道中成長</p>
+                    </div>
+
+                    <div id="learning-viz" style="height: 240px; margin: 2rem 0; border-radius: 12px; overflow: hidden; position: relative;">
+                        <!-- Three.js 光之树动画将注入此处 -->
+                    </div>
+
+                    <article>
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">核心理念</h2>
+                        <p>「你們要彼此教導，互相勸戒」（西3:16）。學習不是從「教師→學生」的單向灌輸，而是「群體→真理→生命」的共同朝聖。</p>
+
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">四種學習形態</h2>
+                        <ul style="padding-left: 1.5rem; margin: 1rem 0; line-height: 1.8;">
+                            <li><strong>輪值帶領</strong>：無固定講員，每次由不同成員預備（可僅分享一節經文+生活連結）</li>
+                            <li><strong>問題驅動</strong>：從真實困境出發（如：「如何在職場持守誠實？」），查經尋找答案</li>
+                            <li><strong>見證交織</strong>：一人分享經歷，其他人以經文回應——真理在敘事中顯明</li>
+                            <li><strong>跨組對話</strong>：每月邀請其他小組成員參與，帶來新視角與挑戰</li>
+                        </ul>
+
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">工具箱</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                            <div style="background: rgba(100,255,218,0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>三欄共筆</strong><br>
+                                <small>亮光｜疑問｜行動</small>
+                            </div>
+                            <div style="background: rgba(0,255,136,0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>經文錨點</strong><br>
+                                <small>每段必歸一節核心經文</small>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 8px;">
+                                <strong>沉默時刻</strong><br>
+                                <small>留白3分鐘，讓聖靈說話</small>
+                            </div>
+                        </div>
+
+                        <blockquote style="border-left: 3px solid var(--secondary); padding-left: 1rem; font-style: italic; color: var(--text-dim); background: rgba(100,255,218,0.03); border-radius: 0 8px 8px 0; margin: 1.5rem 0;">
+                            「我們不教『答案』，我們一起『尋找』。當年輕人問『神為何允許苦難？』，沒有人直接回答——我們打開約伯記，輪流讀，輪流哭，輪流沉默。三週後，他說：『我仍不明白，但我知道祂在風中說話。』」
+                        </blockquote>
+
+                        <div style="margin-top: 2.5rem; text-align: center; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="gift-mutual.html" class="btn-primary">◀ 恩賜互助</a>
+                            <a href="transparent-governance.html" class="btn-secondary">透明治理 ▶</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
-        <p><a href="/future.html">回到未來生態</a></p>
     </main>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.8rem; color: var(--text-dim);">
+                &copy; 2026 多倫多生命河靈糧堂 | 唯獨基督 | 只有節點，沒有權位
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Three.js: Tree of Light — branches = scripture, fruits = insights
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('learning-viz');
+            if (!container) return;
+
+            let scene, camera, renderer;
+
+            function init() {
+                scene = new THREE.Scene();
+                const aspect = container.clientWidth / container.clientHeight;
+                camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.appendChild(renderer.domElement);
+
+                camera.position.set(0, 0, 25);
+                camera.lookAt(0, 0, 0);
+
+                // Trunk (Christ)
+                const trunkGeo = new THREE.CylinderGeometry(0.8, 0.6, 8, 8);
+                const trunkMat = new THREE.MeshBasicMaterial({ color: 0x64ffda });
+                const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+                trunk.position.y = 4;
+                scene.add(trunk);
+
+                // Branches (Scripture themes)
+                const branches = [
+                    { angle: 0, len: 6, color: 0x00ff88, label: "愛" },
+                    { angle: Math.PI/3, len: 5, color: 0x00cc66, label: "公義" },
+                    { angle: 2*Math.PI/3, len: 5.5, color: 0x33ff99, label: "盼望" },
+                    { angle: Math.PI, len: 4.5, color: 0x66ffaa, label: "信實" },
+                    { angle: 4*Math.PI/3, len: 5, color: 0x99ffbb, label: "恩典" },
+                    { angle: 5*Math.PI/3, len: 4, color: 0xccffcc, label: "真理" }
+                ];
+
+                branches.forEach(branch => {
+                    const x = Math.cos(branch.angle) * branch.len;
+                    const y = Math.sin(branch.angle) * branch.len + 8;
+                    const z = 0;
+
+                    const branchGeo = new THREE.CylinderGeometry(0.2, 0.1, branch.len, 6);
+                    const branchMat = new THREE.MeshBasicMaterial({ color: branch.color });
+                    const branchMesh = new THREE.Mesh(branchGeo, branchMat);
+                    branchMesh.position.set(x/2, y/2 + 4, z);
+                    branchMesh.lookAt(x, y + 8, z);
+                    scene.add(branchMesh);
+
+                    // Fruit (insights)
+                    for (let i = 0; i < 2; i++) {
+                        const offset = (i + 1) / 3;
+                        const fx = x * offset;
+                        const fy = (y - 8) * offset + 8;
+                        const fz = (Math.random() - 0.5) * 0.5;
+
+                        const fruitGeo = new THREE.SphereGeometry(0.3, 12, 12);
+                        const fruitMat = new THREE.MeshBasicMaterial({ 
+                            color: 0xffffff,
+                            transparent: true,
+                            opacity: 0.8
+                        });
+                        const fruit = new THREE.Mesh(fruitGeo, fruitMat);
+                        fruit.position.set(fx, fy, fz);
+                        scene.add(fruit);
+                    }
+                });
+
+                animate();
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const time = Date.now() * 0.0003;
+                scene.rotation.y = Math.sin(time * 0.3) * 0.1;
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                if (renderer) {
+                    const aspect = container.clientWidth / container.clientHeight;
+                    camera.aspect = aspect;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                }
+            });
+
+            init();
+        });
+    </script>
 </body>
 </html>

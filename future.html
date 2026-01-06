@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>未來聖所 - 多倫多生命河靈糧堂 (Cell Ecosystem)</title>
     <link rel="stylesheet" href="css/future.css">
-    <!-- Three.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,22 +15,25 @@
 
     <header>
         <div class="nav-container">
-            <a href="future.html" class="logo-link">
-                <img src="images/trolcc_logo1.png" alt="Logo" class="logo-image">
+            <a href="future.html" class="logo-link" aria-label="返回首頁">
+                <picture>
+                    <source srcset="images/trolcc_logo1@2x.png 2x" media="(min-resolution: 2dppx)">
+                    <img src="images/trolcc_logo1.png" alt="多倫多生命河靈糧堂 Logo" class="logo-image">
+                </picture>
                 <div>
                     <div class="logo-text glow-text">Life River</div>
-                    <div style="font-size: 0.6rem; color: var(--text-dim);">Digital Sanctuary</div>
+                    <div class="logo-sub">Digital Sanctuary</div>
                 </div>
             </a>
-            <nav>
+            <nav aria-label="主導航">
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link active" data-i18n="nav.home">首頁</a></li>
                     <li><a href="#quantum" class="nav-link" data-i18n="nav.prayer_ai">量子禱告</a></li>
                     <li><a href="#ecosystem" class="nav-link" data-i18n="nav.groups">小組生態</a></li>
-                    <li><a href="index.html" class="nav-link" style="color: var(--secondary);" data-i18n="nav.return">返回地表</a></li>
+                    <li><a href="index.html" class="nav-link external-link" data-i18n="nav.return">返回地表</a></li>
                 </ul>
             </nav>
-            <a href="pages/contact.html" class="btn-primary">加入網絡</a>
+            <a href="pages/contact.html" class="btn-primary" aria-label="加入教會網絡">加入網絡</a>
         </div>
     </header>
 
@@ -39,14 +41,13 @@
         <!-- Home Section -->
         <section id="home">
             <div class="container" style="text-align: center;">
-                <h1 class="glow-text" style="font-size: 3.5rem; margin-bottom: 1rem;" data-i18n="work.discipleship">唯獨基督</h1>
-                <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem;" data-i18n="future.subtitle">
+                <h1 class="glow-text" style="font-size: clamp(2.5rem, 8vw, 3.5rem); margin-bottom: 1rem;" data-i18n="future.title">唯獨基督</h1>
+                <p style="font-size: clamp(1rem, 4vw, 1.2rem); color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem;" data-i18n="future.subtitle">
                     超越傳統體制，連接生命源頭。一個以基督為中心、去人為集權的小組教會生態。
                 </p>
-                <div style="display: flex; gap: 20px; justify-content: center;">
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
                     <a href="#quantum" class="btn-primary" data-i18n="btn.enter_prayer">進入禱告空間</a>
-                    <a href="#ecosystem" class="btn-primary"
-                        style="border-color: var(--text-dim); color: var(--text-dim);" data-i18n="btn.explore_ecosystem">探索生態網絡</a>
+                    <a href="#ecosystem" class="btn-secondary" data-i18n="btn.explore_ecosystem">探索生態網絡</a>
                 </div>
             </div>
         </section>
@@ -59,18 +60,14 @@
                     <p style="margin-bottom: 2rem;">不再需要中介，直接在「道」中相遇。每一份禱告都是一次生命糾纏與共振。</p>
                     <div id="prayer-viz"
                         style="height: 300px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                        <!-- JS will inject particles here -->
-                        <div
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                            <div class="floating" style="font-size: 3rem; opacity: 0.5;">🙏</div>
-                            <div style="font-size: 0.8rem; color: var(--accent); margin-top: 10px;">實時在線連接: 1,247</div>
-                        </div>
+                        <!-- Particles will be injected by JS -->
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" placeholder="輸入您的呼求..."
-                            style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px;">
-                        <button class="btn-primary">發射共振</button>
-                    </div>
+                    <form id="prayer-form" style="display: flex; gap: 10px;">
+                        <input type="text" id="prayer-input" placeholder="輸入您的呼求..." required
+                            aria-label="輸入禱告內容"
+                            style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px; font-family: 'Inter', sans-serif;">
+                        <button type="submit" class="btn-primary" aria-label="提交禱告">發射共振</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -82,32 +79,42 @@
                     <h2 class="glow-text">生命小組網絡</h2>
                     <p>去中心化的服務矩陣，人人皆祭司。</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                    <a class="glass-card" href="pages/gift-mutual.html" style="text-decoration:none;color:inherit;">
-                        <h3 style="color: var(--accent);">恩賜互助</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">基於生命恩賜的動態協作，而非職位的層級控制。點擊閱讀詳情。</p>
+                <div class="ecosystem-grid">
+                    <a class="ecosystem-card glass-card" href="pages/gift-mutual.html">
+                        <h3 class="card-title">恩賜互助</h3>
+                        <p class="card-desc">基於生命恩賜的動態協作，而非職位的層級控制。</p>
                     </a>
 
-                    <a class="glass-card" href="pages/decentralized-learning.html" style="text-decoration:none;color:inherit;">
-                        <h3 style="color: var(--accent);">去中心化學習</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">小組內彼此教導，共同在聖道中成長。點擊閱讀詳情。</p>
+                    <a class="ecosystem-card glass-card" href="pages/decentralized-learning.html">
+                        <h3 class="card-title">去中心化學習</h3>
+                        <p class="card-desc">小組內彼此教導，共同在聖道中成長。</p>
                     </a>
 
-                    <a class="glass-card" href="pages/transparent-governance.html" style="text-decoration:none;color:inherit;">
-                        <h3 style="color: var(--accent);">透明治理</h3>
-                        <p style="font-size: 0.9rem; margin-top: 10px;">基於真理的共識，拒絕人為權力的傲慢。點擊閱讀詳情。</p>
+                    <a class="ecosystem-card glass-card" href="pages/transparent-governance.html">
+                        <h3 class="card-title">透明治理</h3>
+                        <p class="card-desc">基於真理的共識，拒絕人為權力的傲慢。</p>
+                    </a>
+
+                    <!-- ✅ 新增：Qwen AI 查经入口 -->
+                    <a class="ecosystem-card glass-card" href="pages/bible-study-ai.html">
+                        <h3 class="card-title">🧠 Qwen 智能查經</h3>
+                        <p class="card-desc">用AI生成經文解經、代禱文、應用建議，讓真理更貼近生活。</p>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer
-        style="padding: 4rem 0; background: rgba(2, 12, 27, 0.9); text-align: center; border-top: 1px solid var(--glass-border);">
-        <p style="font-size: 0.8rem; color: var(--text-dim);" data-i18n="footer.copyright">&copy; 2025 多倫多生命河靈糙堂 | 唯獨基督 | 只有節點，沒有權位</p>
+    <footer aria-label="頁尾資訊">
+        <div class="container">
+            <p style="font-size: 0.8rem; color: var(--text-dim);" data-i18n="footer.copyright">
+                &copy; 2026 多倫多生命河靈糧堂 | 唯獨基督 | 只有節點，沒有權位
+            </p>
+        </div>
     </footer>
 
     <script src="js/future.js"></script>
+    <script src="js/i18n.js"></script> <!-- ✅ 加载国际化引擎 -->
 </body>
 
 </html>

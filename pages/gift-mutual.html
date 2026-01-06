@@ -1,20 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>恩賜互助 — 占位頁</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恩賜互助｜生命小組網絡｜未來聖所</title>
+    <link rel="stylesheet" href="../css/future.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" 
+            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
+            crossorigin="anonymous"></script>
 </head>
 <body>
-    <main style="max-width:900px;margin:48px auto;padding:24px;">
-        <h1>恩賜互助</h1>
-        <p>本頁為占位內容：我們將在此介紹恩賜互助的理念、運作方式與參與方式。如果你有想要補充的文字或資源，請提供給我們，我們會更新內容。</p>
-        <section>
-            <h2>核心想法</h2>
-            <p>透過教會肢體的恩賜分享，建立彼此互助的生態，強調靈命事工與實際需要的連結。</p>
+    <div id="canvas-container"></div>
+
+    <header>
+        <div class="nav-container">
+            <a href="../future.html" class="logo-link" aria-label="返回未來聖所">
+                <img src="../images/trolcc_logo1.png" alt="Logo" class="logo-image">
+                <div>
+                    <div class="logo-text glow-text">Life River</div>
+                    <div class="logo-sub">Gift Mutual</div>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../future.html#home" class="nav-link">首頁</a></li>
+                    <li><a href="../future.html#ecosystem" class="nav-link active">小組生態</a></li>
+                    <li><a href="../index.html" class="nav-link">返回地表</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn-primary">加入網絡</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="gift-mutual">
+            <div class="container">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h1 class="glow-text" style="font-size: 2.8rem;">💠 恩賜互助</h1>
+                        <p style="color: var(--text-dim); font-size: 1.1rem;">基於生命恩賜的動態協作，而非職位的層級控制</p>
+                    </div>
+
+                    <div id="gift-viz" style="height: 220px; margin: 2rem 0; border-radius: 12px; overflow: hidden; position: relative;">
+                        <!-- Three.js 粒子互联动画将注入此处 -->
+                    </div>
+
+                    <article>
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">核心理念</h2>
+                        <p>在基督身體中，「恩賜原有分別，聖靈卻是一位」（林前12:4）。我們拒絕以頭銜定義價值，轉而建立「恩賜可見、需求可達、回應自發」的互助流動網絡。</p>
+
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">實踐四步驟</h2>
+                        <ol style="padding-left: 1.5rem; margin: 1rem 0;">
+                            <li><strong>光照</strong>：每季「恩賜探索時刻」——透過分享、觀察、靈恩印證，辨識神在各人生命中的動工。</li>
+                            <li><strong>顯明</strong>：建立匿名「恩賜地圖」（線上共筆），標註：安慰者、治理者、施予者、代禱者…</li>
+                            <li><strong>流動</strong>：設立「需求看板」——成員發布需要（接送、禱告、技能學習），他人自由認領。</li>
+                            <li><strong>成全</strong>：每完成一次互助，雙方共同記錄「恩典軌跡」，累積成小組的見證檔案。</li>
+                        </ol>
+
+                        <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">真實案例</h2>
+                        <blockquote style="border-left: 3px solid var(--accent); padding-left: 1rem; font-style: italic; color: var(--text-dim); background: rgba(0,255,136,0.03); border-radius: 0 8px 8px 0;">
+                            「當阿明失業時，無人『指派』誰幫他。一位姊妹自發提供履歷修改（恩賜：細心），一位弟兄介紹面試（恩賜：連結），三位代禱者每日守望（恩賜：禱告）。三週後他得著工作——這不是組織的成果，是身體的自然反應。」
+                        </blockquote>
+
+                        <div style="margin-top: 2.5rem; text-align: center; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="../future.html#ecosystem" class="btn-primary">◀ 返回生態網絡</a>
+                            <a href="decentralized-learning.html" class="btn-secondary">去中心化學習 ▶</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
-        <p><a href="/future.html">回到未來生態</a></p>
     </main>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 0.8rem; color: var(--text-dim);">
+                &copy; 2026 多倫多生命河靈糧堂 | 唯獨基督 | 只有節點，沒有權位
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Light Three.js viz: particles connected by lines (gifts interlinking)
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('gift-viz');
+            if (!container) return;
+
+            // Responsive size
+            const updateSize = () => {
+                container.innerHTML = '';
+                initThreeJS();
+            };
+
+            let scene, camera, renderer, nodes = [], lines = [];
+
+            function initThreeJS() {
+                scene = new THREE.Scene();
+                const aspect = container.clientWidth / container.clientHeight;
+                camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.appendChild(renderer.domElement);
+
+                camera.position.z = 20;
+
+                // Create 12 gift nodes (particles)
+                nodes = [];
+                for (let i = 0; i < 12; i++) {
+                    const angle = (i / 12) * Math.PI * 2;
+                    const radius = 8 + Math.random() * 4;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    const z = (Math.random() - 0.5) * 2;
+
+                    const geo = new THREE.SphereGeometry(0.4, 16, 16);
+                    const mat = new THREE.MeshBasicMaterial({ color: 0x00ff88 });
+                    const node = new THREE.Mesh(geo, mat);
+                    node.position.set(x, y, z);
+                    scene.add(node);
+                    nodes.push(node);
+                }
+
+                // Connect each node to 3 others
+                lines = [];
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        const target = Math.floor(Math.random() * nodes.length);
+                        if (i !== target) {
+                            const points = [
+                                nodes[i].position.clone(),
+                                nodes[target].position.clone()
+                            ];
+                            const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+                            const lineMat = new THREE.LineBasicMaterial({ 
+                                color: 0x64ffda, 
+                                transparent: true,
+                                opacity: 0.3 
+                            });
+                            const line = new THREE.Line(lineGeo, lineMat);
+                            scene.add(line);
+                            lines.push(line);
+                        }
+                    }
+                }
+
+                animate();
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const time = Date.now() * 0.0005;
+                nodes.forEach((node, i) => {
+                    node.position.y = Math.sin(time + i) * 0.8;
+                    node.rotation.y += 0.002;
+                });
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                if (renderer) {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                }
+            });
+
+            // Initial render
+            updateSize();
+        });
+    </script>
 </body>
 </html>

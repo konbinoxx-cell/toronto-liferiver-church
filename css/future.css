@@ -29,6 +29,11 @@ body {
     min-height: 100vh;
 }
 
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Background Starry Nebula Effect placeholder */
 #canvas-container {
     position: fixed;
@@ -57,7 +62,7 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, .logo-text {
+h1, h2, h3, .logo-text, .card-title {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -99,6 +104,12 @@ header {
 .logo-image {
     height: 50px;
     filter: drop-shadow(0 0 5px var(--accent));
+}
+
+.logo-sub {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    line-height: 1;
 }
 
 .nav-menu {
@@ -158,6 +169,26 @@ header {
     transform: translateY(-2px);
 }
 
+.btn-secondary {
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: rgba(100, 255, 218, 0.2);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
 /* Scroll-aware sections */
 section {
     min-height: 100vh;
@@ -172,6 +203,42 @@ section {
     margin: 0 auto;
 }
 
+/* Ecosystem Grid */
+.ecosystem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.ecosystem-card {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.ecosystem-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-title {
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-top: auto;
+    line-height: 1.6;
+}
+
 /* Animations */
 @keyframes float {
     0% { transform: translateY(0px); }
@@ -181,4 +248,53 @@ section {
 
 .floating {
     animation: float 4s ease-in-out infinite;
+}
+
+/* Focus for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* External link hint */
+.external-link {
+    position: relative;
+}
+.external-link::after {
+    content: "↗";
+    margin-left: 4px;
+    font-size: 0.7em;
+    opacity: 0.6;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        gap: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    header {
+        padding: 0;
+    }
+
+    .logo-link {
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.75rem;
+    }
+
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 1.8rem; }
+    .ecosystem-grid {
+        grid-template-columns: 1fr;
+    }
 }
