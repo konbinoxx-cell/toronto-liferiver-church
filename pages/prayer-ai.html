@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>祷告AI & 祷告会生成器 - 多伦多生命河灵粮堂</title>
+    <title>祈禱 AI & 祈禱會生成器 - 多倫多生命河靈糧堂</title>
     <style>
         :root {
             --primary: #1a5276;
@@ -333,24 +333,24 @@
     <!-- 头部导航 -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <img src="../images/trolcc_logo1.png" alt="多伦多生命河灵粮堂" class="logo-image">
+                <div class="logo">
+                <img src="../images/trolcc_logo1.png" alt="多倫多生命河靈糧堂" class="logo-image">
                 <div>
-                    <div class="logo-text">多伦多生命河灵粮堂</div>
+                    <div class="logo-text">多倫多生命河靈糧堂</div>
                     <div class="logo-subtitle">Toronto River of Life Christian Church</div>
                 </div>
             </div>
             
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">首页</a></li>
-                    <li><a href="meetings.html" class="nav-link">聚会时间</a></li>
-                    <li><a href="groups.html" class="nav-link" data-i18n="nav.groups">小组生活</a></li>
-                    <li><a href="testimonies.html" class="nav-link">信仰见证</a></li>
-                    <li><a href="resources.html" class="nav-link">资源中心</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">首頁</a></li>
+                    <li><a href="meetings.html" class="nav-link">聚會時間</a></li>
+                    <li><a href="groups.html" class="nav-link" data-i18n="nav.groups">小組生活</a></li>
+                    <li><a href="testimonies.html" class="nav-link">信仰見證</a></li>
+                    <li><a href="resources.html" class="nav-link">資源中心</a></li>
                     <li><a href="prayer-ai.html" class="nav-link active">🙏 祷告AI & 生成器</a></li>
-                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">关于我们</a></li>
-                    <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">關於我們</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">聯繫我們</a></li>
                 </ul>
             </nav>
             
@@ -361,8 +361,8 @@
     <!-- 英雄区域 -->
     <section class="hero">
         <div class="container">
-            <h1 data-i18n="prayer.generate_title">祷告AI & 祷告会生成器</h1>
-            <p data-i18n="prayer.instructions">智能生成个性化祷告会和祷告指南，帮助您更有效地与神交通</p>
+            <h1 data-i18n="prayer.generate_title">祈禱 AI & 祈禱會生成器</h1>
+            <p data-i18n="prayer.instructions">智能生成個性化祈禱會與祈禱指南，幫助您更有效地與神交通</p>
         </div>
     </section>
 
@@ -372,60 +372,60 @@
         <section class="prayer-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>祷告助手</h2>
-                    <p>选择您需要的功能</p>
+                    <h2>祈禱助手</h2>
+                    <p>選擇您需要的功能</p>
                 </div>
                 
                 <div class="tabs">
-                    <div class="tab active" data-tab="prayer-ai">🙏 个人祷告AI</div>
-                    <div class="tab" data-tab="meeting-generator">📝 祷告会生成器</div>
+                    <div class="tab active" data-tab="prayer-ai">🙏 個人祈禱 AI</div>
+                    <div class="tab" data-tab="meeting-generator">📝 祈禱會生成器</div>
                 </div>
                 
                 <!-- 个人祷告AI -->
                 <div class="tab-content active" id="prayer-ai">
                     <div class="generator-container">
-                        <h3>个人祷告助手</h3>
-                        <p>请描述您的祷告需求，AI将为您生成合适的祷告文</p>
+                        <h3>個人祈禱助手</h3>
+                        <p>請描述您的祈禱需求，AI 將為您生成合適的祈禱文</p>
                         
                         <div class="input-group">
-                            <label>祷告主题：</label>
-                            <input type="text" id="prayerTopic" placeholder="例如：疾病得医治、工作压力、家庭关系...">
+                            <label>祈禱主題：</label>
+                            <input type="text" id="prayerTopic" placeholder="例如：疾病得醫治、工作壓力、家庭關係...">
                         </div>
                         
                         <div class="input-group">
-                            <label>具体需求描述：</label>
-                            <textarea id="prayerDetails" rows="4" placeholder="请详细描述您的情况和祷告需求..."></textarea>
+                            <label>具體需求描述：</label>
+                            <textarea id="prayerDetails" rows="4" placeholder="請詳細描述您的情況和祈禱需求..."></textarea>
                         </div>
                         
                         <div class="input-row">
                             <div class="input-group">
-                                <label>祷告风格：</label>
+                                <label>祈禱風格：</label>
                                 <select id="prayerStyle">
-                                    <option value="traditional">传统式</option>
-                                    <option value="modern">现代式</option>
-                                    <option value="scriptural">经文式</option>
-                                    <option value="simple">简洁式</option>
+                                    <option value="traditional">傳統式</option>
+                                    <option value="modern">現代式</option>
+                                    <option value="scriptural">經文式</option>
+                                    <option value="simple">簡潔式</option>
                                 </select>
                             </div>
                             
                             <div class="input-group">
-                                <label>祷告长度：</label>
+                                <label>祈禱長度：</label>
                                 <select id="prayerLength">
-                                    <option value="short">简短 (1-2分钟)</option>
-                                    <option value="medium">中等 (3-5分钟)</option>
-                                    <option value="long">较长 (5-10分钟)</option>
+                                    <option value="short">簡短 (1-2分鐘)</option>
+                                    <option value="medium">中等 (3-5分鐘)</option>
+                                    <option value="long">較長 (5-10分鐘)</option>
                                 </select>
                             </div>
                         </div>
                         
-                        <button onclick="generatePersonalPrayer()" class="btn">生成祷告文</button>
+                        <button onclick="generatePersonalPrayer()" class="btn">生成祈禱文</button>
                         
                         <div id="personalPrayerOutput" class="output-container">
-                            <h3>为您生成的祷告文</h3>
+                            <h3>為您生成的祈禱文</h3>
                             <div id="personalPrayerContent"></div>
                             <div class="action-buttons">
-                                <button onclick="copyPersonalPrayer()" class="btn">复制祷告文</button>
-                                <button onclick="savePersonalPrayer()" class="btn btn-secondary">保存祷告文</button>
+                                <button onclick="copyPersonalPrayer()" class="btn">複製祈禱文</button>
+                                <button onclick="savePersonalPrayer()" class="btn btn-secondary">保存祈禱文</button>
                                 <button onclick="resetPersonalPrayer()" class="btn">重新生成</button>
                             </div>
                         </div>
@@ -435,46 +435,46 @@
                 <!-- 祷告会生成器 -->
                 <div class="tab-content" id="meeting-generator">
                     <div class="generator-container">
-                        <h3>祷告会流程生成器</h3>
-                        <p>输入祷告会基本信息，自动生成完整的祷告会流程</p>
+                        <h3>祈禱會流程生成器</h3>
+                        <p>輸入祈禱會基本資訊，自動生成完整的祈禱會流程</p>
                         
                         <div class="input-group">
-                            <label>祷告会主题：</label>
-                            <input type="text" id="meetingTheme" placeholder="例如：感恩、医治、平安、国家、教会复兴...">
+                            <label>祈禱會主題：</label>
+                            <input type="text" id="meetingTheme" placeholder="例如：感恩、醫治、平安、國家、教會復興...">
                         </div>
                         
                         <div class="input-row">
                             <div class="input-group">
                                 <label>预计时长：</label>
                                 <select id="meetingDuration">
-                                    <option value="30">30分钟</option>
-                                    <option value="45">45分钟</option>
-                                    <option value="60" selected>60分钟</option>
-                                    <option value="90">90分钟</option>
-                                    <option value="120">120分钟</option>
+                                    <option value="30">30分鐘</option>
+                                    <option value="45">45分鐘</option>
+                                    <option value="60" selected>60分鐘</option>
+                                    <option value="90">90分鐘</option>
+                                    <option value="120">120分鐘</option>
                                 </select>
                             </div>
                             
                             <div class="input-group">
                                 <label>参与人数：</label>
-                                <input type="number" id="meetingParticipants" placeholder="大约人数" min="1" value="10">
+                                    <input type="number" id="meetingParticipants" placeholder="大約人數" min="1" value="10">
                             </div>
                         </div>
                         
                         <div class="input-group">
-                            <label>特别需求或重点：</label>
-                            <textarea id="meetingSpecial" rows="3" placeholder="例如：为病人代祷、为国家领袖祷告、感恩见证分享..."></textarea>
+                            <label>特別需求或重點：</label>
+                            <textarea id="meetingSpecial" rows="3" placeholder="例如：為病人代禱、為國家領袖禱告、感恩見證分享..."></textarea>
                         </div>
                         
-                        <button onclick="generatePrayerMeeting()" class="btn">生成祷告会流程</button>
+                        <button onclick="generatePrayerMeeting()" class="btn">生成祈禱會流程</button>
                         
                         <div id="meetingOutput" class="output-container">
-                            <h3>祷告会流程建议</h3>
+                            <h3>祈禱會流程建議</h3>
                             <div id="meetingContent"></div>
                             <div class="action-buttons">
-                                <button onclick="copyMeetingContent()" class="btn">复制流程</button>
-                                <button onclick="saveMeetingPlan()" class="btn btn-secondary">保存计划</button>
-                                <button onclick="printMeetingPlan()" class="btn">打印计划</button>
+                                <button onclick="copyMeetingContent()" class="btn">複製流程</button>
+                                <button onclick="saveMeetingPlan()" class="btn btn-secondary">保存計劃</button>
+                                <button onclick="printMeetingPlan()" class="btn">列印計劃</button>
                             </div>
                         </div>
                     </div>
@@ -486,8 +486,8 @@
     <!-- 页脚 -->
     <footer style="background: linear-gradient(135deg, var(--primary), var(--dark)); color: white; padding: 60px 0 20px;">
         <div class="container">
-            <div class="copyright" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <p data-i18n="footer.copyright">&copy; 2023 多伦多生命河灵粮堂教会. 保留所有权利. 🍁 为基督爱多伦多 🍁</p>
+                <div class="copyright" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p data-i18n="footer.copyright">&copy; 2023 多倫多生命河靈糧堂教會. 保留所有權利. 🍁 為基督愛多倫多 🍁</p>
             </div>
         </div>
     </footer>
@@ -519,7 +519,7 @@
             const length = document.getElementById('prayerLength').value;
             
             if (!topic) {
-                alert('请输入祷告主题');
+                alert('請輸入祈禱主題');
                 return;
             }
             
@@ -539,17 +539,17 @@
             
             // 开头部分
             if (style === 'traditional') {
-                prayer += `<p>亲爱的主，我们的天父，</p>`;
+                prayer += `<p>親愛的主，我們的天父，</p>`;
             } else if (style === 'modern') {
-                prayer += `<p>亲爱的天父上帝，</p>`;
+                prayer += `<p>親愛的天父上帝，</p>`;
             } else if (style === 'scriptural') {
-                prayer += `<p>我们在天上的父，愿人都尊你的名为圣，</p>`;
+                prayer += `<p>我們在天上的父，願人都尊你的名為聖，</p>`;
             } else {
-                prayer += `<p>亲爱的天父，</p>`;
+                prayer += `<p>親愛的天父，</p>`;
             }
             
             // 主体部分
-            prayer += `<p>我今天来到你面前，为着<b>${topic}</b>向你祈求。`;
+            prayer += `<p>我今天來到你面前，為著<b>${topic}</b>向你祈求。`;
             
             if (details) {
                 prayer += ` ${details}`;
@@ -561,16 +561,16 @@
             }
             
             if (length === 'long') {
-                prayer += ` 求你赐给我智慧和力量，让我能够按照你的旨意行。也求你保守我的心怀意念，使我不偏离你的道路。`;
+                prayer += ` 求你賜給我智慧和力量，讓我能夠按照你的旨意行。也求你保守我的心懷意念，使我不偏離你的道路。`;
             }
             
             // 结尾部分
             if (style === 'traditional') {
-                prayer += ` 我这样祷告是奉主耶稣基督的圣名，阿们。</p>`;
+                prayer += ` 我這樣禱告是奉主耶穌基督的聖名，阿們。</p>`;
             } else if (style === 'scriptural') {
-                prayer += ` 因为国度、权柄、荣耀，全是你的，直到永远。阿们。</p>`;
+                prayer += ` 因為國度、權柄、榮耀，全是你的，直到永遠。阿們。</p>`;
             } else {
-                prayer += ` 奉耶稣的名祷告，阿们。</p>`;
+                prayer += ` 奉耶穌的名禱告，阿們。</p>`;
             }
             
             // 添加经文参考
@@ -587,7 +587,7 @@
         function copyPersonalPrayer() {
             const content = document.getElementById('personalPrayerContent').innerText;
             navigator.clipboard.writeText(content).then(() => {
-                alert('祷告文已复制到剪贴板！');
+                alert('祈禱文已複製到剪貼板！');
             });
         }
         
@@ -597,7 +597,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = '我的祷告文.txt';
+            a.download = '我的祈禱文.txt';
             a.click();
             URL.revokeObjectURL(url);
         }
@@ -616,7 +616,7 @@
             const special = document.getElementById('meetingSpecial').value;
             
             if (!theme) {
-                alert('请输入祷告会主题');
+                alert('請輸入祈禱會主題');
                 return;
             }
             
@@ -635,15 +635,15 @@
             let content = '';
             
             content += `<div class="prayer-section-plan">
-                <strong>📖 ${theme} 祷告会流程 (总时长: ${totalTime}分钟)</strong>
-                <p>参与人数: ${participants}人 | 主题重点: ${special || '无特别说明'}</p>
+                <strong>📖 ${theme} 祈禱會流程 (總時長: ${totalTime}分鐘)</strong>
+                <p>參與人數: ${participants}人 | 主題重點: ${special || '無特別說明'}</p>
             </div>`;
             
             // 1. 开始敬拜
             const worshipTime = Math.min(15, Math.floor(totalTime * 0.2));
             content += `<div class="prayer-section-plan">
                 <strong>1. 开始敬拜 (${worshipTime}分钟)</strong>
-                <p>• 开场祷告: 为聚会求神同在 (2分钟)</p>
+                <p>• 開場祈禱: 為聚會求神同在 (2分鐘)</p>
                 <p>• 诗歌敬拜: ${worshipTime-2}分钟，2-3首与"${theme}"相关的诗歌</p>
                 <p>• 建议诗歌: 《主的恩典乃是一生之久》、《你坐着为王》等</p>
             </div>`;
@@ -652,39 +652,39 @@
             const scriptureTime = Math.min(15, Math.floor(totalTime * 0.15));
             content += `<div class="prayer-section-plan">
                 <strong>2. 经文分享 (${scriptureTime}分钟)</strong>
-                <p>• 相关经文阅读与简短分享</p>
+                <p>• 相關經文閱讀與簡短分享</p>
                 <p>• 建议经文: 腓立比书4:6-7, 彼得前书5:7, 诗篇34:4-7</p>
                 <p>• 主持人简短分享经文与${theme}的关联</p>
             </div>`;
             
-            // 3. 祷告时间
+            // 3. 祈禱時間
             const prayerTime = totalTime - worshipTime - scriptureTime - 10;
             const groupSize = Math.min(6, Math.ceil(participants / 3));
             
             content += `<div class="prayer-section-plan">
-                <strong>3. 祷告时间 (${prayerTime}分钟)</strong>
-                <p>• 分组祷告: 每组${groupSize}-${groupSize+1}人，共${Math.ceil(participants/groupSize)}组</p>
-                <p>• 祷告方向: </p>
-                <p>  - 为个人${theme.toLowerCase()}的需要祷告 (${Math.floor(prayerTime*0.4)}分钟)</p>
-                <p>  - 为教会和社区${theme.toLowerCase()}的需要祷告 (${Math.floor(prayerTime*0.3)}分钟)</p>
-                <p>  - ${special ? `为${special}祷告` : '为国家和世界相关需要祷告'} (${Math.floor(prayerTime*0.3)}分钟)</p>
+                <strong>3. 祈禱時間 (${prayerTime}分鐘)</strong>
+                <p>• 分組祈禱: 每組${groupSize}-${groupSize+1}人，共${Math.ceil(participants/groupSize)}組</p>
+                <p>• 祈禱方向: </p>
+                <p>  - 為個人${theme.toLowerCase()}的需要祈禱 (${Math.floor(prayerTime*0.4)}分鐘)</p>
+                <p>  - 為教會和社區${theme.toLowerCase()}的需要祈禱 (${Math.floor(prayerTime*0.3)}分鐘)</p>
+                <p>  - ${special ? `為${special}祈禱` : '為國家和世界相關需要祈禱'} (${Math.floor(prayerTime*0.3)}分鐘)</p>
             </div>`;
             
             // 4. 结束祝福
             content += `<div class="prayer-section-plan">
                 <strong>4. 结束祝福 (10分钟)</strong>
-                <p>• 各组简短分享祷告见证 (5分钟)</p>
-                <p>• 主祷文一起诵读 (2分钟)</p>
-                <p>• 祝福祷告和彼此代祷 (3分钟)</p>
+                <p>• 各組簡短分享祈禱見證 (5分鐘)</p>
+                <p>• 主禱文一起誦讀 (2分鐘)</p>
+                <p>• 祝福祈禱和彼此代禱 (3分鐘)</p>
             </div>`;
             
             // 额外建议
             content += `<div class="prayer-section-plan">
                 <strong>💡 实用建议</strong>
-                <p>• 准备相关诗歌播放列表</p>
-                <p>• 提前打印经文卡片</p>
-                <p>• 安排足够的主持人和小组长</p>
-                <p>• 准备简单的点心供会後交流</p>
+                <p>• 準備相關詩歌播放清單</p>
+                <p>• 提前列印經文卡片</p>
+                <p>• 安排足夠的主持人和小組長</p>
+                <p>• 準備簡單的點心供會後交流</p>
             </div>`;
             
             return content;
@@ -693,18 +693,18 @@
         function copyMeetingContent() {
             const content = document.getElementById('meetingContent').innerText;
             navigator.clipboard.writeText(content).then(() => {
-                alert('祷告会流程已复制到剪贴板！');
+                alert('祈禱會流程已複製到剪貼板！');
             });
         }
         
         function saveMeetingPlan() {
             const content = document.getElementById('meetingContent').innerText;
-            const theme = document.getElementById('meetingTheme').value || '祷告会';
+            const theme = document.getElementById('meetingTheme').value || '祈禱會';
             const blob = new Blob([content], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${theme}流程计划.txt`;
+            a.download = `${theme}流程計劃.txt`;
             a.click();
             URL.revokeObjectURL(url);
         }
@@ -715,7 +715,7 @@
             printWindow.document.write(`
                 <html>
                     <head>
-                        <title>祷告会流程计划</title>
+                        <title>祈禱會流程計劃</title>
                         <style>
                             body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
                             .prayer-section-plan { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ccc; }
@@ -723,7 +723,7 @@
                         </style>
                     </head>
                     <body>
-                        <h2>祷告会流程计划</h2>
+                        <h2>祈禱會流程計劃</h2>
                         ${content}
                     </body>
                 </html>
