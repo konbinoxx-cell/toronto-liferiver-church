@@ -1,7 +1,7 @@
 // 新建文件：language-manager.js
 class LanguageManager {
   constructor() {
-    this.currentLang = (window.CONFIG && CONFIG.DEFAULT_LANG) ? CONFIG.DEFAULT_LANG : 'zh-Hant';
+    this.currentLang = (window.CONFIG && CONFIG.DEFAULT_LANG) ? CONFIG.DEFAULT_LANG : 'zh-Hans';
     this.init();
   }
   
