@@ -79,6 +79,9 @@ Object.assign(translations, {
   'home.sections.title': { 'zh-Hans': '我们的五大事工', 'zh-Hant': '我們的五大事工' },
   'home.sections.subtitle': { 'zh-Hans': '承接母堂传统，深耕多伦多社区', 'zh-Hant': '承接母堂傳統，深耕多倫多社區' },
   'work.church_vision.desc': { 'zh-Hans': 'Ekklesia异象：祂的教会，祂的使命。', 'zh-Hant': 'Ekklesia異象：祂的教會，祂的使命。' },
+
+  // Title for the church vision card (supports data-i18n on the H3)
+  'work.church_vision': { 'zh-Hans': '教会异象', 'zh-Hant': '教會異象' },
   'card.worship.desc': { 'zh-Hans': '以心灵和诚实敬拜，带入神的同在。', 'zh-Hant': '以心靈和誠實敬拜，帶入神的同在。' },
   'card.equip.desc': { 'zh-Hans': '系统化查经与培训，建立扎实的信仰根基。', 'zh-Hant': '系統化查經與培訓，建立扎實的信仰根基。' },
   'card.community.desc': { 'zh-Hans': '在小团契中彼此关怀，活出基督的爱。', 'zh-Hant': '在小團契中彼此關懷，活出基督的愛。' },
