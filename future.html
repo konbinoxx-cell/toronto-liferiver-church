@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>未來聖所 - 多倫多生命河靈糧堂 (Cell Ecosystem)</title>
     <link rel="stylesheet" href="css/future.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV==" crossorigin="anonymous"></script>
+    <script src="js/future-core.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
+            crossorigin="anonymous"></script>
 </head>
-
 <body>
     <div id="canvas-container"></div>
 
     <header>
         <div class="nav-container">
             <a href="future.html" class="logo-link" aria-label="返回首頁">
-                <picture>
-                    <source srcset="images/trolcc_logo1@2x.png 2x" media="(min-resolution: 2dppx)">
-                    <img src="images/trolcc_logo1.png" alt="多倫多生命河靈糧堂 Logo" class="logo-image">
-                </picture>
+                <img src="images/trolcc_logo1.png" alt="Logo" class="logo-image">
                 <div>
                     <div class="logo-text glow-text">Life River</div>
                     <div class="logo-sub">Digital Sanctuary</div>
@@ -33,12 +31,11 @@
                     <li><a href="index.html" class="nav-link external-link" data-i18n="nav.return">返回地表</a></li>
                 </ul>
             </nav>
-            <a href="pages/contact.html" class="btn-primary" aria-label="加入教會網絡">加入網絡</a>
+            <a href="pages/contact.html" class="btn-primary">加入網絡</a>
         </div>
     </header>
 
     <main>
-        <!-- Home Section -->
         <section id="home">
             <div class="container" style="text-align: center;">
                 <h1 class="glow-text" style="font-size: clamp(2.5rem, 8vw, 3.5rem); margin-bottom: 1rem;" data-i18n="future.title">唯獨基督</h1>
@@ -52,7 +49,6 @@
             </div>
         </section>
 
-        <!-- Quantum Prayer Section -->
         <section id="quantum">
             <div class="container">
                 <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
@@ -60,7 +56,7 @@
                     <p style="margin-bottom: 2rem;">不再需要中介，直接在「道」中相遇。每一份禱告都是一次生命糾纏與共振。</p>
                     <div id="prayer-viz"
                         style="height: 300px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                        <!-- Particles will be injected by JS -->
+                        <!-- JS will inject particles -->
                     </div>
                     <form id="prayer-form" style="display: flex; gap: 10px;">
                         <input type="text" id="prayer-input" placeholder="輸入您的呼求..." required
@@ -72,7 +68,6 @@
             </div>
         </section>
 
-        <!-- Ecosystem Section -->
         <section id="ecosystem">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 4rem;">
@@ -84,28 +79,24 @@
                         <h3 class="card-title">恩賜互助</h3>
                         <p class="card-desc">基於生命恩賜的動態協作，而非職位的層級控制。</p>
                     </a>
-
                     <a class="ecosystem-card glass-card" href="pages/decentralized-learning.html">
                         <h3 class="card-title">去中心化學習</h3>
                         <p class="card-desc">小組內彼此教導，共同在聖道中成長。</p>
                     </a>
-
                     <a class="ecosystem-card glass-card" href="pages/transparent-governance.html">
                         <h3 class="card-title">透明治理</h3>
                         <p class="card-desc">基於真理的共識，拒絕人為權力的傲慢。</p>
                     </a>
-
-                    <!-- ✅ 新增：Qwen AI 查经入口 -->
                     <a class="ecosystem-card glass-card" href="pages/bible-study-ai.html">
                         <h3 class="card-title">🧠 Qwen 智能查經</h3>
-                        <p class="card-desc">用AI生成經文解經、代禱文、應用建議，讓真理更貼近生活。</p>
+                        <p class="card-desc">用AI生成經文解經、代禱文、應用建議。</p>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer aria-label="頁尾資訊">
+    <footer>
         <div class="container">
             <p style="font-size: 0.8rem; color: var(--text-dim);" data-i18n="footer.copyright">
                 &copy; 2026 多倫多生命河靈糧堂 | 唯獨基督 | 只有節點，沒有權位
@@ -113,8 +104,39 @@
         </div>
     </footer>
 
-    <script src="js/future.js"></script>
-    <script src="js/i18n.js"></script> <!-- ✅ 加载国际化引擎 -->
-</body>
+    <script>
+        // 初始化背景 + 祷告粒子
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initFutureBackground === 'function') {
+                initFutureBackground();
+            }
 
+            // 祷告粒子
+            const prayerViz = document.getElementById('prayer-viz');
+            if (prayerViz) {
+                for (let i = 0; i < 10; i++) {
+                    const dot = document.createElement('div');
+                    dot.style.position = 'absolute';
+                    dot.style.width = '5px';
+                    dot.style.height = '5px';
+                    dot.style.background = '#00ff88';
+                    dot.style.borderRadius = '50%';
+                    dot.style.left = Math.random() * 100 + '%';
+                    dot.style.top = Math.random() * 100 + '%';
+                    dot.style.opacity = 0.7;
+                    
+                    gsap.to(dot, {
+                        duration: 2 + Math.random() * 2,
+                        x: '+=25',
+                        y: '+=25',
+                        opacity: 0,
+                        repeat: -1,
+                        ease: "sine.inOut"
+                    });
+                    prayerViz.appendChild(dot);
+                }
+            }
+        });
+    </script>
+</body>
 </html>

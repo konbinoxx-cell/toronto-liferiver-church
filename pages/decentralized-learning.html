@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>去中心化學習｜生命小組網絡｜未來聖所</title>
     <link rel="stylesheet" href="../css/future.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" 
-            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
+    <script src="../js/future-core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
             crossorigin="anonymous"></script>
 </head>
 <body>
@@ -41,9 +42,7 @@
                         <p style="color: var(--text-dim); font-size: 1.1rem;">小組內彼此教導，共同在聖道中成長</p>
                     </div>
 
-                    <div id="learning-viz" style="height: 240px; margin: 2rem 0; border-radius: 12px; overflow: hidden; position: relative;">
-                        <!-- Three.js 光之树动画将注入此处 -->
-                    </div>
+                    <div id="learning-viz" style="height: 240px; margin: 2rem 0; border-radius: 12px; overflow: hidden;"></div>
 
                     <article>
                         <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">核心理念</h2>
@@ -96,94 +95,75 @@
     </footer>
 
     <script>
-        // Three.js: Tree of Light — branches = scripture, fruits = insights
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initFutureBackground === 'function') {
+                initFutureBackground();
+            }
+            setTimeout(initLearningAnimation, 300);
+        });
+
+        function initLearningAnimation() {
+            if (typeof THREE === 'undefined') return setTimeout(initLearningAnimation, 200);
             const container = document.getElementById('learning-viz');
             if (!container) return;
 
-            let scene, camera, renderer;
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.innerHTML = '';
+            container.appendChild(renderer.domElement);
 
-            function init() {
-                scene = new THREE.Scene();
-                const aspect = container.clientWidth / container.clientHeight;
-                camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000);
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                renderer.setSize(container.clientWidth, container.clientHeight);
-                renderer.setPixelRatio(window.devicePixelRatio);
-                container.appendChild(renderer.domElement);
+            camera.position.set(0, 0, 20);
 
-                camera.position.set(0, 0, 25);
-                camera.lookAt(0, 0, 0);
+            const trunk = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.6, 0.4, 6, 8),
+                new THREE.MeshBasicMaterial({ color: 0x64ffda })
+            );
+            trunk.position.y = 3;
+            scene.add(trunk);
 
-                // Trunk (Christ)
-                const trunkGeo = new THREE.CylinderGeometry(0.8, 0.6, 8, 8);
-                const trunkMat = new THREE.MeshBasicMaterial({ color: 0x64ffda });
-                const trunk = new THREE.Mesh(trunkGeo, trunkMat);
-                trunk.position.y = 4;
-                scene.add(trunk);
+            const branches = [
+                { a: 0, l: 5, c: 0x00ff88 },
+                { a: Math.PI/2, l: 4, c: 0x33ff99 },
+                { a: Math.PI, l: 4.5, c: 0x66ffaa },
+                { a: 3*Math.PI/2, l: 3.5, c: 0x99ffbb }
+            ];
 
-                // Branches (Scripture themes)
-                const branches = [
-                    { angle: 0, len: 6, color: 0x00ff88, label: "愛" },
-                    { angle: Math.PI/3, len: 5, color: 0x00cc66, label: "公義" },
-                    { angle: 2*Math.PI/3, len: 5.5, color: 0x33ff99, label: "盼望" },
-                    { angle: Math.PI, len: 4.5, color: 0x66ffaa, label: "信實" },
-                    { angle: 4*Math.PI/3, len: 5, color: 0x99ffbb, label: "恩典" },
-                    { angle: 5*Math.PI/3, len: 4, color: 0xccffcc, label: "真理" }
-                ];
+            branches.forEach(b => {
+                const x = Math.cos(b.a) * b.l;
+                const y = Math.sin(b.a) * b.l + 6;
+                const branch = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.15, 0.1, b.l, 6),
+                    new THREE.MeshBasicMaterial({ color: b.c })
+                );
+                branch.position.set(x/2, y/2 + 3, 0);
+                branch.lookAt(x, y + 6, 0);
+                scene.add(branch);
 
-                branches.forEach(branch => {
-                    const x = Math.cos(branch.angle) * branch.len;
-                    const y = Math.sin(branch.angle) * branch.len + 8;
-                    const z = 0;
-
-                    const branchGeo = new THREE.CylinderGeometry(0.2, 0.1, branch.len, 6);
-                    const branchMat = new THREE.MeshBasicMaterial({ color: branch.color });
-                    const branchMesh = new THREE.Mesh(branchGeo, branchMat);
-                    branchMesh.position.set(x/2, y/2 + 4, z);
-                    branchMesh.lookAt(x, y + 8, z);
-                    scene.add(branchMesh);
-
-                    // Fruit (insights)
-                    for (let i = 0; i < 2; i++) {
-                        const offset = (i + 1) / 3;
-                        const fx = x * offset;
-                        const fy = (y - 8) * offset + 8;
-                        const fz = (Math.random() - 0.5) * 0.5;
-
-                        const fruitGeo = new THREE.SphereGeometry(0.3, 12, 12);
-                        const fruitMat = new THREE.MeshBasicMaterial({ 
-                            color: 0xffffff,
-                            transparent: true,
-                            opacity: 0.8
-                        });
-                        const fruit = new THREE.Mesh(fruitGeo, fruitMat);
-                        fruit.position.set(fx, fy, fz);
-                        scene.add(fruit);
-                    }
-                });
-
-                animate();
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                const time = Date.now() * 0.0003;
-                scene.rotation.y = Math.sin(time * 0.3) * 0.1;
-                renderer.render(scene, camera);
-            }
-
-            window.addEventListener('resize', () => {
-                if (renderer) {
-                    const aspect = container.clientWidth / container.clientHeight;
-                    camera.aspect = aspect;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
+                for (let i = 0; i < 2; i++) {
+                    const f = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.25, 12, 12),
+                        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 })
+                    );
+                    f.position.set(x * (i+1)/3, (y-6) * (i+1)/3 + 6, (Math.random()-0.5)*0.3);
+                    scene.add(f);
                 }
             });
 
-            init();
-        });
+            function animate() {
+                requestAnimationFrame(animate);
+                scene.rotation.y = Math.sin(Date.now() * 0.0003) * 0.05;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
     </script>
 </body>
 </html>

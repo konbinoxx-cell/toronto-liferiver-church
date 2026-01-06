@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>透明治理｜生命小組網絡｜未來聖所</title>
     <link rel="stylesheet" href="../css/future.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" 
-            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
+    <script src="../js/future-core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+            integrity="sha512-bY9wG+Y0Z1s5Z5Xj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vVj5v6vVj7hQ5Q6vV=="
             crossorigin="anonymous"></script>
 </head>
 <body>
@@ -41,9 +42,7 @@
                         <p style="color: var(--text-dim); font-size: 1.1rem;">基於真理的共識，拒絕人為權力的傲慢</p>
                     </div>
 
-                    <div id="governance-viz" style="height: 220px; margin: 2rem 0; border-radius: 12px; overflow: hidden; position: relative;">
-                        <!-- Three.js 共识环动画将注入此处 -->
-                    </div>
+                    <div id="governance-viz" style="height: 220px; margin: 2rem 0; border-radius: 12px; overflow: hidden;"></div>
 
                     <article>
                         <h2 style="color: var(--accent); margin: 1.5rem 0 1rem;">為何需要透明？</h2>
@@ -94,101 +93,59 @@
     </footer>
 
     <script>
-        // Three.js: Consensus Ring — particles orbiting "Truth" core
         document.addEventListener('DOMContentLoaded', () => {
+            if (typeof initFutureBackground === 'function') {
+                initFutureBackground();
+            }
+            setTimeout(initGovernanceAnimation, 300);
+        });
+
+        function initGovernanceAnimation() {
+            if (typeof THREE === 'undefined') return setTimeout(initGovernanceAnimation, 200);
             const container = document.getElementById('governance-viz');
             if (!container) return;
 
-            let scene, camera, renderer, particles = [];
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.innerHTML = '';
+            container.appendChild(renderer.domElement);
 
-            function init() {
-                scene = new THREE.Scene();
-                const aspect = container.clientWidth / container.clientHeight;
-                camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                renderer.setSize(container.clientWidth, container.clientHeight);
-                renderer.setPixelRatio(window.devicePixelRatio);
-                container.appendChild(renderer.domElement);
+            camera.position.z = 12;
 
-                camera.position.z = 15;
+            const truth = new THREE.Mesh(
+                new THREE.SphereGeometry(1, 32, 32),
+                new THREE.MeshBasicMaterial({ color: 0x64ffda, transparent: true, opacity: 0.6 })
+            );
+            scene.add(truth);
 
-                // Central "Truth" sphere
-                const truthGeo = new THREE.SphereGeometry(1.2, 32, 32);
-                const truthMat = new THREE.MeshBasicMaterial({ 
-                    color: 0x64ffda,
-                    transparent: true,
-                    opacity: 0.6
-                });
-                const truth = new THREE.Mesh(truthGeo, truthMat);
-                scene.add(truth);
-
-                // Add label "真理"
-                const canvas = document.createElement('canvas');
-                canvas.width = 256; canvas.height = 64;
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = 'rgba(0, 255, 136, 0.9)';
-                ctx.font = 'bold 32px Orbitron, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('真理', 128, 42);
-                const labelTex = new THREE.CanvasTexture(canvas);
-                const labelMat = new THREE.SpriteMaterial({ map: labelTex });
-                const label = new THREE.Sprite(labelMat);
-                label.scale.set(3, 1, 1);
-                label.position.y = -2.5;
-                scene.add(label);
-
-                // 12 particles in ring
-                particles = [];
-                for (let i = 0; i < 12; i++) {
-                    const angle = (i / 12) * Math.PI * 2;
-                    const radius = 6;
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    const z = 0;
-
-                    const geo = new THREE.SphereGeometry(0.35, 16, 16);
-                    const mat = new THREE.MeshBasicMaterial({ 
-                        color: 0xffffff,
-                        transparent: true,
-                        opacity: 0.7
-                    });
-                    const particle = new THREE.Mesh(geo, mat);
-                    particle.position.set(x, y, z);
-                    scene.add(particle);
-                    particles.push({ mesh: particle, angle, radius });
-                }
-
-                animate();
+            const particles = [];
+            for (let i = 0; i < 10; i++) {
+                const angle = (i / 10) * Math.PI * 2;
+                const r = 5;
+                const p = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.3, 16, 16),
+                    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 })
+                );
+                p.position.set(Math.cos(angle) * r, Math.sin(angle) * r, 0);
+                scene.add(p);
+                particles.push({ mesh: p, angle, r });
             }
 
             function animate() {
                 requestAnimationFrame(animate);
-                const time = Date.now() * 0.0005;
-                
+                const t = Date.now() * 0.0005;
                 particles.forEach(p => {
                     p.angle += 0.003;
-                    p.mesh.position.x = Math.cos(p.angle) * p.radius;
-                    p.mesh.position.y = Math.sin(p.angle) * p.radius;
+                    p.mesh.position.x = Math.cos(p.angle) * p.r;
+                    p.mesh.position.y = Math.sin(p.angle) * p.r;
                 });
-
-                // Pulse truth core
-                const scale = 1 + Math.sin(time * 2) * 0.05;
-                scene.children[0].scale.set(scale, scale, scale);
-
+                truth.scale.setScalar(1 + Math.sin(t * 2) * 0.03);
                 renderer.render(scene, camera);
             }
-
-            window.addEventListener('resize', () => {
-                if (renderer) {
-                    const aspect = container.clientWidth / container.clientHeight;
-                    camera.aspect = aspect;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
-                }
-            });
-
-            init();
-        });
+            animate();
+        }
     </script>
 </body>
 </html>
