@@ -9,17 +9,17 @@
 </head>
 
 <body>
-    <header>
+    <header class="main-header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
                 <img src="images/trolcc_logo1.png" alt="多倫多生命河靈糧堂 Logo">
-                <div>
-                    <strong style="display: block; font-size: 1.2rem;">多倫多生命河靈糧堂</strong>
-                    <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
+                <div class="logo-text">
+                    <strong class="logo-name">多倫多生命河靈糧堂</strong>
+                    <span class="logo-subtitle">Toronto River of Life Christian Church</span>
                 </div>
             </a>
             <!-- Language selector -->
-            <div class="language-selector" style="margin-left: auto;">
+            <div class="language-selector">
                 <button id="langTrigger" class="language-trigger" aria-haspopup="true" aria-expanded="false">
                     <span>繁體</span>
                 </button>
@@ -29,7 +29,7 @@
                     <a href="#" class="lang-option" data-lang="en">English</a>
                 </div>
             </div>
-                <nav>
+            <nav class="main-nav" aria-label="Main navigation">
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link" data-i18n="nav.home">首頁</a></li>
                     <li><a href="pages/meetings.html" class="nav-link" data-i18n="nav.worship">聚會時間</a></li>
@@ -44,9 +44,8 @@
     <section class="hero">
         <div class="container">
             <h1 data-i18n="home.welcome">歡迎來到我們的屬靈家園</h1>
-            <p data-i18n="home.subtitle" style="font-size: 1.4rem;">以基督為中心，在愛中彼此建立</p>
-            <a href="pages/meetings.html"
-                style="display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;" data-i18n="button.join">參加主日崇拜</a>
+            <p class="hero-subtitle" data-i18n="home.subtitle">以基督為中心，在愛中彼此建立</p>
+            <a href="pages/meetings.html" class="btn-primary" data-i18n="button.join">參加主日崇拜</a>
         </div>
     </section>
 
@@ -60,8 +59,8 @@
                 <!-- 第1张：教会异象 -->
     <a href="pages/vision.html" class="card-link">
         <div class="card card-vision">
-            <h3 data-i18n="work.church_vision">教會異象</h3>
-            <p data-i18n="work.church_vision.desc">Ekklesia異象：祂的教會，祂的使命。</p>
+            <h3 data-i18n="card.church_vision">教会异象</h3>
+            <p data-i18n="work.church_vision.desc">Ekklesia异象：祂的教会，祂的使命。</p>
         </div>
     </a>
     
@@ -113,38 +112,35 @@
     </section>
 
     <!-- Map Section -->
-    <section class="section" style="background: #f8f9fa;">
+    <section class="section map-section">
         <div class="container">
             <div class="section-title">
                 <h2 data-i18n="home.map.title">教會位置</h2>
                 <p data-i18n="home.map.subtitle">歡迎來訪，我們期待與您相見</p>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
-                <div>
-                    <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: var(--shadow);">
-                        <h3 style="color: var(--primary); margin-bottom: 20px;">📍 地址信息</h3>
-                        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
+            <div class="map-grid">
+                <div class="map-info">
+                    <div class="info-card">
+                        <h3 class="info-title">📍 地址信息</h3>
+                        <p class="info-address">
                             <strong>2460 The Collegeway</strong><br>
                             Mississauga, ON L5L 1V3<br>
                             Canada
                         </p>
-                        <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid #eee;">
-                            <p style="margin-bottom: 10px;"><strong>🕐 主日崇拜：</strong>週日 10:30 AM</p>
-                            <p style="margin-bottom: 10px;"><strong>🙏 週三禱告會：</strong>週三 7:30 PM</p>
-                            <p><strong>📞 聯繫電話：</strong>(416) 123-4567</p>
+                        <div class="divider"></div>
+                        <div class="info-details">
+                            <p class="info-item"><strong>🕐 主日崇拜：</strong>週日 10:30 AM</p>
+                            <p class="info-item"><strong>🙏 週三禱告會：</strong>週三 7:30 PM</p>
+                            <p class="info-item"><strong>📞 聯繫電話：</strong>(416) 123-4567</p>
                         </div>
                         <a href="https://www.google.com/maps/search/?api=1&query=2460+The+Collegeway+Mississauga+ON+L5L+1V3"
-                            target="_blank"
-                            style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;">
-                            在 Google 地圖中打開
-                        </a>
+                            target="_blank" rel="noopener" class="btn-secondary" data-i18n="button.map_open">在 Google 地圖中打開</a>
                     </div>
                 </div>
-                <div>
+                <div class="map-iframe">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.1234567890!2d-79.7234567!3d43.5890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2460%20The%20Collegeway%2C%20Mississauga%2C%20ON%20L5L%201V3!5e0!3m2!1sen!2sca!4v1234567890"
-                        width="100%" height="400" style="border: 0; border-radius: 15px; box-shadow: var(--shadow);"
-                        allowfullscreen="" loading="lazy">
+                        width="100%" height="400" frameborder="0" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -152,13 +148,13 @@
     </section>
 
     <!-- Bulletin Board Section -->
-    <section class="section">
+    <section class="section bulletin-section">
         <div class="container">
             <div class="section-title">
                 <h2 data-i18n="home.bulletin.title">📢 教會布告欄</h2>
                 <p data-i18n="home.bulletin.subtitle">最新消息與活動公告</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+            <div class="bulletin-grid">
                 <div class="bulletin-card">
                     <div class="bulletin-date">2024年1月</div>
                     <h3>新年感恩崇拜</h3>
@@ -181,19 +177,19 @@
         </div>
     </section>
 
-    <footer style="background: #f8f9fa; padding: 60px 0; border-top: 1px solid #eee;">
-            <div class="container" style="text-align: center;">
-            <p data-i18n="footer.copyright">&copy; 2024 多倫多生命河靈糥堂. 保留所有權利.</p>
-            <div style="margin-top: 20px; color: #95a5a6; font-size: 0.9rem;">
-                地址: 2460 The Collegeway, Mississauga, ON L5L 1V3| 電話: +1 (647) 519-1509| E-mail： trolcc@outlook.com
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
+            <div class="footer-contact">
+                <p class="footer-contact-info">
+                    地址: 2460 The Collegeway, Mississauga, ON L5L 1V3 | 電話: +1 (647) 519-1509 | E-mail: trolcc@outlook.com
+                </p>
             </div>
 
             <!-- Hidden Portal Entrance -->
-            <div class="footer-portal" onclick="window.location.href='future.html'">
-                <p style="font-size: 0.6rem; letter-spacing: 2px;">QUANTUM PROTOCOLS ACTIVE</p>
-                <div
-                    style="width: 10px; height: 10px; background: rgba(0, 255, 136, 0.2); border-radius: 50%; margin: 5px auto;">
-                </div>
+            <div class="footer-portal" role="button" tabindex="0" onclick="window.location.href='future.html'" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='future.html'">
+                <p class="portal-text">QUANTUM PROTOCOLS ACTIVE</p>
+                <div class="portal-indicator"></div>
             </div>
         </div>
     </footer>
@@ -201,69 +197,7 @@
     <script src="js/convert.js"></script>
     <script src="js/languages.js"></script>
     <script src="js/language-manager.js"></script>
-
-    <script>
-        // Portal Speed Test - Only works on title clicks
-        const portalTitle = document.getElementById('portal-title');
-        const speedFeedback = document.getElementById('speed-feedback');
-        let lastClick = 0;
-        const SPEED_THRESHOLD = 250; // Stricter: 250ms instead of 350ms
-
-        portalTitle.addEventListener('click', (e) => {
-            const now = new Date().getTime();
-            const timespan = now - lastClick;
-
-            if (timespan > 0 && timespan < 2000) { // Only show feedback if clicks are within 2 seconds
-                // Display the speed
-                speedFeedback.textContent = `${timespan}ms`;
-                speedFeedback.style.opacity = '1';
-
-                // Check if fast enough
-                if (timespan < SPEED_THRESHOLD) {
-                    // SUCCESS: Green text and enter portal
-                    speedFeedback.style.color = '#00ff88';
-                    speedFeedback.style.textShadow = '0 0 10px rgba(0, 255, 136, 0.8)';
-
-                    // Entry animation
-                    portalTitle.style.transform = 'scale(1.1)';
-                    portalTitle.style.textShadow = '0 0 30px rgba(0, 255, 136, 1)';
-
-                    setTimeout(() => {
-                        window.location.href = 'future.html';
-                    }, 500);
-                } else {
-                    // FAIL: Red text
-                    speedFeedback.style.color = '#ff4444';
-                    speedFeedback.style.textShadow = '0 0 10px rgba(255, 68, 68, 0.8)';
-
-                    // Shake animation for failure
-                    portalTitle.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        portalTitle.style.animation = '';
-                    }, 500);
-                }
-
-                // Hide feedback after 2 seconds
-                setTimeout(() => {
-                    speedFeedback.style.opacity = '0';
-                    portalTitle.style.transform = '';
-                }, 2000);
-            }
-
-            lastClick = now;
-        });
-
-        // Subtle interaction: Long press on the logo enters the future sanctuary
-        let logoTimer;
-        const logo = document.querySelector('.logo');
-        logo.addEventListener('mousedown', () => {
-            logoTimer = setTimeout(() => {
-                window.location.href = 'future.html';
-            }, 3000); // 3 seconds long press
-        });
-        logo.addEventListener('mouseup', () => clearTimeout(logoTimer));
-        logo.addEventListener('mouseleave', () => clearTimeout(logoTimer));
-    </script>
+    <script src="js/portal-interactions.js"></script>
 </body>
 
 </html>

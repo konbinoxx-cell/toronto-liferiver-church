@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主再來兮 - 多倫多生命河靈糧堂 (Cell Ecosystem)</title>
     <link rel="stylesheet" href="css/future.css">
+    <script src="js/config.js"></script>
+    <script src="js/languages.js"></script>
+    <script src="js/language-manager.js"></script>
+    <script src="js/qwen-config.js"></script>
     <!-- Three.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -27,6 +31,7 @@
                 <ul class="nav-menu">
                     <li><a href="#home" class="nav-link active" data-i18n="nav.home">首頁</a></li>
                     <li><a href="#quantum" class="nav-link" data-i18n="nav.prayer_ai">量子禱告</a></li>
+                    <li><a href="#bible-study" class="nav-link">Qwen查經</a></li>
                     <li><a href="#ecosystem" class="nav-link" data-i18n="nav.groups">小組生態</a></li>
                     <li><a href="index.html" class="nav-link" style="color: var(--secondary);" data-i18n="nav.return">返回地表</a></li>
                 </ul>
@@ -70,6 +75,60 @@
                         <input type="text" placeholder="輸入您的呼求..."
                             style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px;">
                         <button class="btn-primary">發射共振</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bible Study AI Section -->
+        <section id="bible-study">
+            <div class="container">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+                    <h2 class="glow-text" style="margin-bottom: 1.5rem;">🤖 QwenAI 智能查經</h2>
+                    <p style="margin-bottom: 2rem;">透過阿里雲QwenAI大模型，提供智能的聖經查詢、解經和靈修輔助。</p>
+                    
+                    <div style="display: flex; gap: 15px; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <input type="text" id="bible-query" placeholder="輸入經文或主題，如：約翰福音3:16、愛、信心..."
+                            style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px;">
+                        <button class="btn-primary" id="search-bible-btn">查詢經文</button>
+                        <button class="btn-primary" id="open-bible-study-page" style="background: rgba(100, 255, 218, 0.1); border-color: #64ffda;">完整功能</button>
+                    </div>
+                    
+                    <div id="bible-results" 
+                        style="min-height: 200px; background: rgba(0,0,0,0.2); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--glass-border);">
+                        <p style="color: var(--text-dim);">輸入您想查詢的經文或主題，QwenAI將為您提供相關的聖經經文和解釋。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Quantum Prayer Section -->
+        <section id="quantum">
+            <div class="container">
+                <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                    <h2 class="glow-text" style="margin-bottom: 1.5rem;">⚛️ 量子禱告網絡</h2>
+                    <p style="margin-bottom: 2rem;">不再需要中介，直接在「道」中相遇。每一份禱告都是一次生命糾纏與共振。</p>
+                    <div id="prayer-viz"
+                        style="height: 300px; background: rgba(0,0,0,0.2); border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
+                        <!-- JS will inject particles here -->
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            <div class="floating" style="font-size: 3rem; opacity: 0.5;">🙏</div>
+                            <div style="font-size: 0.8rem; color: var(--accent); margin-top: 10px;">實時在線連接: <span id="online-count">1,247</span></div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="prayer-input" placeholder="輸入您的呼求..."
+                            style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; color: white; border-radius: 5px;">
+                        <button class="btn-primary" id="send-prayer-btn">發射共振</button>
+                        <button class="btn-primary" id="generate-prayer-btn" style="background: rgba(0,255,136,0.1); border-color: var(--accent);">AI代禱</button>
+                    </div>
+                    
+                    <!-- Prayer Results -->
+                    <div id="prayer-results" 
+                        style="margin-top: 1.5rem; min-height: 150px; background: rgba(0,0,0,0.2); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--glass-border); display: none;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">AI禱告建議</h4>
+                        <p id="prayer-generated"></p>
                     </div>
                 </div>
             </div>
