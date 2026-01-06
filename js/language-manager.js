@@ -10,6 +10,9 @@ class LanguageManager {
     const savedLang = localStorage.getItem('preferredLang');
     if (savedLang) {
       this.currentLang = savedLang;
+    } else {
+      // Persist the default language so pages load consistently on next visit
+      try { localStorage.setItem('preferredLang', this.currentLang); } catch (e) { /* ignore */ }
     }
     this.bindEvents();
 
