@@ -78,6 +78,7 @@ Object.assign(translations, {
 Object.assign(translations, {
   'home.sections.title': { 'zh-Hans': '我们的五大事工', 'zh-Hant': '我們的五大事工' },
   'home.sections.subtitle': { 'zh-Hans': '承接母堂传统，深耕多伦多社区', 'zh-Hant': '承接母堂傳統，深耕多倫多社區' },
+  'work.church_vision': { 'zh-Hans': '教会异象', 'zh-Hant': '教会异象' },
   'work.church_vision.desc': { 'zh-Hans': 'Ekklesia异象：祂的教会，祂的使命。', 'zh-Hant': 'Ekklesia異象：祂的教會，祂的使命。' },
   'card.worship.desc': { 'zh-Hans': '以心灵和诚实敬拜，带入神的同在。', 'zh-Hant': '以心靈和誠實敬拜，帶入神的同在。' },
   'card.equip.desc': { 'zh-Hans': '系统化查经与培训，建立扎实的信仰根基。', 'zh-Hant': '系統化查經與培訓，建立扎實的信仰根基。' },
@@ -91,5 +92,6 @@ Object.assign(translations, {
   'nav.return': { 'zh-Hans': '返回地表', 'zh-Hant': '返回地表' },
   'btn.enter_prayer': { 'zh-Hans': '进入祷告空间', 'zh-Hant': '進入禱告空間' },
   'btn.explore_ecosystem': { 'zh-Hans': '探索生态网络', 'zh-Hant': '探索生態網絡' },
-  'preview-footer-text': { 'zh-Hans': '感谢赞美主', 'zh-Hant': '感謝讚美主' }
+  'preview-footer-text': { 'zh-Hans': '感谢赞美主', 'zh-Hant': '感謝讚美主' },
+  'nav.bible_study': { 'zh-Hans': 'Qwen查经', 'zh-Hant': 'Qwen查經' }
 });

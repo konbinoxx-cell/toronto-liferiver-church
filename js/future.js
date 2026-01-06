@@ -101,3 +101,143 @@ if (prayerViz) {
         prayerViz.appendChild(dot);
     }
 }
+
+// QwenAPI Integration for Bible Study and Prayer
+document.addEventListener('DOMContentLoaded', function() {
+    // Bible Study functionality
+    const searchBibleBtn = document.getElementById('search-bible-btn');
+    const bibleQueryInput = document.getElementById('bible-query');
+    const bibleResults = document.getElementById('bible-results');
+    
+    if (searchBibleBtn && bibleQueryInput && bibleResults) {
+        searchBibleBtn.addEventListener('click', async () => {
+            const query = bibleQueryInput.value.trim();
+            if (!query) {
+                alert('請輸入您想查詢的經文或主題');
+                return;
+            }
+            
+            bibleResults.innerHTML = '<p style="color: var(--text-dim);">正在搜索相關經文，請稍候...</p>';
+            
+            try {
+                const response = await window.callQwenAPI(`請根據以下查詢提供相關的聖經經文和解釋：${query}`, window.QWEN_CONFIG.BIBLE_STUDY_SETTINGS);
+                bibleResults.innerHTML = `<div style="line-height: 1.6;">${response.replace(/\n/g, '<br>')}</div>`;
+            } catch (error) {
+                bibleResults.innerHTML = `<p style="color: #ff6b6b;">搜索時發生錯誤: ${error.message}</p>`;
+            }
+        });
+        
+        // Allow Enter key to trigger search
+        bibleQueryInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchBibleBtn.click();
+            }
+        });
+    }
+    
+    // Open full Bible Study page
+    const openBibleStudyPageBtn = document.getElementById('open-bible-study-page');
+    if (openBibleStudyPageBtn) {
+        openBibleStudyPageBtn.addEventListener('click', () => {
+            window.open('pages/bible-study-ai.html', '_blank');
+        });
+    }
+    
+    // Enhanced Prayer functionality
+    const prayerInput = document.getElementById('prayer-input');
+    const sendPrayerBtn = document.getElementById('send-prayer-btn');
+    const generatePrayerBtn = document.getElementById('generate-prayer-btn');
+    const prayerResults = document.getElementById('prayer-results');
+    const prayerGenerated = document.getElementById('prayer-generated');
+    
+    if (prayerInput && sendPrayerBtn && generatePrayerBtn && prayerResults && prayerGenerated) {
+        // Send prayer functionality (placeholder)
+        sendPrayerBtn.addEventListener('click', () => {
+            const prayer = prayerInput.value.trim();
+            if (!prayer) {
+                alert('請輸入您的禱告內容');
+                return;
+            }
+            
+            // Add to prayer network visualization
+            const newDot = document.createElement('div');
+            newDot.style.position = 'absolute';
+            newDot.style.width = '6px';
+            newDot.style.height = '6px';
+            newDot.style.background = '#64ffda';
+            newDot.style.borderRadius = '50%';
+            newDot.style.left = Math.random() * 100 + '%';
+            newDot.style.top = Math.random() * 100 + '%';
+            newDot.style.opacity = '1';
+            
+            gsap.to(newDot, {
+                duration: 3 + Math.random() * 2,
+                x: '+=30',
+                y: '+=30',
+                opacity: 0,
+                ease: "sine.inOut",
+                onComplete: () => newDot.remove()
+            });
+            
+            prayerViz.appendChild(newDot);
+            
+            // Update online count
+            const onlineCount = document.getElementById('online-count');
+            if (onlineCount) {
+                let count = parseInt(onlineCount.textContent.replace(/,/g, ''));
+                count = count + 1;
+                onlineCount.textContent = count.toLocaleString();
+            }
+            
+            // Clear input
+            prayerInput.value = '';
+        });
+        
+        // Generate prayer using QwenAI
+        generatePrayerBtn.addEventListener('click', async () => {
+            const prayerRequest = prayerInput.value.trim();
+            if (!prayerRequest) {
+                alert('請輸入您的禱告需求');
+                return;
+            }
+            
+            prayerResults.style.display = 'block';
+            prayerGenerated.innerHTML = 'AI正在生成禱告文，請稍候...';
+            
+            try {
+                const response = await window.callQwenAPI(`請根據以下需求生成禱告文：${prayerRequest}`, window.QWEN_CONFIG.PRAYER_SETTINGS);
+                prayerGenerated.innerHTML = response.replace(/\n/g, '<br>');
+            } catch (error) {
+                prayerGenerated.innerHTML = `生成禱告文時發生錯誤: ${error.message}`;
+            }
+        });
+        
+        // Allow Enter key to trigger prayer generation
+        prayerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) { // Ctrl+Enter for prayer generation
+                generatePrayerBtn.click();
+            } else if (e.key === 'Enter') { // Just Enter for sending prayer
+                sendPrayerBtn.click();
+            }
+        });
+    }
+    
+
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});

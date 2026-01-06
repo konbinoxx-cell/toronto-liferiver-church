@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QwenAI 圣经学习 - 多伦多生命河灵粮堂</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/future.css">
+    <style>
+        .bible-study-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 100px;
+        }
+        
+        .bible-study-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .bible-study-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .bible-study-tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dim);
+        }
+        
+        .bible-study-tab.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+        
+        .bible-study-tab:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .bible-study-content {
+            display: none;
+        }
+        
+        .bible-study-content.active {
+            display: block;
+        }
+        
+        .bible-input-section {
+            margin-bottom: 30px;
+        }
+        
+        .bible-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .bible-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .bible-button {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .bible-button:hover {
+            background: #00e676;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 230, 118, 0.4);
+        }
+        
+        .bible-results {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .bible-loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+        }
+        
+        .bible-error {
+            color: #ff6b6b;
+            padding: 10px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .bible-response {
+            line-height: 1.6;
+            color: var(--text-main);
+        }
+        
+        .bible-response p {
+            margin-bottom: 15px;
+        }
+        
+        .bible-response h3 {
+            color: var(--accent);
+            margin: 15px 0 10px 0;
+        }
+        
+        .verse-highlight {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+            border-left: 2px solid var(--accent);
+        }
+        
+        .prayer-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .prayer-input {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+        
+        .verse-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .verse-option {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .verse-option:hover, .verse-option.selected {
+            background: var(--accent);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <header>
+        <div class="nav-container">
+            <a href="../future.html" class="logo-link">
+                <img src="../images/trolcc_logo1.png" alt="Logo" class="logo-image">
+                <div>
+                    <div class="logo-text glow-text">QwenAI 圣经学习</div>
+                    <div style="font-size: 0.6rem; color: var(--text-dim);">智能查经解经系统</div>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../future.html" class="nav-link" data-i18n="nav.return">返回未来圣殿</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="bible-study-container">
+            <div class="bible-study-header">
+                <h1 class="glow-text">QwenAI 圣经学习助手</h1>
+                <p>利用人工智能技术，为您提供查经、解经和祷告支持</p>
+            </div>
+            
+            <div class="bible-study-tabs">
+                <div class="bible-study-tab active" data-tab="bible-study">智能查经</div>
+                <div class="bible-study-tab" data-tab="bible-interpretation">经文解经</div>
+                <div class="bible-study-tab" data-tab="prayer">智能祷告</div>
+            </div>
+            
+            <!-- 智能查经标签页 -->
+            <div class="bible-study-content active" id="bible-study-content">
+                <div class="bible-input-section">
+                    <h3>请输入您想查询的经文或主题：</h3>
+                    <input type="text" class="bible-input" id="bible-query" placeholder="例如：约翰福音3:16, 爱, 信心, 或输入完整经文...">
+                    <div class="verse-selector">
+                        <div class="verse-option" data-verse="约翰福音3:16">约翰福音3:16</div>
+                        <div class="verse-option" data-verse="马太福音5:1-16">登山宝训</div>
+                        <div class="verse-option" data-verse="诗篇23篇">诗篇23篇</div>
+                        <div class="verse-option" data-verse="罗马书12:1-2">奉献的祭</div>
+                        <div class="verse-option" data-verse="以弗所书6:10-18">属灵争战</div>
+                    </div>
+                    <button class="bible-button" id="bible-search-btn">搜索经文</button>
+                </div>
+                
+                <div class="bible-results" id="bible-results">
+                    <p>请输入您想查询的经文或主题，我们的AI助手将为您提供相关的圣经经文和解释。</p>
+                </div>
+            </div>
+            
+            <!-- 经文解经标签页 -->
+            <div class="bible-study-content" id="bible-interpretation-content">
+                <div class="bible-input-section">
+                    <h3>请输入您想深入了解的经文：</h3>
+                    <input type="text" class="bible-input" id="interpretation-query" placeholder="例如：罗马书12:1-2, 或输入您想理解的经文段落...">
+                    <div class="verse-selector">
+                        <div class="verse-option" data-verse="罗马书12:1-2">奉献的祭</div>
+                        <div class="verse-option" data-verse="哥林多前书13章">爱的真谛</div>
+                        <div class="verse-option" data-verse="雅各书1:2-4">试炼与信心</div>
+                        <div class="verse-option" data-verse="腓立比书4:4-7">喜乐与平安</div>
+                        <div class="verse-option" data-verse="希伯来书11章">信心伟人</div>
+                    </div>
+                    <button class="bible-button" id="interpretation-btn">深度解经</button>
+                </div>
+                
+                <div class="bible-results" id="interpretation-results">
+                    <p>请输入您想深入了解的经文，我们的AI助手将为您提供详细的解经和应用指导。</p>
+                </div>
+            </div>
+            
+            <!-- 智能祷告标签页 -->
+            <div class="bible-study-content" id="prayer-content">
+                <div class="bible-input-section">
+                    <h3>请输入您的祷告需求或分享您的心声：</h3>
+                    <textarea class="prayer-input" id="prayer-request" placeholder="例如：为家人的健康祷告，为工作的挑战寻求指引，为教会的需要代求..."></textarea>
+                    <button class="bible-button" id="prayer-btn">生成祷告文</button>
+                </div>
+                
+                <div class="bible-results" id="prayer-results">
+                    <p>分享您的祷告需求，我们的AI助手将帮助您形成合宜的祷告文，并提供相关的圣经经文支持。</p>
+                </div>
+                
+                <div class="prayer-section">
+                    <h3>基于经文的祷告建议：</h3>
+                    <div class="verse-selector">
+                        <div class="verse-option" data-prayer="为平安祷告">为平安祷告</div>
+                        <div class="verse-option" data-prayer="为智慧祷告">为智慧祷告</div>
+                        <div class="verse-option" data-prayer="为健康祷告">为健康祷告</div>
+                        <div class="verse-option" data-prayer="为引导祷告">为引导祷告</div>
+                        <div class="verse-option" data-prayer="为感恩祷告">为感恩祷告</div>
+                    </div>
+                    <button class="bible-button" id="suggested-prayer-btn">获取祷告建议</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="../js/future.js"></script>
+    <script>
+        // Tab 切换功能
+        document.querySelectorAll('.bible-study-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 移除所有活动标签
+                document.querySelectorAll('.bible-study-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.bible-study-content').forEach(c => c.classList.remove('active'));
+                
+                // 激活当前标签
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // 经文选项选择功能
+        document.querySelectorAll('.verse-option').forEach(option => {
+            option.addEventListener('click', () => {
+                option.classList.toggle('selected');
+            });
+        });
+        
+        // 模拟QwenAPI调用函数
+        async function callQwenAPI(prompt) {
+            // 这里是模拟API调用，实际部署时需要替换为真实的QwenAPI端点
+            console.log('调用QwenAPI:', prompt);
+            
+            // 模拟延迟
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // 根据不同类型的请求返回模拟结果
+            if (prompt.includes('祷告') || prompt.includes('prayer')) {
+                return `亲爱的天父，我们来到祢面前，为着祢的恩典和慈爱献上感谢。正如圣经所言："应当一无挂虑，只要凡事藉着祷告、祈求和感谢，将你们所要的告诉神。神所赐出人意外的平安，必在基督耶稣里保守你们的心怀意念。"（腓立比书4:6-7）
+
+我们为您的需要祷告，求祢按着祢的旨意成就。愿荣耀归于祢，阿们。`;
+            } else if (prompt.includes('解经') || prompt.includes('interpretation')) {
+                return `这段经文深刻地教导我们关于奉献的真理。首先，"所以弟兄们，我以神的慈悲劝你们"，这表明保罗是以神的慈悲作为奉献的基础，而不是出于律法的要求。神的慈悲是基督徒奉献的动机。
+
+其次，"将身体献上，当作活祭"，这里提到的"活祭"是新约中独特的概念。旧约中的祭物是死的，但基督徒的奉献是活的，意味着我们每一天的生活都应该是献给神的祭物。这种奉献是"圣洁的，是神所喜悦的"，表明这种生活是分别为圣、符合神心意的。
+
+最后，"你们如此侍奉，乃是理所当然的"，说明这种奉献是合理的侍奉，是基督徒对神恩典的合理回应。这不仅仅是物质上的奉献，更是生命的奉献。`;
+            } else {
+                return `您查询的经文包含在圣经中，以下是相关的经文和解释：
+
+**约翰福音3:16**: "神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。"
+
+这节经文是圣经的核心，表明了神对人类无条件的爱。神不是因为人类的善行而爱我们，而是因为祂本性的慈爱。这节经文强调了信心的重要性，相信耶稣基督是获得永生的关键。
+
+**应用**: 这节经文提醒我们，神的爱是无条件的，我们应当以信心回应，并将这爱传递给他人。`;
+            }
+        }
+        
+        // 智能查经功能
+        document.getElementById('bible-search-btn').addEventListener('click', async () => {
+            const query = document.getElementById('bible-query').value.trim();
+            if (!query) {
+                alert('请输入您想查询的经文或主题');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('bible-results');
+            resultsDiv.innerHTML = '<div class="bible-loading">正在搜索相关经文，请稍候...</div>';
+            
+            try {
+                const prompt = `请根据以下查询提供相关的圣经经文和解释：${query}`;
+                const response = await callQwenAPI(prompt);
+                
+                resultsDiv.innerHTML = `<div class="bible-response">${response.replace(/\n/g, '<br>')}</div>`;
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="bible-error">搜索时发生错误: ${error.message}</div>`;
+            }
+        });
+        
+        // 经文解经功能
+        document.getElementById('interpretation-btn').addEventListener('click', async () => {
+            const query = document.getElementById('interpretation-query').value.trim();
+            if (!query) {
+                alert('请输入您想深入了解的经文');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('interpretation-results');
+            resultsDiv.innerHTML = '<div class="bible-loading">正在深度解经，请稍候...</div>';
+            
+            try {
+                const prompt = `请对以下经文进行深度解经和应用指导：${query}`;
+                const response = await callQwenAPI(prompt);
+                
+                resultsDiv.innerHTML = `<div class="bible-response">${response.replace(/\n/g, '<br>')}</div>`;
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="bible-error">解经时发生错误: ${error.message}</div>`;
+            }
+        });
+        
+        // 智能祷告功能
+        document.getElementById('prayer-btn').addEventListener('click', async () => {
+            const request = document.getElementById('prayer-request').value.trim();
+            if (!request) {
+                alert('请输入您的祷告需求');
+                return;
+            }
+            
+            const resultsDiv = document.getElementById('prayer-results');
+            resultsDiv.innerHTML = '<div class="bible-loading">正在生成祷告文，请稍候...</div>';
+            
+            try {
+                const prompt = `请根据以下需求生成祷告文：${request}`;
+                const response = await callQwenAPI(prompt);
+                
+                resultsDiv.innerHTML = `<div class="bible-response">${response.replace(/\n/g, '<br>')}</div>`;
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="bible-error">生成祷告文时发生错误: ${error.message}</div>`;
+            }
+        });
+        
+        // 祷告建议功能
+        document.getElementById('suggested-prayer-btn').addEventListener('click', async () => {
+            const selectedOptions = document.querySelectorAll('.verse-option.selected[data-prayer]');
+            if (selectedOptions.length === 0) {
+                alert('请选择至少一个祷告主题');
+                return;
+            }
+            
+            const prayerTopics = Array.from(selectedOptions).map(opt => opt.textContent);
+            const resultsDiv = document.getElementById('prayer-results');
+            resultsDiv.innerHTML = '<div class="bible-loading">正在生成祷告建议，请稍候...</div>';
+            
+            try {
+                const prompt = `请为以下主题生成祷告建议：${prayerTopics.join(', ')}`;
+                const response = await callQwenAPI(prompt);
+                
+                resultsDiv.innerHTML = `<div class="bible-response">${response.replace(/\n/g, '<br>')}</div>`;
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="bible-error">生成祷告建议时发生错误: ${error.message}</div>`;
+            }
+        });
+        
+        // 快速选择经文功能
+        document.querySelectorAll('.verse-option[data-verse]').forEach(option => {
+            option.addEventListener('click', () => {
+                const verse = option.getAttribute('data-verse');
+                const activeTab = document.querySelector('.bible-study-tab.active').getAttribute('data-tab');
+                
+                if (activeTab === 'bible-study') {
+                    document.getElementById('bible-query').value = verse;
+                } else if (activeTab === 'bible-interpretation') {
+                    document.getElementById('interpretation-query').value = verse;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
