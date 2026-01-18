@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
@@ -14,28 +14,25 @@
             <a href="index.html" class="logo">
                 <img src="images/trolcc_logo1.png" alt="多倫多生命河靈糧堂 Logo">
                 <div>
-                    <strong style="display: block; font-size: 1.2rem;">多倫多生命河靈糧堂</strong>
+                    <strong style="display: block; font-size: 1.2rem;" class="zh-text">多倫多生命河靈糧堂</strong>
                     <span style="font-size: 0.8rem; color: #7f8c8d;">Toronto River of Life Christian Church</span>
                 </div>
             </a>
-            <!-- Language selector -->
-            <div class="language-selector" style="margin-left: auto;">
-                <button id="langTrigger" class="language-trigger" aria-haspopup="true" aria-expanded="false">
-                    <span>繁體</span>
-                </button>
-                <div id="langDropdown" class="language-dropdown" aria-label="Language selector">
-                    <a href="#" class="lang-option" data-lang="zh-Hant">繁體</a>
-                    <a href="#" class="lang-option" data-lang="zh-Hans">简体</a>
-                    <a href="#" class="lang-option" data-lang="en">English</a>
-                </div>
-            </div>
-                <nav>
+
+            <!-- 简体/繁体切换按钮 -->
+            <button id="zhToggle" onclick="toggleZh()" 
+                style="margin-left: auto; background: none; border: none; font-size: 0.9rem; color: #555; cursor: pointer; padding: 4px 8px; border-radius: 4px;"
+                aria-label="切換繁簡中文">
+                简体
+            </button>
+
+            <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">首頁</a></li>
-                    <li><a href="pages/meetings.html" class="nav-link" data-i18n="nav.worship">聚會時間</a></li>
-                    <li><a href="pages/groups.html" class="nav-link" data-i18n="nav.groups">小組生活</a></li>
-                    <li><a href="pages/about.html" class="nav-link" data-i18n="nav.about">關於我們</a></li>
-                    <li><a href="pages/contact.html" class="nav-link" data-i18n="nav.contact">聯繫我們</a></li>
+                    <li><a href="index.html" class="nav-link zh-text">首頁</a></li>
+                    <li><a href="pages/meetings.html" class="nav-link zh-text">聚會時間</a></li>
+                    <li><a href="pages/groups.html" class="nav-link zh-text">小組生活</a></li>
+                    <li><a href="pages/about.html" class="nav-link zh-text">關於我們</a></li>
+                    <li><a href="pages/contact.html" class="nav-link zh-text">聯繫我們</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,59 +40,51 @@
 
     <section class="hero">
         <div class="container">
-            <h1 data-i18n="home.welcome">歡迎來到我們的屬靈家園</h1>
-            <p data-i18n="home.subtitle" style="font-size: 1.4rem;">以基督為中心，在愛中彼此建立</p>
+            <h1 class="zh-text">歡迎來到我們的屬靈家園</h1>
+            <p class="zh-text" style="font-size: 1.4rem;">以基督為中心，在愛中彼此建立</p>
             <a href="pages/meetings.html"
-                style="display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;" data-i18n="button.join">參加主日崇拜</a>
+                style="display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-weight: bold;" class="zh-text">參加主日崇拜</a>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
             <div class="section-title">
-                <h2 data-i18n="home.sections.title">我們的五大事工</h2>
-                <p data-i18n="home.sections.subtitle">承接母堂傳統，深耕多倫多社區</p>
+                <h2 class="zh-text">我們的五大事工</h2>
+                <p class="zh-text">承接母堂傳統，深耕多倫多社區</p>
             </div>
             <div class="grid">
-                <!-- 第1张：教会异象 -->
-    <a href="pages/vision.html" class="card-link">
-        <div class="card card-vision">
-            <h3 data-i18n="work.church_vision">教會異象</h3>
-            <p data-i18n="work.church_vision.desc">Ekklesia異象：祂的教會，祂的使命。</p>
-        </div>
-    </a>
-    
-    <!-- 第2张：敬拜赞美 -->
-    <a href="pages/worship.html" class="card-link">
-        <div class="card card-worship">
-            <h3 data-i18n="card.worship">敬拜讚美</h3>
-            <p data-i18n="card.worship.desc">以心靈和誠實敬拜，帶入神的同在。</p>
-        </div>
-    </a>
-    
-    <!-- 第3张：装备圣徒 -->
-    <a href="pages/equipping.html" class="card-link">
-        <div class="card card-equipping">
-            <h3 data-i18n="card.equip">裝備聖徒</h3>
-            <p data-i18n="card.equip.desc">系統化查經與培訓，建立扎實的信仰根基。</p>
-        </div>
-    </a>
-    
-    <!-- 第4张：小组生活 -->
-    <a href="pages/groups.html" class="card-link">
-        <div class="card card-fellowship">
-            <h3 data-i18n="card.community">小組生活</h3>
-            <p data-i18n="card.community.desc">在小團契中彼此關懷，活出基督的愛。</p>
-        </div>
-    </a>
-    
-    <!-- 第5张：普世宣教 -->
-    <a href="pages/mission.html" class="card-link">
-        <div class="card card-mission">
-            <h3 data-i18n="card.mission">普世宣教</h3>
-            <p data-i18n="card.mission.desc">將福音傳遍地極，完成大使命。</p>
-        </div>
-    </a>
+                <a href="pages/vision.html" class="card-link">
+                    <div class="card card-vision">
+                        <h3 class="zh-text">教會異象</h3>
+                        <p class="zh-text">Ekklesia異象：祂的教會，祂的使命。</p>
+                    </div>
+                </a>
+                <a href="pages/worship.html" class="card-link">
+                    <div class="card card-worship">
+                        <h3 class="zh-text">敬拜讚美</h3>
+                        <p class="zh-text">以心靈和誠實敬拜，帶入神的同在。</p>
+                    </div>
+                </a>
+                <a href="pages/equipping.html" class="card-link">
+                    <div class="card card-equipping">
+                        <h3 class="zh-text">裝備聖徒</h3>
+                        <p class="zh-text">系統化查經與培訓，建立扎實的信仰根基。</p>
+                    </div>
+                </a>
+                <a href="pages/groups.html" class="card-link">
+                    <div class="card card-fellowship">
+                        <h3 class="zh-text">小組生活</h3>
+                        <p class="zh-text">在小團契中彼此關懷，活出基督的愛。</p>
+                    </div>
+                </a>
+                <a href="pages/mission.html" class="card-link">
+                    <div class="card card-mission">
+                        <h3 class="zh-text">普世宣教</h3>
+                        <p class="zh-text">將福音傳遍地極，完成大使命。</p>
+                    </div>
+                </a>
+
                 <!-- Interactive 5th Card -->
                 <div class="vision-card vision-portal" id="portal-card">
                     <div class="portal-mist"></div>
@@ -103,9 +92,9 @@
                         <div style="position: relative;">
                             <span id="speed-feedback"
                                 style="position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 1.3rem; font-weight: 900; opacity: 0; transition: opacity 0.3s; white-space: nowrap; z-index: 100; filter: none !important;"></span>
-                            <h3 id="portal-title" style="cursor: pointer;" data-i18n="card.future">未來聖所</h3>
+                            <h3 id="portal-title" style="cursor: pointer;" class="zh-text">未來聖所</h3>
                         </div>
-                        <p>探索數位時代的屬靈疆界。</p>
+                        <p class="zh-text">探索數位時代的屬靈疆界。</p>
                     </div>
                 </div>
             </div>
@@ -116,13 +105,13 @@
     <section class="section" style="background: #f8f9fa;">
         <div class="container">
             <div class="section-title">
-                <h2 data-i18n="home.map.title">教會位置</h2>
-                <p data-i18n="home.map.subtitle">歡迎來訪，我們期待與您相見</p>
+                <h2 class="zh-text">教會位置</h2>
+                <p class="zh-text">歡迎來訪，我們期待與您相見</p>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
                 <div>
                     <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: var(--shadow);">
-                        <h3 style="color: var(--primary); margin-bottom: 20px;">📍 地址信息</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 20px;" class="zh-text">📍 地址信息</h3>
                         <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
                             <strong>2460 The Collegeway</strong><br>
                             Mississauga, ON L5L 1V3<br>
@@ -135,7 +124,7 @@
                         </div>
                         <a href="https://www.google.com/maps/search/?api=1&query=2460+The+Collegeway+Mississauga+ON+L5L+1V3"
                             target="_blank"
-                            style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;">
+                            style="display: inline-block; margin-top: 20px; padding: 12px 30px; background: var(--secondary); color: white; text-decoration: none; border-radius: 25px; font-weight: 600;" class="zh-text">
                             在 Google 地圖中打開
                         </a>
                     </div>
@@ -155,114 +144,140 @@
     <section class="section">
         <div class="container">
             <div class="section-title">
-                <h2 data-i18n="home.bulletin.title">📢 教會布告欄</h2>
-                <p data-i18n="home.bulletin.subtitle">最新消息與活動公告</p>
+                <h2 class="zh-text">📢 教會布告欄</h2>
+                <p class="zh-text">最新消息與活動公告</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
                 <div class="bulletin-card">
                     <div class="bulletin-date">2024年1月</div>
-                    <h3>新年感恩崇拜</h3>
-                    <p>讓我們一同感謝神在過去一年的帶領，並為新的一年獻上禱告。</p>
-                    <span class="bulletin-tag">特別聚會</span>
+                    <h3 class="zh-text">新年感恩崇拜</h3>
+                    <p class="zh-text">讓我們一同感謝神在過去一年的帶領，並為新的一年獻上禱告。</p>
+                    <span class="bulletin-tag zh-text">特別聚會</span>
                 </div>
                 <div class="bulletin-card">
                     <div class="bulletin-date">持續進行</div>
-                    <h3>小組查經班招募</h3>
-                    <p>歡迎弟兄姊妹加入週間小組，一同在神的話語中成長。</p>
-                    <span class="bulletin-tag">小組生活</span>
+                    <h3 class="zh-text">小組查經班招募</h3>
+                    <p class="zh-text">歡迎弟兄姊妹加入週間小組，一同在神的話語中成長。</p>
+                    <span class="bulletin-tag zh-text">小組生活</span>
                 </div>
                 <div class="bulletin-card">
                     <div class="bulletin-date">每週三</div>
-                    <h3>禱告會</h3>
-                    <p>週三晚上7:30，讓我們一起為教會、家庭和社區代禱。</p>
-                    <span class="bulletin-tag">定期聚會</span>
+                    <h3 class="zh-text">禱告會</h3>
+                    <p class="zh-text">週三晚上7:30，讓我們一起為教會、家庭和社區代禱。</p>
+                    <span class="bulletin-tag zh-text">定期聚會</span>
                 </div>
             </div>
         </div>
     </section>
 
     <footer style="background: #f8f9fa; padding: 60px 0; border-top: 1px solid #eee;">
-            <div class="container" style="text-align: center;">
-            <p data-i18n="footer.copyright">&copy; 2024 多倫多生命河靈糥堂. 保留所有權利.</p>
+        <div class="container" style="text-align: center;">
+            <p class="zh-text">&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
             <div style="margin-top: 20px; color: #95a5a6; font-size: 0.9rem;">
-                地址: 2460 The Collegeway, Mississauga, ON L5L 1V3| 電話: +1 (647) 519-1509| E-mail： trolcc@outlook.com
+                地址: 2460 The Collegeway, Mississauga, ON L5L 1V3 | 電話: +1 (647) 519-1509 | E-mail： trolcc@outlook.com
+            </div>
+
+            <!-- 英文提示（极小字） -->
+            <div style="margin-top: 10px; font-size: 0.7rem; color: #bbb; line-height: 1;">
+                English? Please use your browser's translation feature.
             </div>
 
             <!-- Hidden Portal Entrance -->
             <div class="footer-portal" onclick="window.location.href='future.html'">
                 <p style="font-size: 0.6rem; letter-spacing: 2px;">QUANTUM PROTOCOLS ACTIVE</p>
-                <div
-                    style="width: 10px; height: 10px; background: rgba(0, 255, 136, 0.2); border-radius: 50%; margin: 5px auto;">
-                </div>
+                <div style="width: 10px; height: 10px; background: rgba(0, 255, 136, 0.2); border-radius: 50%; margin: 5px auto;"></div>
             </div>
         </div>
     </footer>
-    <script src="js/config.js"></script>
-    <script src="js/convert.js"></script>
-    <script src="js/languages.js"></script>
-    <script src="js/language-manager.js"></script>
 
+    <!-- OpenCC + 切换逻辑 -->
+    <script src="./js/opencc.js"></script>
     <script>
-        // Portal Speed Test - Only works on title clicks
+        let isSimplified = false;
+        let converter = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            converter = OpenCC.Converter({ from: 'hk', to: 'cn' });
+            const saved = localStorage.getItem('useSimplified');
+            if (saved === 'true') {
+                isSimplified = true;
+                applySimplified();
+                document.getElementById('zhToggle').textContent = '繁体';
+            }
+        });
+
+        function toggleZh() {
+            isSimplified = !isSimplified;
+            const btn = document.getElementById('zhToggle');
+            if (isSimplified) {
+                applySimplified();
+                btn.textContent = '繁体';
+            } else {
+                restoreTraditional();
+                btn.textContent = '简体';
+            }
+            localStorage.setItem('useSimplified', isSimplified);
+        }
+
+        function applySimplified() {
+            document.querySelectorAll('.zh-text').forEach(el => {
+                if (!el.hasAttribute('data-trad')) {
+                    el.setAttribute('data-trad', el.textContent);
+                }
+                el.textContent = converter(el.getAttribute('data-trad'));
+            });
+        }
+
+        function restoreTraditional() {
+            document.querySelectorAll('.zh-text').forEach(el => {
+                if (el.hasAttribute('data-trad')) {
+                    el.textContent = el.getAttribute('data-trad');
+                }
+            });
+        }
+    </script>
+
+    <!-- 原有交互脚本（保留） -->
+    <script>
         const portalTitle = document.getElementById('portal-title');
         const speedFeedback = document.getElementById('speed-feedback');
         let lastClick = 0;
-        const SPEED_THRESHOLD = 250; // Stricter: 250ms instead of 350ms
+        const SPEED_THRESHOLD = 250;
 
-        portalTitle.addEventListener('click', (e) => {
-            const now = new Date().getTime();
+        portalTitle?.addEventListener('click', (e) => {
+            const now = Date.now();
             const timespan = now - lastClick;
-
-            if (timespan > 0 && timespan < 2000) { // Only show feedback if clicks are within 2 seconds
-                // Display the speed
+            if (timespan > 0 && timespan < 2000) {
                 speedFeedback.textContent = `${timespan}ms`;
                 speedFeedback.style.opacity = '1';
-
-                // Check if fast enough
                 if (timespan < SPEED_THRESHOLD) {
-                    // SUCCESS: Green text and enter portal
                     speedFeedback.style.color = '#00ff88';
                     speedFeedback.style.textShadow = '0 0 10px rgba(0, 255, 136, 0.8)';
-
-                    // Entry animation
                     portalTitle.style.transform = 'scale(1.1)';
                     portalTitle.style.textShadow = '0 0 30px rgba(0, 255, 136, 1)';
-
-                    setTimeout(() => {
-                        window.location.href = 'future.html';
-                    }, 500);
+                    setTimeout(() => window.location.href = 'future.html', 500);
                 } else {
-                    // FAIL: Red text
                     speedFeedback.style.color = '#ff4444';
                     speedFeedback.style.textShadow = '0 0 10px rgba(255, 68, 68, 0.8)';
-
-                    // Shake animation for failure
                     portalTitle.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        portalTitle.style.animation = '';
-                    }, 500);
+                    setTimeout(() => portalTitle.style.animation = '', 500);
                 }
-
-                // Hide feedback after 2 seconds
                 setTimeout(() => {
                     speedFeedback.style.opacity = '0';
                     portalTitle.style.transform = '';
                 }, 2000);
             }
-
             lastClick = now;
         });
 
-        // Subtle interaction: Long press on the logo enters the future sanctuary
-        let logoTimer;
         const logo = document.querySelector('.logo');
-        logo.addEventListener('mousedown', () => {
-            logoTimer = setTimeout(() => {
-                window.location.href = 'future.html';
-            }, 3000); // 3 seconds long press
+        let logoTimer;
+        logo?.addEventListener('mousedown', () => {
+            logoTimer = setTimeout(() => window.location.href = 'future.html', 3000);
         });
-        logo.addEventListener('mouseup', () => clearTimeout(logoTimer));
-        logo.addEventListener('mouseleave', () => clearTimeout(logoTimer));
+        ['mouseup', 'mouseleave'].forEach(evt => 
+            logo?.addEventListener(evt, () => clearTimeout(logoTimer))
+        );
     </script>
 </body>
 
