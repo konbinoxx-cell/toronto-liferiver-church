@@ -4,19 +4,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關於我們 - 多倫多生命河靈糧堂</title>
+    <title data-i18n="vision.title">教會異象 - 多倫多生命河靈糧堂</title>
     <link rel="stylesheet" href="../css/index.css">
     <style>
-        .page-header {
-            background: var(--primary);
+        /* 保持原有的样式不变 */
+        .page-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.8)), url('../images/vision-vision.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
             color: white;
-            padding: 60px 0;
             text-align: center;
         }
 
-        .content-section {
-            padding: 60px 0;
+        .vision-content {
+            padding: 80px 0;
+            line-height: 2;
+        }
+
+        .vision-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .vision-intro h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+
+        .vision-intro .scripture {
+            font-style: italic;
+            color: var(--primary);
+            margin: 25px 0;
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .ekklesia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 70px 0;
+        }
+
+        .ekklesia-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--secondary);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ekklesia-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(26, 82, 118, 0.15);
+        }
+
+        .ekklesia-icon {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .ekklesia-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .ekklesia-card h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .ekklesia-card p {
+            color: #444;
             line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .scripture-ref {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .vision-callout {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4a6e 100%);
+            color: white;
+            padding: 70px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: 0 20px 40px rgba(26, 82, 118, 0.2);
+        }
+
+        .vision-callout h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .vision-callout p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 45px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: var(--primary);
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .key-verse {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin: 50px auto;
+            padding: 25px;
+            max-width: 800px;
+            border-radius: 15px;
+            background: linear-gradient(to right, #f8f9fa, #eef5ff);
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .ekklesia-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .vision-callout {
+                padding: 50px 25px;
+            }
+            
+            .key-verse {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -45,7 +209,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="../index.html" class="nav-link" data-i18n="nav.home">首頁</a></li>
-                    <li><a href="meetings.html" class="nav-link">聚會時間</a></li>
+                    <li><a href="meetings.html" class="nav-link" data-i18n="nav.meetings">聚會時間</a></li>
                     <li><a href="groups.html" class="nav-link" data-i18n="nav.groups">小組生活</a></li>
                     <li><a href="about.html" class="nav-link" data-i18n="nav.about">關於我們</a></li>
                     <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">聯繫我們</a></li>
@@ -54,47 +218,96 @@
         </div>
     </header>
 
-    <section class="page-header">
+    <section class="page-hero">
         <div class="container">
-            <h1 data-i18n="about.title">關於我們</h1>
-            <p>了解我們的異象、使命與信仰核心</p>
+            <h1 style="font-size: 3rem; margin-bottom: 20px;" data-i18n="vision.main_title">Ekklesia 異象</h1>
+            <p style="font-size: 1.2rem;" data-i18n="vision.subtitle">祂的教會，祂的使命 —— 建立二十一世紀榮耀的教會</p>
         </div>
     </section>
 
-    <main class="container content-section">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="color: var(--primary); margin-bottom: 20px;">我們的異象</h2>
-            <p style="margin-bottom: 30px;">
-                建立一個充滿聖靈能力、以聖經為根基、在愛中彼此建立的教會，成為多倫多地區的祝福。
-            </p>
+    <section class="vision-content">
+        <div class="container">
+            <div class="vision-intro">
+                <h2 data-i18n="vision.what_is_ekklesia">什麼是 Ekklesia？</h2>
+                <p data-i18n="vision.intro_paragraph1">
+                    「Ekklesia」是耶穌親自選用的希臘詞（太16:18），原意為「被召出來的一群人」。在新約中，這不僅指「教會」，更是一個<strong>帶有天國權柄的治理議會</strong>——一群從世界中被分別出來、代表基督在地上行使治理、見證與使命的天國公民。
+                </p>
+                <div class="scripture" data-i18n="vision.scripture_matt16_18">
+                    「我還告訴你，你是彼得，我要把我的教會（Ekklesia）建造在這磐石上；陰間的權柄不能勝過他。」（馬太福音 16:18）
+                </div>
+                <p data-i18n="vision.intro_paragraph2">
+                    我們的異象不是建造一座建築，而是<strong>建立一個活的Ekklesia</strong>：裝備聖徒在家庭、職場、文化中活出天國法則，讓神的旨意「行在地上，如同行在天上」。
+                </p>
+            </div>
 
-            <h2 style="color: var(--primary); margin-bottom: 20px;">四個核心價值</h2>
-            <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="card">
-                    <h4>敬拜讚美</h4>
-                    <p>在聖靈與真理中敬拜。</p>
+            <div class="key-verse" data-i18n="vision.key_verse_1peter2_9">
+                「惟有你們是被揀選的族類，是有君尊的祭司，是聖潔的國度，是屬神的子民，要叫你們宣揚那召你們出黑暗入奇妙光明者的美德。」（彼得前書 2:9）
+            </div>
+
+            <div class="ekklesia-grid">
+                <div class="ekklesia-card">
+                    <div class="ekklesia-icon">👑</div>
+                    <h3 data-i18n="vision.card1.title">一、天國公民的身份覺醒</h3>
+                    <p data-i18n="vision.card1.content">
+                        我們領受 Ekklesia 的首要真理是：每位信徒都是擁有天國護照的公民。這意味著我們不再是被動的宗教消費者，而是被賦予權柄的「君尊祭司」（彼前 2:9）。在這裡，你將重新發現自己在基督裡的尊貴身份，並學習在每一天平凡的生活中，活出天國子民的治理職分。
+                    </p>
+                    <div class="scripture-ref" data-i18n="vision.card1.references">參考經文：彼得前書 2:9；腓立比書 3:20</div>
                 </div>
-                <div class="card">
-                    <h4>聖徒裝備</h4>
-                    <p>以神的話語建立門徒。</p>
+
+                <div class="ekklesia-card">
+                    <div class="ekklesia-icon">🛠️</div>
+                    <h3 data-i18n="vision.card2.title">二、Ekklesia 職能的整體運作</h3>
+                    <p data-i18n="vision.card2.content">
+                        Ekklesia 的成熟不在於培養少數「屬靈精英」，而在于全員權柄的覺醒與釋放。我們效法《以弗所書》4:11-12 的原則，將使徒性的開拓、先知性的洞察、傳福音的驅動、牧養的關懷與教師的真理，視為屬於全體聖徒的「全能工具包」。其核心目標是去階級化，讓每位公民都能在各自領域獨立、成熟地行使屬靈權柄。
+                    </p>
+                    <div class="scripture-ref" data-i18n="vision.card2.references">參考經文：以弗所書 4:11-12；哥林多前書 12:28</div>
                 </div>
-                <div class="card">
-                    <h4>小組團契</h4>
-                    <p>在愛中彼此連接。</p>
+
+                <div class="ekklesia-card">
+                    <div class="ekklesia-icon">🤲</div>
+                    <h3 data-i18n="vision.card3.title">三、僕人君王的治理典範</h3>
+                    <p data-i18n="vision.card3.content">
+                        Ekklesia 的治理不是權力的掌控，而是以基督為中心的服事。我們全員效法耶穌「僕人-君王」的榜樣：對內是洗腳的僕人，在共同體中以捨己的愛彼此賦能、建立家園；對外是治理的君王，面對社會挑戰時帶著天國的權柄轉化文化、抵擋黑暗。我們的目標不是讓人依賴領袖，而是彼此成全為神國的精兵。
+                    </p>
+                    <div class="scripture-ref" data-i18n="vision.card3.references">參考經文：馬太福音 20:25-28；約翰福音 13:14-15</div>
                 </div>
-                <div class="card">
-                    <h4>全地傳福</h4>
-                    <p>廣傳福音直到地極。</p>
+
+                <div class="ekklesia-card">
+                    <div class="ekklesia-icon">🌍</div>
+                    <h3 data-i18n="vision.card4.title">四、職場與領域的轉化使命</h3>
+                    <p data-i18n="vision.card4.content">
+                        Ekklesia 的邊界遠超過教堂圍牆。我們相信職場即是祭壇，社區就是工場。我們鼓勵每位天國公民在藝術、商業、教育、家庭、媒體、政治、宗教這「七大領域」中，建立天國的價值觀。我們不追求宗教的形式，而是追求成為社會的鹽與光，通過實際解決社區的需要，帶來屬天的全方位轉化。
+                    </p>
+                    <div class="scripture-ref" data-i18n="vision.card4.references">參考經文：馬太福音 5:13-16；但以理書 6:3</div>
+                </div>
+
+                <div class="ekklesia-card">
+                    <div class="ekklesia-icon">🤝</div>
+                    <h3 data-i18n="vision.card5.title">五、城市合一的國度見證</h3>
+                    <p data-i18n="vision.card5.content">
+                        真正的 Ekklesia 能夠跨越宗派與堂會的藩籬。我們致力於與多倫多眾教會連結，成為城市屬靈議會的一部分。這議會不是行政權力的機構，而是合一禱告與行動的平台。面對社區的挑戰，我們以合一的見證彰顯基督身體的大能，讓「陰間的權柄不能勝過」這見證（太 16:18），共同預備這地迎接神的國度完全降臨。
+                    </p>
+                    <div class="scripture-ref" data-i18n="vision.card5.references">參考經文：約翰福音 17:21；以弗所書 4:3-6</div>
                 </div>
             </div>
+
+            <div class="vision-callout">
+                <h2 data-i18n="vision.callout.title">加入天國使命，活出Ekklesia呼召</h2>
+                <p data-i18n="vision.callout.content">
+                    <strong>Ekklesia——我們是蒙召的群體，是君尊的祭司，是神在這世上的大使館。</strong><br>
+                    在這裡，你不只是參加聚會，更是加入一個使命：與神同工，在地上建立屬天的秩序。
+                </p>
+                <a href="contact.html" class="cta-button" data-i18n="vision.callout.button">回應呼召，聯絡我們</a>
+            </div>
         </div>
-    </main>
+    </section>
 
     <footer style="background: #f8f9fa; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
         <div class="container">
-            <p data-i18n="footer.copyright">&copy; 2024 多倫多生命河靈糚堂. 保留所有權利.</p>
+            <p data-i18n="footer.copyright">&copy; 2024 多倫多生命河靈糧堂. 保留所有權利.</p>
         </div>
-</footer>
+    </footer>
+
     <script src="../js/config.js"></script>
     <script src="../js/convert.js"></script>
     <script src="../js/languages.js"></script>
